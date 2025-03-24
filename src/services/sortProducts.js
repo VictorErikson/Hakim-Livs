@@ -1,11 +1,11 @@
 import { fetchProducts } from "../utils/api.js";
-import { createProductCard } from "../scripts/services/createProductCard.js";
+import { createProductCard } from "./createProductCard.js";
 // import { createProductCard } from "../scripts/index.js";
 import { productList } from "../../tempTestData/products.js";
 
 export const sortProducts = async(chosenCategory) => {
 
-    const productsContainer = document.getElementById("products");
+    const productsContainer = document.getElementById("productContainer");
 
     try {
     // const products = await fetchProducts();
@@ -21,10 +21,11 @@ export const sortProducts = async(chosenCategory) => {
             })
         });
 
-        sortedProducts.forEach(product => {
-        const productCard = createProductCard(product);
-        productsContainer.appendChild(productCard);
-        })
+        // sortedProducts.forEach(product => {
+        // const productCard = createProductCard(product);
+        // productsContainer.appendChild(productCard);
+        // })
+        createProductCard(sortedProducts);
 
 
     } else {
