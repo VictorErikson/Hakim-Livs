@@ -1,5 +1,5 @@
 import { fetchProducts } from "../utils/api.js";
-import { createProductCard } from "../scripts/index.js";
+import { createProductCard } from "../scripts/services/createProductCard.js";
 // import { productList } from "../../tempTestData/products.js";
 
 export const sortProducts = async(chosenCategory) => {
