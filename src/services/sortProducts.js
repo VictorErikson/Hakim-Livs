@@ -1,14 +1,15 @@
 import { fetchProducts } from "../utils/api.js";
 import { createProductCard } from "../scripts/services/createProductCard.js";
-// import { productList } from "../../tempTestData/products.js";
+// import { createProductCard } from "../scripts/index.js";
+import { productList } from "../../tempTestData/products.js";
 
 export const sortProducts = async(chosenCategory) => {
 
     const productsContainer = document.getElementById("products");
 
     try {
-    const products = await fetchProducts();
-    // const products = productList;
+    // const products = await fetchProducts();
+    const products = productList;
     productsContainer.innerHTML = ""; 
 
     if (products.length > 0) {
