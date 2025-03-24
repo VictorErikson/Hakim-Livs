@@ -1,4 +1,4 @@
-const products = [
+export const productList = [
     {
       name: "Wireless Mouse",
       description: "Ergonomic Bluetooth mouse with silent clicks.",
