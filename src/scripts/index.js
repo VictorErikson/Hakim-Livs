@@ -2,6 +2,7 @@ import { fetchProducts } from "../utils/api.js";
 import { createProductCard } from "../services/createProductCard.js";
 import { productList } from "../../tempTestData/products.js";
 
+
 document.addEventListener("DOMContentLoaded", loadProducts);
 
 // Function to fetch and render products
