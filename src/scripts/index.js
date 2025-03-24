@@ -1,4 +1,5 @@
 import { fetchProducts } from "../utils/api.js";
+import { productList } from "../../tempTestData/products.js";
 
 document.addEventListener("DOMContentLoaded", loadProducts);
 
@@ -8,7 +9,8 @@ async function loadProducts() {
   productsContainer.innerHTML = "<p>Loading products...</p>"; // Temporary message while loading
 
   try {
-    const products = await fetchProducts();
+    // const products = await fetchProducts();
+    const products = productList;
     productsContainer.innerHTML = ""; // Clear loading text
 
     if (products.length > 0) {
@@ -26,7 +28,7 @@ async function loadProducts() {
 }
 
 // Function to create an individual product card
-function createProductCard(product) {
+export function createProductCard(product) {
   const element = document.createElement("div");
   element.className = "product-card";
 
