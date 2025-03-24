@@ -2,8 +2,10 @@ import { fetchProducts } from "../utils/api.js";
 import { createProductCard } from "../services/createProductCard.js";
 import { productList } from "../../tempTestData/products.js";
 import { showCategories } from "../services/showCategories.js";
-
+import { searchProduct } from "../services/searchProduct.js";
 document.addEventListener("DOMContentLoaded", loadProducts);
+
+export let products;
 
 // Function to fetch and render products
 async function loadProducts() {
@@ -12,7 +14,7 @@ async function loadProducts() {
 
   try {
     // const products = await fetchProducts();
-    const products = productList;
+    products = productList;
     productsContainer.innerHTML = ""; // Clear loading text
 
     if (products.length > 0) {
@@ -26,6 +28,12 @@ async function loadProducts() {
     productsContainer.innerHTML = "<p>Failed to load products.</p>";
   }
 }
+
+
+// Fuction search products with searchbar
+
+const searchbar = document.querySelector("search");
+searchbar.addEventListener("blur", () => searchProduct(searchbar.value))
 
 
 
