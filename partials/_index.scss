@@ -1,3 +1,136 @@
-.site-header {
-    background-color: red;
-}
+.index-page {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color: $Neutral900;
+    background-color: $Neutral0;
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+  
+    .index-content {
+      display: flex;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+  
+    .site-header {
+      background: $blue500;
+      padding: 1rem 2rem;
+  
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+  
+        .logo {
+          font-size: 1.75rem;
+          font-weight: bold;
+          color: white;
+          text-decoration: none;
+        }
+  
+        .nav-links {
+          display: flex;
+          gap: 2rem;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+  
+          a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+  
+            &:hover {
+              text-decoration: underline;
+            }
+  
+            &.admin-link {
+              background-color: $red400;
+              color: white;
+              padding: 0.5rem 1rem;
+              border-radius: 4px;
+  
+              &:hover {
+                background-color: $red500;
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    .main-content {
+      flex: 1;
+      padding: 2rem;
+      width: 100%;
+      background-color: $Neutral50;
+  
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: $Neutral900;
+        margin-bottom: 1rem;
+      }
+    }
+  
+    // #products {
+    //   display: grid;
+    //   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    //   gap: 2rem;
+    //   padding-top: 1rem;
+  
+    //   .product-card {
+    //     border: 1px solid $Neutral200;
+    //     padding: 1rem;
+    //     border-radius: 8px;
+    //     text-align: center;
+    //     background-color: $Neutral0;
+  
+    //     button {
+    //       background: $blue300;
+    //       color: white;
+    //       border: none;
+    //       padding: 0.5rem 1rem;
+    //       border-radius: 4px;
+    //       cursor: pointer;
+  
+    //       &:hover {
+    //         background: $blue400;
+    //       }
+    //     }
+    //   }
+    // }
+  
+    .site-footer {
+      background: $Neutral50;
+      padding: 2rem;
+      margin-top: auto;
+  
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+  
+        .footer-links {
+          display: flex;
+          gap: 2rem;
+  
+          a {
+            text-decoration: none;
+            color: $Neutral500;
+  
+            &:hover {
+              color: $blue300;
+            }
+          }
+        }
+      }
+    }
+  }
+  
