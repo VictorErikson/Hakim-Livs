@@ -24,3 +24,14 @@ async function loadProducts() {
     productsContainer.innerHTML = "<p>Failed to load products.</p>";
   }
 }
+
+
+
+//Function to make the searchfield active if clicked outside input-field
+
+const searchfield = document.querySelector(".searchfield");
+const search = document.querySelector(".search");
+
+searchfield.addEventListener("click", () => {
+  search.focus();
+})

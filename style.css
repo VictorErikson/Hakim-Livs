@@ -14,8 +14,19 @@
   margin: 0 auto;
 }
 .index-page .site-header {
-  background: #011e62;
-  padding: 1rem 2rem;
+  background: white;
+}
+.index-page .site-header .welcomeBonus {
+  background-color: #011e62;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.index-page .site-header .welcomeBonus a {
+  color: white;
+  text-decoration: none;
+  text-decoration: underline;
 }
 .index-page .site-header nav {
   display: flex;
@@ -23,12 +34,32 @@
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 1rem 2rem;
 }
-.index-page .site-header nav .logo {
-  font-size: 1.75rem;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
+.index-page .site-header nav .searchfield {
+  border: 2px solid #CACFD8;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0px 16px;
+  padding: 5px;
+  gap: 5px;
+}
+.index-page .site-header nav .searchfield.searchfield:focus-within, .index-page .site-header nav .searchfield:hover {
+  border: 2px solid #011e62;
+  cursor: text;
+}
+.index-page .site-header nav .searchfield a {
+  height: 32px;
+}
+.index-page .site-header nav .searchfield input {
+  font-size: 1rem;
+}
+.index-page .site-header nav .searchfield input, .index-page .site-header nav .searchfield input:focus-visible, .index-page .site-header nav .searchfield input:focus, .index-page .site-header nav .searchfield input:active, .index-page .site-header nav .searchfield input:target {
+  border: none;
+  outline: none;
 }
 .index-page .site-header nav .nav-links {
   display: flex;
@@ -88,6 +119,28 @@
 }
 .index-page .site-footer .footer-content .footer-links a:hover {
   color: #4346e0;
+}
+
+.productCard {
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin: 10px;
+  border-radius: 8px;
+  width: 200px;
+}
+
+.productCard h2 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.productCard p {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.productCard .price {
+  font-weight: bold;
 }
 
 .side-nav {
