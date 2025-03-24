@@ -1,4 +1,5 @@
 import { fetchProducts } from "../utils/api.js";
+import { createProductCard } from "../services/createProductCard.js";
 
 document.addEventListener("DOMContentLoaded", loadProducts);
 
