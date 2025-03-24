@@ -79,11 +79,15 @@
           list-style: none;
           margin: 0;
           padding: 0;
+          align-items: center;
   
           a {
             text-decoration: none;
-            color: white;
-            font-weight: 500;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 64px;
+            width: 64px;
   
             &:hover {
               text-decoration: underline;
@@ -91,12 +95,54 @@
   
             &.admin-link {
               background-color: $red400;
-              color: white;
+              
               padding: 0.5rem 1rem;
               border-radius: 4px;
   
               &:hover {
                 background-color: $red500;
+              }
+            }
+
+            img{
+              height: 32px;
+              
+            }
+          }
+          .cart{
+            flex-direction: row;
+            align-items: center;
+            width: auto;
+            gap: 8px;
+            border: 2px solid $Neutral300;
+            background-color: $Neutral50;
+            border-radius: 4px;
+            padding: 0px 12px;
+            height: auto;
+
+            .text{
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: flex-start;
+              width: fit-content;
+              
+              p{
+                width: fit-content;
+                white-space: nowrap;
+                margin: 0px;
+                text-align: start;
+                
+              }
+
+              .toCart{
+                color: $Neutral300;
+                
+              }
+              
+              .price{
+                color: $Neutral300;
+                font-weight: 800;
               }
             }
           }
