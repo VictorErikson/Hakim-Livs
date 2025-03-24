@@ -1,4 +1,7 @@
 // products.js
+import { productList } from "../../tempTestData/products.js";
+
+
 export function createProductCard(products) {
   let productContainer = document.querySelector("#productContainer");
 
@@ -27,3 +30,5 @@ export function createProductCard(products) {
     productContainer.append(productCard);
   });
 }
+
+createProductCard(productList);

@@ -119,5 +119,5 @@ export const productList = [
       categories: ["electronics", "outdoor"],
       price: 99.00
     }
-  ];
+];
   
