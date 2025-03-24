@@ -1,6 +1,7 @@
 import { fetchProducts } from "../utils/api.js";
 import { createProductCard } from "../services/createProductCard.js";
 import { productList } from "../../tempTestData/products.js";
+import { showCategories } from "../services/showCategories.js";
 
 document.addEventListener("DOMContentLoaded", loadProducts);
 
@@ -16,6 +17,7 @@ async function loadProducts() {
 
     if (products.length > 0) {
       createProductCard(products);
+      showCategories(Promise.resolve(products)); // change to await later when switching to fetch/database
     } else {
       productsContainer.innerHTML = "<p>No products available.</p>";
     }

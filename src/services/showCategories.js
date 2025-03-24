@@ -1,3 +1,4 @@
+import { sortProducts } from "./sortProducts.js";
 
 
 export  async function showCategories(productsPromise) {
@@ -15,6 +16,12 @@ export  async function showCategories(productsPromise) {
         const link = document.createElement('a');
         link.href = '#';
         link.textContent = category;
+
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            sortProducts(category);
+        });
+        
         li.appendChild(link);
         categoryContainer.appendChild(li);
     });
