@@ -1,5 +1,6 @@
 import { fetchProducts } from "../utils/api.js";
 import { createProductCard } from "../services/createProductCard.js";
+import { productList } from "../../tempTestData/products.js";
 
 document.addEventListener("DOMContentLoaded", loadProducts);
 
@@ -25,22 +26,4 @@ async function loadProducts() {
     console.error("Error fetching products:", error);
     productsContainer.innerHTML = "<p>Failed to load products.</p>";
   }
-}
-
-// Function to create an individual product card
-export function createProductCard(product) {
-  const element = document.createElement("div");
-  element.className = "product-card";
-
-  element.innerHTML = `
-    <h3>${product.name}</h3>
-    <p>$${product.price.toFixed(2)}</p>
-    <button class="add-to-cart-btn">Add to Cart</button>
-  `;
-
-  element.querySelector(".add-to-cart-btn").addEventListener("click", () => {
-    alert(`Adding ${product.name} to cart\nFunctionality not implemented yet`);
-  });
-
-  return element;
 }
