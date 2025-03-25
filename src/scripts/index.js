@@ -3,6 +3,8 @@ import { createProductCard } from "../services/createProductCard.js";
 import { productList } from "../../tempTestData/products.js";
 import { showCategories } from "../services/showCategories.js";
 import { searchProduct } from "../services/searchProduct.js";
+import { addToCart } from "../services/addToCart.js";
+
 document.addEventListener("DOMContentLoaded", loadProducts);
 
 export let products;
@@ -47,7 +49,7 @@ async function loadProducts() {
 }
 
 
-
+addToCart(3, products[1])
 
 
 // Fuction search products with searchbar
@@ -65,3 +67,4 @@ const searchfield = document.querySelector(".searchfield");
 searchfield.addEventListener("click", () => {
   searchbar.focus();
 })
+
