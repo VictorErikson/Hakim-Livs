@@ -1,7 +1,8 @@
 
 export function getBaseUrl() {
   // Get the group number from the hostname to determine the base URL for BE
-  const regex = /webshop\-2025\-(g[0-9]{1,2})\-fe/g;
+  const regex = /hakim-livs-five.vercel.app/;
+  // const regex = /webshop\-2025\-(g[0-9]{1,2})\-fe/g;
   const href = window.location.href;
   const match = regex.exec(href);
   console.log(match);
