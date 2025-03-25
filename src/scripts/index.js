@@ -31,7 +31,6 @@ async function loadProducts() {
   //   console.error("Error fetching products:", error);
   //   productsContainer.innerHTML = "<p>Failed to load products.</p>";
   // }
-    // Justinas egna 
   try {
     // products = productList;
     const products = await fetchProducts();
@@ -39,7 +38,8 @@ async function loadProducts() {
 
     if (products.length > 0) {
       createProductCard(products);
-      showCategories(Promise.resolve(products)); // change to await later when switching to fetch/database
+      showCategories(products); // change to await later when switching to fetch/database
+      // showCategories(Promise.resolve(products)); // change to await later when switching to fetch/database
     } else {
       productsContainer.innerHTML = "<p>No products available.</p>";
     }
