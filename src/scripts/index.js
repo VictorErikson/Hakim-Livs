@@ -11,9 +11,26 @@ export let products;
 async function loadProducts() {
   const productsContainer = document.getElementById("productContainer");
   productsContainer.innerHTML = "<p>Loading products...</p>"; // Temporary message while loading
+  
+  // try {
+  //   // products = productList;
+  //   const products = await fetchProducts();
+  //   productsContainer.innerHTML = ""; // Clear loading text
 
+  //   if (products.length > 0) {
+  //     products.forEach((product) => {
+  //       const productCard = createProductCard(product);
+  //       productsContainer.appendChild(productCard);
+  //     });
+  //   } else {
+  //     productsContainer.innerHTML = "<p>No products available.</p>";
+  //   }
+  // } catch (error) {
+  //   console.error("Error fetching products:", error);
+  //   productsContainer.innerHTML = "<p>Failed to load products.</p>";
+  // }
+    // Justinas egna 
   try {
-    // const products = await fetchProducts();
     products = productList;
     productsContainer.innerHTML = ""; // Clear loading text
 
@@ -30,9 +47,12 @@ async function loadProducts() {
 }
 
 
+
+
+
 // Fuction search products with searchbar
 
-const searchbar = document.querySelector("search");
+const searchbar = document.querySelector(".search");
 searchbar.addEventListener("blur", () => searchProduct(searchbar.value))
 
 
@@ -40,8 +60,7 @@ searchbar.addEventListener("blur", () => searchProduct(searchbar.value))
 //Function to make the searchfield active if clicked outside input-field
 
 const searchfield = document.querySelector(".searchfield");
-const search = document.querySelector(".search");
 
 searchfield.addEventListener("click", () => {
-  search.focus();
+  searchbar.focus();
 })
