@@ -1,8 +1,9 @@
 import { sortProducts } from "./sortProducts.js";
 
 
-export  async function showCategories(productsPromise) {
-    const products = await productsPromise;
+// export  async function showCategories(productsPromise) {
+export  async function showCategories(products) {
+    // const products = await productsPromise;
 
     const categoryContainer = document.querySelector('#categoryContainer');
     if (!categoryContainer) return;
