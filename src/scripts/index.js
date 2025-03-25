@@ -33,7 +33,8 @@ async function loadProducts() {
   // }
     // Justinas egna 
   try {
-    products = productList;
+    // products = productList;
+    const products = await fetchProducts();
     productsContainer.innerHTML = ""; // Clear loading text
 
     if (products.length > 0) {
@@ -49,7 +50,8 @@ async function loadProducts() {
 }
 
 
-addToCart(3, products[1])
+
+// addToCart(3, products[1])
 
 
 // Fuction search products with searchbar

@@ -20,6 +20,6 @@ export const addToCart = (product) => {
     localStorage.setItem(cart, JSON.stringify(cartItems))
     // localStorage.setItem(cartKey, JSON.stringify(cart))
 
-    countTotalPrice(userId);
+    // countTotalPrice(userId);
 } 
 
