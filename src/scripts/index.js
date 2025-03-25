@@ -1,21 +1,42 @@
 import { fetchProducts } from "../utils/api.js";
-
+import { createProductCard } from "../services/createProductCard.js";
+import { productList } from "../../tempTestData/products.js";
+import { showCategories } from "../services/showCategories.js";
+import { searchProduct } from "../services/searchProduct.js";
 document.addEventListener("DOMContentLoaded", loadProducts);
+
+export let products;
 
 // Function to fetch and render products
 async function loadProducts() {
-  const productsContainer = document.getElementById("products");
+  const productsContainer = document.getElementById("productContainer");
   productsContainer.innerHTML = "<p>Loading products...</p>"; // Temporary message while loading
+  
+  // try {
+  //   // products = productList;
+  //   const products = await fetchProducts();
+  //   productsContainer.innerHTML = ""; // Clear loading text
 
+  //   if (products.length > 0) {
+  //     products.forEach((product) => {
+  //       const productCard = createProductCard(product);
+  //       productsContainer.appendChild(productCard);
+  //     });
+  //   } else {
+  //     productsContainer.innerHTML = "<p>No products available.</p>";
+  //   }
+  // } catch (error) {
+  //   console.error("Error fetching products:", error);
+  //   productsContainer.innerHTML = "<p>Failed to load products.</p>";
+  // }
+    // Justinas egna 
   try {
-    const products = await fetchProducts();
+    products = productList;
     productsContainer.innerHTML = ""; // Clear loading text
 
     if (products.length > 0) {
-      products.forEach((product) => {
-        const productCard = createProductCard(product);
-        productsContainer.appendChild(productCard);
-      });
+      createProductCard(products);
+      showCategories(Promise.resolve(products)); // change to await later when switching to fetch/database
     } else {
       productsContainer.innerHTML = "<p>No products available.</p>";
     }
@@ -25,20 +46,22 @@ async function loadProducts() {
   }
 }
 
-// Function to create an individual product card
-function createProductCard(product) {
-  const element = document.createElement("div");
-  element.className = "product-card";
 
-  element.innerHTML = `
-    <h3>${product.name}</h3>
-    <p>$${product.price.toFixed(2)}</p>
-    <button class="add-to-cart-btn">Add to Cart</button>
-  `;
 
-  element.querySelector(".add-to-cart-btn").addEventListener("click", () => {
-    alert(`Adding ${product.name} to cart\nFunctionality not implemented yet`);
-  });
 
-  return element;
-}
+
+// Fuction search products with searchbar
+
+const searchbar = document.querySelector(".search");
+// searchbar.addEventListener("blur", () => searchProduct(searchbar.value))
+searchbar.addEventListener("input", () => searchProduct(searchbar.value))
+
+
+
+//Function to make the searchfield active if clicked outside input-field
+
+const searchfield = document.querySelector(".searchfield");
+
+searchfield.addEventListener("click", () => {
+  searchbar.focus();
+})
