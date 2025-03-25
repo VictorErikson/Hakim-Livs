@@ -36,6 +36,15 @@
   margin: 0 auto;
   padding: 1rem 2rem;
 }
+@media screen and (max-width: 930px) {
+  .index-page .site-header nav {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .index-page .site-header nav .searchfield {
+    max-width: 300px;
+  }
+}
 .index-page .site-header nav .searchfield {
   border: 2px solid #CACFD8;
   border-radius: 4px;
@@ -101,6 +110,9 @@
   border-radius: 4px;
   padding: 0px 12px;
   height: auto;
+}
+.index-page .site-header nav .nav-links .cart:hover {
+  text-decoration: none;
 }
 .index-page .site-header nav .nav-links .cart .text {
   display: flex;
