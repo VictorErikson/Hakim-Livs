@@ -11,7 +11,7 @@ export const searchProduct = async(searchWord) => {
         const sortedProducts = []
 
         products.forEach((product) => {
-            (product.categories.includes(searchWord) || product.name.includes(searchWord)) && sortedProducts.push(product)
+            (product.categories.some(cat => cat.toLowerCase().includes(searchWord.toLowerCase())) || product.name.toLowerCase().includes(searchWord.toLowerCase())) && sortedProducts.push(product)
         });
 
         createProductCard(sortedProducts);

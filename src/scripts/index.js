@@ -53,7 +53,8 @@ async function loadProducts() {
 // Fuction search products with searchbar
 
 const searchbar = document.querySelector(".search");
-searchbar.addEventListener("blur", () => searchProduct(searchbar.value))
+// searchbar.addEventListener("blur", () => searchProduct(searchbar.value))
+searchbar.addEventListener("input", () => searchProduct(searchbar.value))
 
 
 
