@@ -1,5 +1,5 @@
 // products.js
-import { productList } from "../../tempTestData/products.js";
+// import { productList } from "../../tempTestData/products.js";
 
 
 export function createProductCard(products) {
@@ -31,4 +31,4 @@ export function createProductCard(products) {
   });
 }
 
-createProductCard(productList);
+// createProductCard(productList);
