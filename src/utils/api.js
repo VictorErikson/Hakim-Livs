@@ -4,10 +4,10 @@ export function getBaseUrl() {
   const regex = /webshop\-2025\-(g[0-9]{1,2})\-fe/g;
   const href = window.location.href;
   const match = regex.exec(href);
-  console.log(match);
+  console.log("match:" + match);
   if (match) {
     const group = match[1];
-    return `https://grupp-11-backend-4pka10chs-adr1anr1s-projects.vercel.app/`;
+    return `https://grupp-11-backend.vercel.app/`;
   }
   return "http://localhost:3000/";
 }
@@ -16,8 +16,10 @@ export async function fetchProducts(endpoint = "api/products") {
   //! DONT USE THIS IN PRODUCTION
   const url = `${getBaseUrl()}${endpoint}`;
   const response = await fetch(url);
+  console.log("response:" + response);
   if(response.ok){
     const data = await response.json();
+    console.log("data:" + data);
     return data;
   }
   return [];    

@@ -1,5 +1,5 @@
 @import '../partials/variables';
-
+@import '../partials/mixins';
 .index-page {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
@@ -41,6 +41,20 @@
         max-width: 1200px;
         margin: 0 auto;
         padding: 1rem 2rem;
+        // @include tablet{
+        //   flex-wrap: wrap;
+        // }
+
+        
+          @media screen and (max-width: 930px) {
+            flex-direction: column;
+            gap: 20px;
+            .searchfield{
+              max-width: 300px;
+            }
+
+          }
+         
 
         .searchfield{
           border: 2px solid $Neutral300;
@@ -119,6 +133,10 @@
             border-radius: 4px;
             padding: 0px 12px;
             height: auto;
+
+            &:hover{
+              text-decoration: none;
+            }
 
             .text{
               display: flex;

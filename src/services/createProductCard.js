@@ -10,17 +10,17 @@ export function createProductCard(products) {
     productCard.classList.add("productCard");
 
     let productName = document.createElement("h2");
-    productName.textContent = product.name;
+    productName.textContent = product.namn;
 
     let productDescription = document.createElement("p");
-    productDescription.textContent = product.description;
+    productDescription.textContent = product.beskrivning;
 
     let productCategories = document.createElement("p");
-    productCategories.textContent = "Categories: " + product.categories.join(", ");
+    productCategories.textContent = "Categories: " + product.kategorier.join(", ");
 
     let productPrice = document.createElement("p");
     productPrice.classList.add("price");
-    productPrice.textContent = `$${product.price.toFixed(2)}`;
+    productPrice.textContent = `$${product.pris.toFixed(2)}`;
 
     let cartAdd = document.createElement("button");
     cartAdd.classList.add("cartAdd");
@@ -49,4 +49,4 @@ export function createProductCard(products) {
   });
 }
 
-createProductCard(productList);
+// createProductCard(productList);
