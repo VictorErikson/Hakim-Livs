@@ -27,7 +27,7 @@ export function createProductCard(products) {
     cartAdd.innerHTML = `<img src="../assets/logos/basket.svg" alt="">`
 
     cartAdd.addEventListener("click", ()=>{
-      console.log(product.name);
+      addToCart(`id:01`, product);
       
     })
 
