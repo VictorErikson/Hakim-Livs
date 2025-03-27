@@ -1,3 +1,9 @@
+export const addToCart = (userId, product) => {
+    const cartKey = `cart_${userId}`
+    const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+    cart.push(product); 
+    localStorage.setItem(cartKey, JSON.stringify(cart))
+} 
 //Function to show price in basket
 let totalPricePrint = document.querySelector(".price");
 
@@ -13,13 +19,13 @@ export const countTotalPrice = () => {
 }
 
 // export const addToCart = (userId, product) => {
-export const addToCart = (product) => {
-    // const cartKey = `cart_${userId}`
-    const cartItems = JSON.parse(localStorage.getItem(cart)) || [];
-    cartItems.push(product); 
-    localStorage.setItem(cart, JSON.stringify(cartItems))
-    // localStorage.setItem(cartKey, JSON.stringify(cart))
+// export const addToCart = (product) => {
+//     // const cartKey = `cart_${userId}`
+//     const cartItems = JSON.parse(localStorage.getItem(cart)) || [];
+//     cartItems.push(product); 
+//     localStorage.setItem(cart, JSON.stringify(cartItems))
+//     // localStorage.setItem(cartKey, JSON.stringify(cart))
 
-    // countTotalPrice(userId);
-} 
+//     // countTotalPrice(userId);
+// } 
 

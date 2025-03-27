@@ -3,6 +3,7 @@ import { createProductCard } from "../services/createProductCard.js";
 import { showCategories } from "../services/showCategories.js";
 import { searchProduct } from "../services/searchProduct.js";
 import { addToCart } from "../services/addToCart.js";
+import { productList } from "../../tempTestData/products.js";
 
 document.addEventListener("DOMContentLoaded", loadProducts);
 
@@ -15,7 +16,9 @@ async function loadProducts() {
   
 
   try {
-    products = await fetchProducts();
+    // products = await fetchProducts();
+    products = productList;
+
     console.log("products:" + products);
     console.log("product1:" + products[0]);
     productsContainer.innerHTML = ""; // Clear loading text
