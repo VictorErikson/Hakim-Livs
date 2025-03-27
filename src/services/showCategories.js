@@ -12,6 +12,7 @@ export  async function showCategories(products) {
     const allCategories = products.flatMap(product => product.kategorier);
 
     //filter out duplicates by 'namn'
+    //findIndex() finds and keeps only the first example of a cat
     const uniqueCategories = allCategories.filter(
         (categories, index, self) =>
             index === self.findIndex(c => c.namn === categories.namn)
