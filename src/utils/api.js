@@ -27,8 +27,10 @@ export async function fetchProducts(endpoint = "api/products") {
   //! DONT USE THIS IN PRODUCTION
   const url = `${getBaseUrl()}${endpoint}`;
   const response = await fetch(url);
+  console.log(response);
   if(response.ok){
     const data = await response.json();
+    console.log(data);
     return data;
   }
   return [];    
