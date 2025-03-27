@@ -33,12 +33,14 @@ async function loadProducts() {
   // }
   try {
     // products = productList;
-    const products = await fetchProducts();
+    products = await fetchProducts();
+    console.log("products:" + products);
+    console.log("product1:" + products[0]);
     productsContainer.innerHTML = ""; // Clear loading text
 
     if (products.length > 0) {
       createProductCard(products);
-      showCategories(products); // change to await later when switching to fetch/database
+      // showCategories(products); // change to await later when switching to fetch/database
       // showCategories(Promise.resolve(products)); // change to await later when switching to fetch/database
     } else {
       productsContainer.innerHTML = "<p>No products available.</p>";
