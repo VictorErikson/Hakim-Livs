@@ -9,18 +9,18 @@ export  async function showCategories(products) {
     if (!categoryContainer) return;
 
     const uniqueCategories = [
-        ...new Set(products.flatMap(product => product.categories)),
+        ...new Set(products.flatMap(product => product.kategorier)),
     ];
 
     uniqueCategories.forEach(category => {
         const li = document.createElement('li');
         const link = document.createElement('a');
         link.href = '#';
-        link.textContent = category;
+        link.textContent = category.namn;
 
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            sortProducts(category);
+            sortProducts(category.namn);
         });
         
         li.appendChild(link);
