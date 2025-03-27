@@ -14,8 +14,8 @@ export const sortProducts = async(chosenCategory) => {
         const sortedProducts = []
 
         products.forEach((product) => {
-            product.categories.forEach(category => {
-                category === chosenCategory && sortedProducts.push(product);
+            product.kategorier.forEach(category => {
+                category.namn === chosenCategory && sortedProducts.push(product);
             })
         });
 
