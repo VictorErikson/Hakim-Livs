@@ -19,8 +19,6 @@ async function loadProducts() {
     // products = await fetchProducts();
     products = productList;
 
-    console.log("products:" + products);
-    console.log("product1:" + products[0]);
     productsContainer.innerHTML = ""; // Clear loading text
 
     if (products.length > 0) {
