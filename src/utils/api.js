@@ -7,29 +7,29 @@ export function getBaseUrl() {
   console.log(match);
   if (match) {
     const group = match[1];
-    return `https://grupp-11-backend-4pka10chs-adr1anr1s-projects.vercel.app/`;
+    return `https://grupp-11-backend.vercel.app/`;
   }
   return "http://localhost:3000/";
 }
 
-export async function fetchProducts(endpoint = "api/products") {
-  
-  const response = await fetch(`https://grupp-11-backend-4pka10chs-adr1anr1s-projects.vercel.app/${endpoint}`);
-  console.log(response);
-  if(response.ok){
-    const data = await response.json();
-    console.log(data);
-    return data;
-  }
-  return [];    
-}
 // export async function fetchProducts(endpoint = "api/products") {
-//   //! DONT USE THIS IN PRODUCTION
-//   const url = `${getBaseUrl()}${endpoint}`;
-//   const response = await fetch(url);
+  
+//   const response = await fetch(`https://grupp-11-backend.vercel.app/${endpoint}`);
+//   console.log(response);
 //   if(response.ok){
 //     const data = await response.json();
+//     console.log(data);
 //     return data;
 //   }
 //   return [];    
 // }
+export async function fetchProducts(endpoint = "api/products") {
+  //! DONT USE THIS IN PRODUCTION
+  const url = `${getBaseUrl()}${endpoint}`;
+  const response = await fetch(url);
+  if(response.ok){
+    const data = await response.json();
+    return data;
+  }
+  return [];    
+}
