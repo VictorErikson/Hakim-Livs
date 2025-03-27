@@ -16,7 +16,7 @@ export function createProductCard(products) {
     productDescription.textContent = product.beskrivning;
 
     let productCategories = document.createElement("p");
-    productCategories.textContent = "Categories: " + product.kategorier.join(", ");
+    productCategories.textContent = "Categories: " + product.kategorier.map(category => category.namn).join(", ");
 
     let productPrice = document.createElement("p");
     productPrice.classList.add("price");
@@ -24,7 +24,7 @@ export function createProductCard(products) {
 
     let cartAdd = document.createElement("button");
     cartAdd.classList.add("cartAdd");
-    cartAdd.innerHTML = `<img src="../assets/logos/basket.svg" alt="">`
+    cartAdd.innerHTML = `<img src="assets/logos/basket.svg" alt="">`
 
     cartAdd.addEventListener("click", ()=>{
       addToCart(`id:01`, product);
@@ -48,5 +48,3 @@ export function createProductCard(products) {
     productContainer.append(productCard);
   });
 }
-
-// createProductCard(productList);
