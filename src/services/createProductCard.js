@@ -15,8 +15,8 @@ export function createProductCard(products) {
     let productDescription = document.createElement("p");
     productDescription.textContent = product.beskrivning;
 
-    let productCategories = document.createElement("p");
-    productCategories.textContent = "Categories: " + product.kategorier.join(", ");
+    // let productCategories = document.createElement("p");
+    // productCategories.textContent = "Categories: " + product.kategorier.join(", ");
 
     let productPrice = document.createElement("p");
     productPrice.classList.add("price");
