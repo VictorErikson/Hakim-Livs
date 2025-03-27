@@ -12,17 +12,6 @@ export function getBaseUrl() {
   return "http://localhost:3000/";
 }
 
-// export async function fetchProducts(endpoint = "api/products") {
-  
-//   const response = await fetch(`https://grupp-11-backend.vercel.app/${endpoint}`);
-//   console.log(response);
-//   if(response.ok){
-//     const data = await response.json();
-//     console.log(data);
-//     return data;
-//   }
-//   return [];    
-// }
 export async function fetchProducts(endpoint = "api/products") {
   //! DONT USE THIS IN PRODUCTION
   const url = `${getBaseUrl()}${endpoint}`;

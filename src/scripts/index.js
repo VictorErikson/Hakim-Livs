@@ -1,6 +1,5 @@
 import { fetchProducts } from "../utils/api.js";
 import { createProductCard } from "../services/createProductCard.js";
-import { productList } from "../../tempTestData/products.js";
 import { showCategories } from "../services/showCategories.js";
 import { searchProduct } from "../services/searchProduct.js";
 import { addToCart } from "../services/addToCart.js";
@@ -14,25 +13,8 @@ async function loadProducts() {
   const productsContainer = document.getElementById("productContainer");
   productsContainer.innerHTML = "<p>Loading products...</p>"; // Temporary message while loading
   
-  // try {
-  //   // products = productList;
-  //   const products = await fetchProducts();
-  //   productsContainer.innerHTML = ""; // Clear loading text
 
-  //   if (products.length > 0) {
-  //     products.forEach((product) => {
-  //       const productCard = createProductCard(product);
-  //       productsContainer.appendChild(productCard);
-  //     });
-  //   } else {
-  //     productsContainer.innerHTML = "<p>No products available.</p>";
-  //   }
-  // } catch (error) {
-  //   console.error("Error fetching products:", error);
-  //   productsContainer.innerHTML = "<p>Failed to load products.</p>";
-  // }
   try {
-    // products = productList;
     products = await fetchProducts();
     console.log("products:" + products);
     console.log("product1:" + products[0]);
@@ -40,8 +22,7 @@ async function loadProducts() {
 
     if (products.length > 0) {
       createProductCard(products);
-      // showCategories(products); // change to await later when switching to fetch/database
-      // showCategories(Promise.resolve(products)); // change to await later when switching to fetch/database
+      showCategories(products); // change to await later when switching to fetch/databas
     } else {
       productsContainer.innerHTML = "<p>No products available.</p>";
     }
