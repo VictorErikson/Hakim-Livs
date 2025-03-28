@@ -10,17 +10,22 @@ export function createProductCard(products) {
     productCard.classList.add("productCard");
 
     let productName = document.createElement("h2");
-    productName.textContent = product.namn;
+    productName.textContent = product.namn.charAt(0).toUpperCase() + product.namn.slice(1);
 
     let productDescription = document.createElement("p");
-    productDescription.textContent = product.beskrivning;
+    productDescription.textContent = product.beskrivning.charAt(0).toUpperCase() + product.beskrivning.slice(1);
 
     let productCategories = document.createElement("p");
-    productCategories.textContent = "Categories: " + product.kategorier.map(category => category.namn).join(", ");
+    productCategories.textContent = "Kategorier: " + product.kategorier.map(category => category.namn).join(", ");
 
     let productPrice = document.createElement("p");
     productPrice.classList.add("price");
-    productPrice.textContent = `$${product.pris.toFixed(2)}`;
+    let formattedPrice = new Intl.NumberFormat('sv-SE', {
+      style: 'currency',
+      currency: 'SEK',
+      minimumFractionDigits: 2,
+    }).format(product.pris);
+    productPrice.textContent = `${formattedPrice}`;
 
     let cartAdd = document.createElement("button");
     cartAdd.classList.add("cartAdd");
