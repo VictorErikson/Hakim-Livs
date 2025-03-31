@@ -10,11 +10,11 @@ export function createProductCard(products) {
 
     productCard.innerHTML = `
     <div class="productwrap">
-      <img src="https://www.vocaleurope.eu/wp-content/uploads/no-image.jpg" class="productImg">
+      <img src="${product.bild}" class="productImg">
       <p class="bold L">${product.namn.charAt(0).toUpperCase() + product.namn.slice(1)}</p>
-      <p>(Amount)</p>
-      <p>(Brand)</p>
-      <p>Kategorier: ${product.kategorier.map(category => category.namn).join(", ")}</p>
+      <p>${product.mängd}</p>
+      <p>Varumärke: ${product.varumärke}</p>
+      <p>Kategorier: ${product.kategorier}</p>
       <p class="bold M">
       ${
         new Intl.NumberFormat('sv-SE', {
@@ -89,10 +89,10 @@ function popUp(product) {
       <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
       </svg></button>
     <div class="row">
-      <img src="https://www.vocaleurope.eu/wp-content/uploads/no-image.jpg" alt="${product.namn}">
+      <img src="${product.bild}" alt="${product.namn}">
       <div class="column">
         <p class="bold L">${product.namn.charAt(0).toUpperCase() + product.namn.slice(1)}</p>
-        <p><span>Varumärke</span> | Mängd</p>
+        <p><span>${product.varumärke}</span> | ${product.mängd}</p>
         <p class="bold M">
           ${new Intl.NumberFormat('sv-SE', {
             style: 'currency',
@@ -103,7 +103,7 @@ function popUp(product) {
         <div class="cartWrap">
         <button class="cartAdd"><img src="assets/logos/basket.svg" alt="Add to Cart"></button>
         </div>
-        <p>Jämförpris: x kr/kg</p>
+        <p>Jämförelsepris: ${product.jämförelsepris}</p>
       </div>
     </div>
     <div class="column productInformation">
@@ -114,18 +114,14 @@ function popUp(product) {
         </div>
         <div class="column right">
           <div>
-            <p class="bold">Ursprungsland</p>
-            <p>land</p>
-          </div>
-          <div>
             <p class="bold">Leverantör</p>
-            <p>...</p>
+            <p>${product.leverantör}</p>
           </div>
         </div>
       </div>
       <div>
         <p class="bold">Innehållsförteckning</p>
-        <p>product innehall</p>
+        <p>${product.innehållsförteckning}</p>
       </div>
     </div>
   `;
@@ -176,15 +172,11 @@ function cartView(){
   <button>Öppna varukorg</button>
   `
 
-  // cartDiv.addEventListener("mouseout",()=>{
-  //   cartDiv.style.display = "none";
-  // })
-
   document.querySelector("body > header > nav > ul > li:nth-child(3)").append(cartDiv);
 }
 cartView();
 
-document.querySelector("a.cart").addEventListener("mouseover",()=>{
+document.querySelector("a.cart").addEventListener("mouseenter",()=>{
   document.querySelector("#cartDiv").style.display = "flex";
 })
 
@@ -193,7 +185,7 @@ document.querySelector("a.cart").addEventListener("mouseover",()=>{
 function cartProduct(product){
   let div = document.createElement("div");
   div.innerHTML = `
-  <img src="https://www.vocaleurope.eu/wp-content/uploads/no-image.jpg" width="80px">
+  <img src="${product.bild}" width="80px">
   <div>
     <p class="bold L">${product.namn.charAt(0).toUpperCase() + product.namn.slice(1)}</p>
     <p class="bold M">${
@@ -216,3 +208,9 @@ if(storedCart){
     cartProduct(product);
   })
 }
+
+document.querySelector("main.main-content").addEventListener("mouseenter",()=>{
+  console.log("hrj");
+  
+  cartDiv.style.display = "none";
+})

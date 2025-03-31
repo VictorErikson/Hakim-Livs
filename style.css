@@ -224,6 +224,9 @@ body > header > nav > ul > li:nth-child(3) {
 .productCard img, .popup img {
   max-width: 100%;
 }
+.productCard p.bold.M, .popup p.bold.M {
+  align-self: flex-end;
+}
 
 #cartDiv {
   position: absolute;
@@ -237,6 +240,10 @@ body > header > nav > ul > li:nth-child(3) {
   display: none;
   flex-direction: column;
   gap: 8px;
+}
+#cartDiv #cartProducts {
+  max-height: 200px;
+  overflow: auto;
 }
 #cartDiv #sum {
   display: flex;
@@ -308,10 +315,12 @@ div.productInformation div.column.right > div p:not(.bold) {
 
 div#cartProducts div {
   display: flex;
+  align-items: center;
 }
 div#cartProducts div div {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   width: 100%;
   margin-left: 16px;
 }
@@ -327,6 +336,9 @@ div#cartProducts div div p.L {
 }
 div#cartProducts div div p.M {
   font-size: 14px;
+}
+div#cartProducts img {
+  height: 100px;
 }
 
 .side-nav {
