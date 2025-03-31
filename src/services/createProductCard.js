@@ -12,9 +12,9 @@ export function createProductCard(products) {
     <div class="productwrap">
       <img src="${product.bild}" class="productImg">
       <p class="bold L">${product.namn.charAt(0).toUpperCase() + product.namn.slice(1)}</p>
-      <p>${product.mängd}</p>
-      <p>Varumärke: ${product.varumärke}</p>
-      <p>Kategorier: ${product.kategorier}</p>
+      <p>${product.mangd}</p>
+      <p>Varumärke: ${product.varumarke}</p>
+      <p>Kategorier: ${product.kategorier.map(kategori => kategori.namn).join(', ')}</p>
       <p class="bold M">
       ${
         new Intl.NumberFormat('sv-SE', {
@@ -98,7 +98,7 @@ function popUp(product) {
       <img src="${product.bild}" alt="${product.namn}">
       <div class="column">
         <p class="bold L">${product.namn.charAt(0).toUpperCase() + product.namn.slice(1)}</p>
-        <p><span>${product.varumärke}</span> | ${product.mängd}</p>
+        <p><span>${product.varumarke}</span> | ${product.mangd}</p>
         <p class="bold M">
           ${new Intl.NumberFormat('sv-SE', {
             style: 'currency',
@@ -109,7 +109,7 @@ function popUp(product) {
         <div class="cartWrap">
         <button class="cartAdd"><img src="assets/logos/basket.svg" alt="Add to Cart"></button>
         </div>
-        <p>Jämförelsepris: ${product.jämförelsepris}</p>
+        <p>Jämförelsepris: ${product.jamforpris}</p>
       </div>
     </div>
     <div class="column productInformation">
@@ -121,13 +121,13 @@ function popUp(product) {
         <div class="column right">
           <div>
             <p class="bold">Leverantör</p>
-            <p>${product.leverantör}</p>
+            <p>${product.leverantor}</p>
           </div>
         </div>
       </div>
       <div>
         <p class="bold">Innehållsförteckning</p>
-        <p>${product.innehållsförteckning}</p>
+        <p>${product.innehallsforteckning}</p>
       </div>
     </div>
   `;
