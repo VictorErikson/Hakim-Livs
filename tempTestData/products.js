@@ -1,58 +1,77 @@
 export const productList = [
-    {
-      _id: "67e32e1617e74e2b648d60bf",
-      namn: "äpple",
-      beskrivning: "ekologisk röd äpple från spanien",
-      pris: 10,
-      kategorier: [
-        {
-          _id: "67e32e1517e74e2b648d60b4",
-          namn: "frukter"
-        },
-        {
-          _id: "67e32e1517e74e2b648d60b5",
-          namn: "ekologisk"
-        }
+  {
+      "namn": "Äpple Granny Smith",
+      "beskrivning": "Granny Smith äpple från Nya Zeeland",
+      "pris": 6.45,
+      "kategorier": [
+          "frukter",
+          "ekologisk"
       ],
-      __v: 0,
-      createdAt: "2025-03-25T22:28:38.129Z",
-      updatedAt: "2025-03-25T22:28:38.129Z"
-    }, 
-    {
-      _id: "67e32e1617e74e2b648d60c0",
-      namn: "päron",
-      beskrivning: "ekologisk gul päron från spanien",
-      pris: 15.5,
-      kategorier: [
-        {
-          _id: "67e32e1517e74e2b648d60b4",
-          namn: "frukter"
-        },
-        {
-          _id: "67e32e1517e74e2b648d60b5",
-          namn: "ekologisk"
-        }
+      "bild": "https://assets.axfood.se/image/upload/f_auto,t_500/07311042004738_C1C0_s01",
+      "mängd": "Ca 180g",
+      "varumärke": "Granny Smith",
+      "innehållsförteckning": "Äpple",
+      "jämförelsepris": "33,95 kr/kg",
+      "leverantör": "ICA"
+  },
+  {
+      "namn": "Päron Conference",
+      "beskrivning": "Conference päron från Belgien",
+      "pris": 6.15,
+      "kategorier": [
+          "frukter",
+          "ekologisk"
       ],
-      __v: 0,
-      createdAt: "2025-03-25T22:28:38.133Z",
-      updatedAt: "2025-03-25T22:28:38.133Z"
-    },
-    {
-      _id: "67e32e1617e74e2b648d60de",
-      namn: "köttfärs",
-      beskrivning: "nötköttfärs från sverige",
-      pris: 50,
-      kategorier: [
-        {
-          _id: "67e32e1517e74e2b648d60b8",
-          namn: "kött"
-        }
+      "bild": "https://brondsholm.se/27962-large_default/pron-13cm-grn-konstgjord-frukt.webp",
+      "mängd": "Ca 220g",
+      "varumärke": "Conference",
+      "innehållsförteckning": "Päron",
+      "jämförelsepris": "27,95 kr/kg",
+      "leverantör": "ICA"
+  },
+  {
+      "namn": "Banan Eko",
+      "beskrivning": "gul banan från ecuador",
+      "pris": 4.85,
+      "kategorier": [
+          "frukter",
+          "ekologisk"
       ],
-      __v: 0,
-      createdAt: "2025-03-25T22:28:38.141Z",
-      updatedAt: "2025-03-25T22:28:38.141Z"
-    }
-    
-  
-];
-  
+      "bild": "https://handlaprivatkund.ica.se/images-v3/bf7a00ca-390e-4769-865f-dc369586872e/ba2f23d3-1525-45e7-9163-6a5671156f94/1280x1280.webp",
+      "mängd": "Ca 180g",
+      "varumärke": "Eko",
+      "innehållsförteckning": "Banan",
+      "jämförelsepris": "24,95 kr/kg",
+      "leverantör": "ICA"
+  },
+  {
+      "namn": "Tomat kvist",
+      "beskrivning": "ekologisk röd tomat från Nederländerna",
+      "pris": 5.87,
+      "kategorier": [
+          "grönsaker",
+          "ekologisk"
+      ],
+      "bild": "https://handlaprivatkund.ica.se/images-v3/bf7a00ca-390e-4769-865f-dc369586872e/8af94707-5620-444e-9682-5379fa521da4/1280x1280.webp",
+      "mängd": "Ca 250g",
+      "varumärke": "ICA",
+      "innehållsförteckning": "Tomat",
+      "jämförelsepris": "48,95 kr/kg",
+      "leverantör": "ICA"
+  },
+  {
+      "namn": "Gurka",
+      "beskrivning": "ekologisk grön gurka från Spanien",
+      "pris": 17.95,
+      "kategorier": [
+          "grönsaker",
+          "ekologisk"
+      ],
+      "bild": "https://handlaprivatkund.ica.se/images-v3/bf7a00ca-390e-4769-865f-dc369586872e/1f9e3ec1-11c5-4b89-8487-ce47bf9cb285/1280x1280.webp",
+      "mängd": "Ca 300g",
+      "varumärke": "Eko",
+      "innehållsförteckning": "Gurka",
+      "jämförelsepris": "59.33 kr/kg",
+      "leverantör": "ICA"
+  }
+]
