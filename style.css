@@ -244,4 +244,194 @@
   color: #191B25;
   font-weight: 600;
   box-shadow: 0 0 0 1px #4346e0;
+}
+
+.admin-page {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #191B25;
+  background-color: #FFFFFF;
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+.admin-page #welcomeHakim {
+  color: #FFFFFF;
+}
+.admin-page .admin-content {
+  display: flex;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.admin-page .site-header {
+  background: white;
+}
+.admin-page .site-header .welcomeBonus {
+  background-color: #011e62;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.admin-page .site-header .welcomeBonus a {
+  color: white;
+  text-decoration: none;
+  text-decoration: underline;
+}
+.admin-page .site-header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+@media screen and (max-width: 930px) {
+  .admin-page .site-header nav {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .admin-page .site-header nav .searchfield {
+    max-width: 300px;
+  }
+}
+.admin-page .site-header nav .searchfield {
+  border: 2px solid #CACFD8;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0px 16px;
+  padding: 5px;
+  gap: 5px;
+}
+.admin-page .site-header nav .searchfield.searchfield:focus-within, .admin-page .site-header nav .searchfield:hover {
+  border: 2px solid #011e62;
+  cursor: text;
+}
+.admin-page .site-header nav .searchfield a {
+  height: 32px;
+}
+.admin-page .site-header nav .searchfield input {
+  font-size: 1rem;
+}
+.admin-page .site-header nav .searchfield input, .admin-page .site-header nav .searchfield input:focus-visible, .admin-page .site-header nav .searchfield input:focus, .admin-page .site-header nav .searchfield input:active, .admin-page .site-header nav .searchfield input:target {
+  border: none;
+  outline: none;
+}
+.admin-page .site-header nav .nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+.admin-page .site-header nav .nav-links a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 64px;
+  width: 64px;
+}
+.admin-page .site-header nav .nav-links a:hover {
+  text-decoration: underline;
+}
+.admin-page .site-header nav .nav-links a.admin-link {
+  background-color: #ef3d64;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+.admin-page .site-header nav .nav-links a.admin-link:hover {
+  background-color: #9c2942;
+}
+.admin-page .site-header nav .nav-links a img {
+  height: 32px;
+}
+.admin-page .site-header nav .nav-links .cart {
+  flex-direction: row;
+  align-items: center;
+  width: auto;
+  gap: 8px;
+  border: 2px solid #CACFD8;
+  background-color: #F5F7FA;
+  border-radius: 4px;
+  padding: 0px 12px;
+  height: auto;
+}
+.admin-page .site-header nav .nav-links .cart:hover {
+  text-decoration: none;
+}
+.admin-page .site-header nav .nav-links .cart .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.admin-page .site-header nav .nav-links .cart .text p {
+  width: -moz-fit-content;
+  width: fit-content;
+  white-space: nowrap;
+  margin: 0px;
+  text-align: start;
+}
+.admin-page .site-header nav .nav-links .cart .text .toCart {
+  color: #CACFD8;
+}
+.admin-page .site-header nav .nav-links .cart .text .price {
+  color: #CACFD8;
+  font-weight: 800;
+}
+.admin-page .admin-container {
+  flex: 1;
+  padding: 2rem;
+  width: 100%;
+  background-color: #F5F7FA;
+}
+.admin-page .admin-container #addProductsForm {
+  max-width: 700px;
+  display: flex;
+  gap: 0.7rem;
+}
+.admin-page .admin-container #addProductsForm .formPart1, .admin-page .admin-container #addProductsForm .formPart2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.admin-page .admin-container #addProductsForm .submitBtnDiv {
+  align-self: flex-end;
+}
+.admin-page .admin-container h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #191B25;
+  margin-bottom: 1rem;
+}
+.admin-page .site-footer {
+  background: #F5F7FA;
+  padding: 2rem;
+  margin-top: auto;
+}
+.admin-page .site-footer .footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.admin-page .site-footer .footer-content .footer-links {
+  display: flex;
+  gap: 2rem;
+}
+.admin-page .site-footer .footer-content .footer-links a {
+  text-decoration: none;
+  color: #717784;
+}
+.admin-page .site-footer .footer-content .footer-links a:hover {
+  color: #4346e0;
 }/*# sourceMappingURL=style.css.map */
