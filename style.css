@@ -1,3 +1,7 @@
+body {
+  margin: 0px;
+}
+
 .index-page {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -170,6 +174,24 @@
 }
 .index-page .site-footer .footer-content .footer-links a:hover {
   color: #4346e0;
+}
+
+.loginMain {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+.loginMain #loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.loginMain #loginForm .form-group label {
+  display: block;
 }
 
 #productContainer {
