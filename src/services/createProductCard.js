@@ -10,11 +10,11 @@ export function createProductCard(products) {
 
     productCard.innerHTML = `
     <div class="productwrap">
-      <img src="https://www.vocaleurope.eu/wp-content/uploads/no-image.jpg" class="productImg">
+      <img src="${product.bild}" class="productImg">
       <p class="bold L">${product.namn.charAt(0).toUpperCase() + product.namn.slice(1)}</p>
-      <p>(Amount)</p>
-      <p>(Brand)</p>
-      <p>Kategorier: ${product.kategorier.map(category => category.namn).join(", ")}</p>
+      <p>${product.mängd}</p>
+      <p>Varumärke: ${product.varumärke}</p>
+      <p>Kategorier: ${product.kategorier}</p>
       <p class="bold M">
       ${
         new Intl.NumberFormat('sv-SE', {
@@ -31,6 +31,7 @@ export function createProductCard(products) {
     `;
 
     let cartAddButton = productCard.querySelector(".cartAdd");
+
     cartAddButton.addEventListener("click", () => {
       cartAddButton.style.display = "none";
       let quantity = plusMinus();
@@ -38,6 +39,17 @@ export function createProductCard(products) {
 
       let quantityValue = quantity.querySelector(".quantityInput").value;
       addToCart(product, parseInt(quantityValue));
+
+      let currentCart = JSON.parse(sessionStorage.getItem("cart")) || [];
+
+      let productExists = currentCart.some(item => item.namn === product.namn);
+      
+      if (!productExists) {
+          currentCart.push(product);
+          sessionStorage.setItem("cart", JSON.stringify(currentCart));
+          cartProduct(product);
+      }
+      
     });
 
     productCard.querySelector(".productwrap").addEventListener("click", () => {
@@ -45,6 +57,7 @@ export function createProductCard(products) {
     });
 
     productContainer.append(productCard);
+
   });
 }
 
@@ -82,10 +95,10 @@ function popUp(product) {
       <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
       </svg></button>
     <div class="row">
-      <img src="https://www.vocaleurope.eu/wp-content/uploads/no-image.jpg" alt="${product.namn}">
+      <img src="${product.bild}" alt="${product.namn}">
       <div class="column">
         <p class="bold L">${product.namn.charAt(0).toUpperCase() + product.namn.slice(1)}</p>
-        <p><span>Varumärke</span> | Mängd</p>
+        <p><span>${product.varumärke}</span> | ${product.mängd}</p>
         <p class="bold M">
           ${new Intl.NumberFormat('sv-SE', {
             style: 'currency',
@@ -96,7 +109,7 @@ function popUp(product) {
         <div class="cartWrap">
         <button class="cartAdd"><img src="assets/logos/basket.svg" alt="Add to Cart"></button>
         </div>
-        <p>Jämförpris: x kr/kg</p>
+        <p>Jämförelsepris: ${product.jämförelsepris}</p>
       </div>
     </div>
     <div class="column productInformation">
@@ -107,18 +120,14 @@ function popUp(product) {
         </div>
         <div class="column right">
           <div>
-            <p class="bold">Ursprungsland</p>
-            <p>land</p>
-          </div>
-          <div>
             <p class="bold">Leverantör</p>
-            <p>...</p>
+            <p>${product.leverantör}</p>
           </div>
         </div>
       </div>
       <div>
         <p class="bold">Innehållsförteckning</p>
-        <p>product innehall</p>
+        <p>${product.innehållsförteckning}</p>
       </div>
     </div>
   `;
@@ -126,7 +135,16 @@ function popUp(product) {
   popupWindow.querySelector(".cartAdd").addEventListener("click", () => {
     let plusminus = plusMinus();
     popupWindow.querySelector(".cartWrap").innerHTML = "";
-    popupWindow.querySelector(".cartWrap").appendChild(plusminus);
+    popupWindow.querySelector(".cartWrap").append(plusminus);
+    
+    let currentCart = JSON.parse(sessionStorage.getItem("cart")) || [];
+    let productExists = currentCart.some(item => item.namn === product.namn);
+
+    if (!productExists) {
+      currentCart.push(product);
+      sessionStorage.setItem("cart", JSON.stringify(currentCart));
+      cartProduct(product);
+    }
   });
 
   let overlay = document.createElement("div");
@@ -144,3 +162,64 @@ function popUp(product) {
   document.body.append(overlay);
   document.body.append(popupWindow);
 }
+
+//---------------------------
+
+function cartView(){
+  let cartDiv = document.createElement("div");
+  cartDiv.id = "cartDiv";
+
+  cartDiv.innerHTML = `
+  <div id="cartProducts">
+
+    </div>
+  <div id="sum">
+    <p>SUMMA</p>
+    <p>x kr</p>
+  </div>
+  <button>Till kassan</button>
+  <button>Öppna varukorg</button>
+  `
+
+  document.querySelector("body > header > nav > ul > li:nth-child(3)").append(cartDiv);
+}
+cartView();
+
+document.querySelector("a.cart").addEventListener("mouseenter",()=>{
+  document.querySelector("#cartDiv").style.display = "flex";
+})
+
+//----------------------
+
+function cartProduct(product){
+  let div = document.createElement("div");
+  div.innerHTML = `
+  <img src="${product.bild}" width="80px">
+  <div>
+    <p class="bold L">${product.namn.charAt(0).toUpperCase() + product.namn.slice(1)}</p>
+    <p class="bold M">${
+      new Intl.NumberFormat('sv-SE', {
+      style: 'currency',
+      currency: 'SEK',
+      minimumFractionDigits: 2,
+    }).format(product.pris)
+    }</p>
+    <p>Antal:</p>
+    <p>Summa: <span class="bold">x kr</span></p>
+  </div>
+  `
+  document.querySelector("#cartProducts").append(div);
+}
+
+let storedCart = JSON.parse(sessionStorage.getItem('cart'));
+if(storedCart){
+  storedCart.forEach(product=>{
+    cartProduct(product);
+  })
+}
+
+document.querySelector("main.main-content").addEventListener("mouseenter",()=>{
+  console.log("hrj");
+  
+  cartDiv.style.display = "none";
+})
