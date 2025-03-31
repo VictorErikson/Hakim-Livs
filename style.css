@@ -172,6 +172,10 @@
   color: #4346e0;
 }
 
+body > header > nav > ul > li:nth-child(3) {
+  position: relative;
+}
+
 #productContainer {
   display: flex;
   flex-wrap: wrap;
@@ -179,6 +183,9 @@
 }
 
 .productCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 1px solid #ddd;
   padding: 16px;
   margin: 10px;
@@ -187,8 +194,13 @@
   width: 200px;
 }
 
+.cartWrap {
+  align-self: flex-end;
+}
+
 .productCard .plusMinusContainer, .popup .plusMinusContainer {
   display: flex;
+  justify-content: flex-end;
   width: 100%;
 }
 .productCard .plusMinusContainer .quantityInput, .popup .plusMinusContainer .quantityInput {
@@ -211,6 +223,24 @@
 }
 .productCard img, .popup img {
   max-width: 100%;
+}
+
+#cartDiv {
+  position: absolute;
+  background-color: white;
+  border: 1px solid black;
+  padding: 16px;
+  top: 110%;
+  width: 200px;
+  right: -20%;
+  z-index: 2;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+}
+#cartDiv #sum {
+  display: flex;
+  justify-content: space-between;
 }
 
 .popup {
@@ -274,6 +304,29 @@ div.productInformation div.column.right > div p:not(.bold) {
 
 .productInformation {
   padding: 16px 0px;
+}
+
+div#cartProducts div {
+  display: flex;
+}
+div#cartProducts div div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 16px;
+}
+div#cartProducts div div p {
+  margin: 0;
+  font-size: 14px;
+}
+div#cartProducts div div p.bold {
+  font-weight: bold;
+}
+div#cartProducts div div p.L {
+  font-size: 16px;
+}
+div#cartProducts div div p.M {
+  font-size: 14px;
 }
 
 .side-nav {

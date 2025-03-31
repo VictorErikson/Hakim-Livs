@@ -5,6 +5,9 @@
 }
 
 .productCard{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 1px solid #ddd;
   padding: 16px;
   margin: 10px;
@@ -13,10 +16,15 @@
   width: 200px;
 }
 
+.cartWrap{
+  align-self: flex-end;
+}
+
 .productCard, .popup {
 
     .plusMinusContainer{
       display: flex;
+      justify-content: flex-end;
       width: 100%;
 
       .quantityInput{
@@ -47,6 +55,25 @@
       max-width: 100%;
     }
   }
+
+#cartDiv{
+  position: absolute;
+  background-color: white;
+  border: 1px solid black;
+  padding: 16px;
+  top: 110%;
+  width: 200px;
+  right: -20%;
+  z-index: 2;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+
+  #sum{
+    display: flex;
+    justify-content: space-between;
+  }
+}
 
 .popup {
   position: fixed;
@@ -113,4 +140,34 @@ div.productInformation div.column.right > div{
 
 .productInformation{
   padding: 16px 0px;
+}
+
+div#cartProducts{
+  div{
+    display: flex;
+
+    div{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-left: 16px;
+
+      p{
+        margin: 0;
+        font-size: 14px;
+      }
+
+      p.bold{
+        font-weight: bold;
+      }
+
+      p.L{
+        font-size: 16px;
+      }
+
+      p.M{
+        font-size: 14px;
+      }
+    }
+  }
 }
