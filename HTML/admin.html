@@ -64,7 +64,9 @@
     <main class="admin-container">
       <h1>Admin Panel</h1>
         
-      <form id="addProductsForm" action="/upload" method="POST" enctype="multipart/form-data">
+      <button id="showFormBtn">Lägg till Produkt</button>
+
+      <form id="addProductsForm" action="/upload" method="POST" enctype="multipart/form-data" style="display: none;">
         <div class="formPart1">
             <label for="name">Produktnamn:</label>
             <input type="text" name="name" id="name" required />
@@ -101,6 +103,8 @@
             <button type="submit">Lägg Till</button>
         </div>
       </form>
+
+      <div id="productContainer"></div>
     </main>
   </div>
 
@@ -117,6 +121,6 @@
     </footer>
 
     <!-- PAGE-SPECIFIC JAVASCRIPT -->
-    <script type="module" src="src/scripts/index.js" defer></script>
+    <script type="module" src="../src/scripts/admin.js" defer></script>
   </body>
 </html>

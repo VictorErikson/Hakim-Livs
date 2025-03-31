@@ -387,6 +387,20 @@ div#cartProducts img {
   box-shadow: 0 0 0 1px #4346e0;
 }
 
+@media screen and (max-width: 768px) {
+  #addProductsForm {
+    flex-direction: column !important;
+  }
+  #addProductsForm .formPart1,
+  #addProductsForm .formPart2 {
+    width: 100% !important;
+    flex-basis: auto !important;
+  }
+  #addProductsForm .submitBtnDiv {
+    align-self: center;
+    margin-top: 1rem;
+  }
+}
 .admin-page {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -403,6 +417,7 @@ div#cartProducts img {
 .admin-page .admin-content {
   display: flex;
   max-width: 1440px;
+  width: 100%;
   margin: 0 auto;
 }
 .admin-page .site-header {
@@ -535,11 +550,16 @@ div#cartProducts img {
   background-color: #F5F7FA;
 }
 .admin-page .admin-container #addProductsForm {
-  max-width: 700px;
+  max-width: 100%;
   display: flex;
+  flex-wrap: nowrap;
   gap: 0.7rem;
+  flex-direction: row;
+  align-items: flex-start;
 }
 .admin-page .admin-container #addProductsForm .formPart1, .admin-page .admin-container #addProductsForm .formPart2 {
+  flex-grow: 1;
+  flex-basis: 0;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
