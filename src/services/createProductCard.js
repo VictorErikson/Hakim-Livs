@@ -41,9 +41,15 @@ export function createProductCard(products) {
       addToCart(product, parseInt(quantityValue));
 
       let currentCart = JSON.parse(sessionStorage.getItem("cart")) || [];
-      currentCart.push(product);
-  
-      sessionStorage.setItem("cart", JSON.stringify(currentCart));
+
+      let productExists = currentCart.some(item => item.namn === product.namn);
+      
+      if (!productExists) {
+          currentCart.push(product);
+          sessionStorage.setItem("cart", JSON.stringify(currentCart));
+          cartProduct(product);
+      }
+      
     });
 
     productCard.querySelector(".productwrap").addEventListener("click", () => {
@@ -132,10 +138,13 @@ function popUp(product) {
     popupWindow.querySelector(".cartWrap").append(plusminus);
     
     let currentCart = JSON.parse(sessionStorage.getItem("cart")) || [];
-    currentCart.push(product);
-  
-    sessionStorage.setItem("cart", JSON.stringify(currentCart));
+    let productExists = currentCart.some(item => item.namn === product.namn);
 
+    if (!productExists) {
+      currentCart.push(product);
+      sessionStorage.setItem("cart", JSON.stringify(currentCart));
+      cartProduct(product);
+    }
   });
 
   let overlay = document.createElement("div");
