@@ -13,7 +13,7 @@ export function createProductCard(products) {
       <img src="${product.bild}" class="productImg">
       <p class="bold L">${product.namn.charAt(0).toUpperCase() + product.namn.slice(1)}</p>
       <p>${product.mangd}</p>
-      <p>Varumärke: ${product.varumarke}</p>
+      <p>Varumärke: ${product.varumarke.namn}</p>
       <p>Kategorier: ${product.kategorier.map(kategori => kategori.namn).join(', ')}</p>
       <p class="bold M">
       ${
@@ -98,7 +98,7 @@ function popUp(product) {
       <img src="${product.bild}" alt="${product.namn}">
       <div class="column">
         <p class="bold L">${product.namn.charAt(0).toUpperCase() + product.namn.slice(1)}</p>
-        <p><span>${product.varumarke}</span> | ${product.mangd}</p>
+        <p><span>${product.varumarke.namn}</span> | ${product.mangd}</p>
         <p class="bold M">
           ${new Intl.NumberFormat('sv-SE', {
             style: 'currency',
@@ -121,7 +121,7 @@ function popUp(product) {
         <div class="column right">
           <div>
             <p class="bold">Leverantör</p>
-            <p>${product.leverantor}</p>
+            <p>${product.leverantor.namn}</p>
           </div>
         </div>
       </div>
