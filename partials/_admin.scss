@@ -1,11 +1,24 @@
 @import '../partials/variables';
 @import '../partials/mixins';
-body{
-  margin: 0px;
-}
 
+@media screen and (max-width: 768px) {
+    #addProductsForm {
+      flex-direction: column !important;
+    }
+  
+    #addProductsForm .formPart1,
+    #addProductsForm .formPart2 {
+      width: 100% !important;
+      flex-basis: auto !important;
+    }
+  
+    #addProductsForm .submitBtnDiv {
+      align-self: center;
+      margin-top: 1rem;
+    }
+  }
 
-.index-page {
+.admin-page {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
@@ -14,10 +27,15 @@ body{
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
+
+    #welcomeHakim {
+        color: $Neutral0;
+        }
   
-    .index-content {
+    .admin-content {
       display: flex;
       max-width: 1440px;
+      width: 100%;
       margin: 0 auto;
     }
   
@@ -139,7 +157,6 @@ body{
             padding: 0px 12px;
             height: auto;
 
-
             &:hover{
               text-decoration: none;
             }
@@ -174,11 +191,33 @@ body{
       }
     }
   
-    .main-content {
+    .admin-container {
       flex: 1;
       padding: 2rem;
       width: 100%;
       background-color: $Neutral50;
+
+      #addProductsForm {
+        max-width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 0.7rem;
+        flex-direction: row;
+        align-items: flex-start;
+
+        .formPart1, .formPart2 {
+            flex-grow: 1;
+            flex-basis: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+        .submitBtnDiv {
+            align-self: flex-end;
+        }
+
+        
+      }
   
       h1 {
         font-size: 2.5rem;
@@ -244,7 +283,4 @@ body{
       }
     }
   }
-
-  body > header > nav > ul > li:nth-child(3){
-    position: relative;
-  }
+  
