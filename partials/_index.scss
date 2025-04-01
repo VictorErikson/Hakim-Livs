@@ -1,5 +1,10 @@
 @import '../partials/variables';
 @import '../partials/mixins';
+body{
+  margin: 0px;
+}
+
+
 .index-page {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
