@@ -11,7 +11,7 @@ export const searchProduct = async(searchWord) => {
         const sortedProducts = []
 
         products.forEach((product) => {
-            (product.kategorier.some(cat => cat.namn.toLowerCase().includes(searchWord.toLowerCase())) || product.namn.toLowerCase().includes(searchWord.toLowerCase())) && sortedProducts.push(product)
+            (product.kategorier.some(cat => cat.namn.toLowerCase().includes(searchWord.toLowerCase())) || product.namn.toLowerCase().includes(searchWord.toLowerCase()) || product.beskrivning.toLowerCase().includes(searchWord.toLowerCase())) || product.varumarke.namn.toLowerCase().includes(searchWord.toLowerCase()) || product.leverantor.namn.toLowerCase().includes(searchWord.toLowerCase()) && sortedProducts.push(product)
         });
 
         createProductCard(sortedProducts);

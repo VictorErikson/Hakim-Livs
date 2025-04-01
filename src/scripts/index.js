@@ -16,8 +16,8 @@ async function loadProducts() {
   
 
   try {
-    products = await fetchProducts();
-    //products = productList;
+    // products = await fetchProducts();
+    products = productList;
 
     productsContainer.innerHTML = ""; // Clear loading text
 
