@@ -1,5 +1,5 @@
 import { fetchProducts } from "../utils/api.js";
-import { createProductCard } from "../services/createProductCard.js";
+import { showProductsAdmin } from "../services/showProductsAdmin.js";
 import { productList } from "../../tempTestData/products.js";
 
 export let products;
@@ -28,7 +28,7 @@ async function loadProducts() {
         container.innerHTML = '';
 
         if (products.length > 0) {
-            createProductCard(products);
+            showProductsAdmin(products);
             //remove add to cart btn for admin
             document.querySelectorAll('.cartAdd').forEach(button => {
                 button.remove();
