@@ -42,8 +42,9 @@ async function loadProducts() {
 
 const searchbar = document.querySelector(".search");
 // searchbar.addEventListener("blur", () => searchProduct(searchbar.value))
-searchbar.addEventListener("input", () => searchProduct(searchbar.value))
 
+// searchbar.addEventListener("input", () => console.log(searchbar.value))
+searchbar.addEventListener("input", () => searchProduct(searchbar.value))
 
 
 //Function to make the searchfield active if clicked outside input-field
