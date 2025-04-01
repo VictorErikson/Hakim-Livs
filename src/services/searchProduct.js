@@ -15,11 +15,11 @@ export const searchProduct = async(searchWord) => {
             // (product.kategorier.some(cat => cat.namn.toLowerCase().includes(searchWord.toLowerCase())) || product.namn.toLowerCase().includes(searchWord.toLowerCase()) || product.beskrivning.toLowerCase().includes(searchWord.toLowerCase())|| product.varumarke.namn.toLowerCase().includes(searchWord.toLowerCase()) || product.leverantor.namn.toLowerCase().includes(searchWord.toLowerCase())) && sortedProducts.push(product)
             // (product.kategorier.some(cat => cat.namn.toLowerCase().includes(searchWord.toLowerCase())) || product.namn.toLowerCase().includes(searchWord.toLowerCase()) || product.beskrivning.toLowerCase().includes(searchWord.toLowerCase()))|| product.varumarke.namn.toLowerCase().includes(searchWord.toLowerCase()) || product.leverantor.namn.toLowerCase().includes(searchWord.toLowerCase()) && sortedProducts.push(product)
             const match =
-            (product.kategorier?.some(cat => cat?.toLowerCase().includes(searchWord.toLowerCase())) ||
+            (product.kategorier?.some(cat => cat?.namn.toLowerCase().includes(searchWord.toLowerCase())) ||
             product.namn?.toLowerCase().includes(searchWord.toLowerCase()) ||
             product.beskrivning?.toLowerCase().includes(searchWord.toLowerCase()) ||
-            product.varumarke?.toLowerCase().includes(searchWord.toLowerCase()) ||
-            product.leverantor?.toLowerCase().includes(searchWord.toLowerCase()));
+            product.varumarke?.namn.toLowerCase().includes(searchWord.toLowerCase()) ||
+            product.leverantor?.namn.toLowerCase().includes(searchWord.toLowerCase()));
     
         if (match) sortedProducts.push(product);
         });
