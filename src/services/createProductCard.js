@@ -44,11 +44,20 @@ export function createProductCard(products) {
 
       let productExists = currentCart.some(item => item.namn === product.namn);
       
-      if (!productExists) {
-          currentCart.push(product);
-          sessionStorage.setItem("cart", JSON.stringify(currentCart));
-          cartProduct(product);
-      }
+      if (productExists) {
+        currentCart = currentCart.map(item => {
+          if (item.namn === product.namn) {
+          item.amount = item.amount ? item.amount + 1 : 2;
+          }
+          return item;
+        });
+            } else {
+              let productAmount = product.amount = 1;
+              currentCart.push(product);
+              cartProduct(product, productAmount);
+            }
+            
+            sessionStorage.setItem("cart", JSON.stringify(currentCart));
       
     });
 
@@ -140,11 +149,20 @@ function popUp(product) {
     let currentCart = JSON.parse(sessionStorage.getItem("cart")) || [];
     let productExists = currentCart.some(item => item.namn === product.namn);
 
-    if (!productExists) {
-      currentCart.push(product);
-      sessionStorage.setItem("cart", JSON.stringify(currentCart));
-      cartProduct(product);
-    }
+    if (productExists) {
+      currentCart = currentCart.map(item => {
+        if (item.namn === product.namn) {
+        item.amount = item.amount ? item.amount + 1 : 2;
+        }
+        return item;
+      });
+          } else {
+              let productAmount = product.amount = 1;
+              currentCart.push(product);
+              cartProduct(product, productAmount);
+          }
+          
+          sessionStorage.setItem("cart", JSON.stringify(currentCart));
   });
 
   let overlay = document.createElement("div");
@@ -191,7 +209,7 @@ document.querySelector("a.cart").addEventListener("mouseenter",()=>{
 
 //----------------------
 
-function cartProduct(product){
+function cartProduct(product, amount){
   let div = document.createElement("div");
   div.innerHTML = `
   <img src="${product.bild}" width="80px">
@@ -204,7 +222,7 @@ function cartProduct(product){
       minimumFractionDigits: 2,
     }).format(product.pris)
     }</p>
-    <p>Antal:</p>
+    <p>Antal: ${amount}</p>
     <p>Summa: <span class="bold">x kr</span></p>
   </div>
   `
@@ -214,7 +232,7 @@ function cartProduct(product){
 let storedCart = JSON.parse(sessionStorage.getItem('cart'));
 if(storedCart){
   storedCart.forEach(product=>{
-    cartProduct(product);
+    cartProduct(product, product.amount);
   })
 }
 
