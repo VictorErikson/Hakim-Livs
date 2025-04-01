@@ -1,7 +1,7 @@
 import { fetchProducts } from "../utils/api.js";
 import { showProductsAdmin } from "../services/showProductsAdmin.js";
 import { productList } from "../../tempTestData/products.js";
-import axios from "axios";
+
 
 export let products;
 
