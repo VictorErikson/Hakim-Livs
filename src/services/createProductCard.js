@@ -1,155 +1,75 @@
 import { productList } from "../../tempTestData/products.js";
-import { addToCart } from "./addToCart.js";
 
-export function createProductCard(products) {
-  let productContainer = document.querySelector("#productContainer");
+function formatCurrency(amount) {
+  return new Intl.NumberFormat('sv-SE', {
+    style: 'currency',
+    currency: 'SEK',
+    minimumFractionDigits: 2,
+  }).format(amount);
+}
 
-  products.forEach(product => {
-    let productCard = document.createElement("div");
-    productCard.classList.add("productCard");
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
-    productCard.innerHTML = `
+//Counts sum of each product
+function countProductSum(product){
+  let sum = product.amount * product.pris;
+  return formatCurrency(sum);
+}
+
+//Counts sum of whole cart
+function totalSum(){
+  let totalSum = 0;
+  if(sessionStorage.getItem("cart")){
+    let cart = JSON.parse(sessionStorage.getItem("cart"));
+
+    cart.forEach(item => {
+      let num = item.amount * item.pris
+      totalSum += num;
+    });
+  }
+  return formatCurrency(totalSum);
+}
+
+function updateTotalSum() {
+  let pElement = document.querySelector("#totalSum ");
+  if (pElement) {
+    pElement.innerText = totalSum();
+  }
+}
+
+// Create the product card
+function createProductCardElement(product) {
+
+  let productCard = document.createElement("div");
+  productCard.classList.add("productCard");
+
+  productCard.innerHTML = `
     <div class="productwrap">
       <img src="${product.bild}" class="productImg">
-      <p class="bold L">${product.namn.charAt(0).toUpperCase() + product.namn.slice(1)}</p>
+      <p class="bold L">${capitalizeFirstLetter(product.namn)}</p>
       <p>${product.mängd}</p>
       <p>Varumärke: ${product.varumärke}</p>
       <p>Kategorier: ${product.kategorier}</p>
-      <p class="bold M">
-      ${
-        new Intl.NumberFormat('sv-SE', {
-        style: 'currency',
-        currency: 'SEK',
-        minimumFractionDigits: 2,
-      }).format(product.pris)
-      }
-      </p>
+      <p class="bold M">${formatCurrency(product.pris)}</p>
     </div>
     <div class="row cartWrap">
-      <button class="cartAdd"><img src="assets/logos/basket.svg" alt="Add to Cart"></button>
+      <button class="cartAdd">
+        <img src="assets/logos/basket.svg" alt="Add to Cart">
+      </button>
     </div>
-    `;
-
-    let cartAddButton = productCard.querySelector(".cartAdd");
-
-    cartAddButton.addEventListener("click", () => {
-      cartAddButton.style.display = "none";
-      let quantity = plusMinus();
-      productCard.append(quantity);
-
-      let quantityValue = quantity.querySelector(".quantityInput").value;
-      addToCart(product, parseInt(quantityValue));
-
-      let currentCart = JSON.parse(sessionStorage.getItem("cart")) || [];
-
-      let productExists = currentCart.some(item => item.namn === product.namn);
-      
-      if (!productExists) {
-          currentCart.push(product);
-          sessionStorage.setItem("cart", JSON.stringify(currentCart));
-          cartProduct(product);
-      }
-      
-    });
-
-    productCard.querySelector(".productwrap").addEventListener("click", () => {
-      popUp(product);
-    });
-
-    productContainer.append(productCard);
-
-  });
-}
-
-function plusMinus() {
-  let plusMinusContainer = document.createElement("div");
-  plusMinusContainer.classList.add("plusMinusContainer");
-
-  plusMinusContainer.innerHTML = `
-  <button class="minus"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16"><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"></path></svg></button>
-  <input type="number" class="quantityInput" value="1" min="1">
-  <button class="plus"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path></svg></button>
   `;
 
-  plusMinusContainer.querySelector(".minus").addEventListener("click", () => {
-    let quantityInput = plusMinusContainer.querySelector(".quantityInput");
-    if (parseInt(quantityInput.value) > 1) {
-      quantityInput.value = parseInt(quantityInput.value) - 1;
-    }
-  });
-
-  plusMinusContainer.querySelector(".plus").addEventListener("click", () => {
-    let quantityInput = plusMinusContainer.querySelector(".quantityInput");
-    quantityInput.value = parseInt(quantityInput.value) + 1;
-  });
-
-  return plusMinusContainer;
+  return productCard;
 }
 
+// Open product popup
 function popUp(product) {
-  let popupWindow = document.createElement("div");
-  popupWindow.classList.add("popup");
-
-  popupWindow.innerHTML = `
-    <button class="closePopup"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-      <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
-      </svg></button>
-    <div class="row">
-      <img src="${product.bild}" alt="${product.namn}">
-      <div class="column">
-        <p class="bold L">${product.namn.charAt(0).toUpperCase() + product.namn.slice(1)}</p>
-        <p><span>${product.varumärke}</span> | ${product.mängd}</p>
-        <p class="bold M">
-          ${new Intl.NumberFormat('sv-SE', {
-            style: 'currency',
-            currency: 'SEK',
-            minimumFractionDigits: 2,
-          }).format(product.pris)}
-        </p>
-        <div class="cartWrap">
-        <button class="cartAdd"><img src="assets/logos/basket.svg" alt="Add to Cart"></button>
-        </div>
-        <p>Jämförelsepris: ${product.jämförelsepris}</p>
-      </div>
-    </div>
-    <div class="column productInformation">
-      <p class="bold">Produktinformation</p>
-      <div class="row">
-        <div>
-          <p>${product.beskrivning}</p>
-        </div>
-        <div class="column right">
-          <div>
-            <p class="bold">Leverantör</p>
-            <p>${product.leverantör}</p>
-          </div>
-        </div>
-      </div>
-      <div>
-        <p class="bold">Innehållsförteckning</p>
-        <p>${product.innehållsförteckning}</p>
-      </div>
-    </div>
-  `;
-  
-  popupWindow.querySelector(".cartAdd").addEventListener("click", () => {
-    let plusminus = plusMinus();
-    popupWindow.querySelector(".cartWrap").innerHTML = "";
-    popupWindow.querySelector(".cartWrap").append(plusminus);
-    
-    let currentCart = JSON.parse(sessionStorage.getItem("cart")) || [];
-    let productExists = currentCart.some(item => item.namn === product.namn);
-
-    if (!productExists) {
-      currentCart.push(product);
-      sessionStorage.setItem("cart", JSON.stringify(currentCart));
-      cartProduct(product);
-    }
-  });
+  let popupWindow = createPopupWindow(product);
 
   let overlay = document.createElement("div");
   overlay.classList.add("overlay");
-
 
   popupWindow.querySelector(".closePopup").addEventListener("click", () => {
     popupWindow.remove();
@@ -157,69 +77,178 @@ function popUp(product) {
     document.body.style.overflow = "auto";
   });
 
-  document.body.style.overflow = "hidden";
+  popupWindow.querySelector(".cartAdd").addEventListener("click", handleAddToCart(product));
 
+  document.body.style.overflow = "hidden";
   document.body.append(overlay);
   document.body.append(popupWindow);
 }
 
-//---------------------------
+// Create the popup window
+function createPopupWindow(product) {
 
-function cartView(){
+  let popupWindow = document.createElement("div");
+  popupWindow.classList.add("popup");
+
+  popupWindow.innerHTML = `
+    <button class="closePopup">X</button>
+    <div class="row">
+      <img src="${product.bild}" alt="${product.namn}">
+      <div class="column">
+        <p class="bold L">${capitalizeFirstLetter(product.namn)}</p>
+        <p><span>${product.varumärke}</span> | ${product.mängd}</p>
+        <p class="bold M">${formatCurrency(product.pris)}</p>
+        <div class="cartWrap">
+          <button class="cartAdd">
+            <img src="assets/logos/basket.svg" alt="Add to Cart">
+          </button>
+        </div>
+        <p>Jämförelsepris: ${product.jämförelsepris}</p>
+      </div>
+    </div>
+    <div class="column productInformation">
+      <p class="bold">Produktinformation</p>
+      <div class="row">
+        <div><p>${product.beskrivning}</p></div>
+        <div class="column right">
+          <div><p class="bold">Leverantör</p><p>${product.leverantör}</p></div>
+        </div>
+      </div>
+      <div><p class="bold">Innehållsförteckning</p><p>${product.innehållsförteckning}</p></div>
+    </div>
+  `;
+
+  return popupWindow;
+}
+
+// Display the cart
+function cartView() {
   let cartDiv = document.createElement("div");
   cartDiv.id = "cartDiv";
 
   cartDiv.innerHTML = `
-  <div id="cartProducts">
-
+    <div id="cartProducts"></div>
+    <div id="sum">
+      <p>SUMMA</p>
+      <p id="totalSum">0 kr</p>
     </div>
-  <div id="sum">
-    <p>SUMMA</p>
-    <p>x kr</p>
-  </div>
-  <button>Till kassan</button>
-  <button>Öppna varukorg</button>
-  `
+    <button>Till kassan</button>
+    <button>Öppna varukorg</button>
+  `;
 
   document.querySelector("body > header > nav > ul > li:nth-child(3)").append(cartDiv);
 }
+
+// Function to show cart on hover
 cartView();
 
-document.querySelector("a.cart").addEventListener("mouseenter",()=>{
+document.querySelector("a.cart").addEventListener("mouseenter", () => {
   document.querySelector("#cartDiv").style.display = "flex";
-})
+});
+document.querySelector("main.main-content").addEventListener("mouseenter", () => {
+  document.querySelector("#cartDiv").style.display = "none";
+});
 
-//----------------------
+// Create the quantity control
+// function createQuantityControl() {
+//   let plusMinusContainer = document.createElement("div");
+//   plusMinusContainer.classList.add("plusMinusContainer");
 
-function cartProduct(product){
+//   plusMinusContainer.innerHTML = `
+//     <button class="minus">-</button>
+//     <input type="number" class="quantityInput" value="1" min="1">
+//     <button class="plus">+</button>
+//   `;
+
+//   plusMinusContainer.querySelector(".minus").addEventListener("click", () => {
+//     let quantityInput = plusMinusContainer.querySelector(".quantityInput");
+//     if (parseInt(quantityInput.value) > 1) {
+//       quantityInput.value = parseInt(quantityInput.value) - 1;
+//     }
+//   });
+
+//   plusMinusContainer.querySelector(".plus").addEventListener("click", () => {
+//     let quantityInput = plusMinusContainer.querySelector(".quantityInput");
+//     quantityInput.value = parseInt(quantityInput.value) + 1;
+//   });
+
+//   return plusMinusContainer;
+// }
+
+
+// Set up product cards and event listeners
+export function createProductCard(products) {
+  let productContainer = document.querySelector("#productContainer");
+
+  products.forEach(product => {
+    let productCard = createProductCardElement(product);
+    let cartAddButton = productCard.querySelector(".cartAdd");
+
+    cartAddButton.addEventListener("click", () => handleAddToCart(product, cartAddButton, productCard));
+    productCard.querySelector(".productwrap").addEventListener("click", () => popUp(product));
+
+    productContainer.append(productCard);
+  });
+}
+
+
+// Handle add to cart button
+function handleAddToCart(product) {
+  //cartAddButton.style.display = "none";
+
+  let currentCart = JSON.parse(sessionStorage.getItem("cart")) || [];
+  
+
+  if(currentCart.length === 0){
+    product.amount = 1;
+    currentCart.push(product)
+    sessionStorage.setItem("cart", JSON.stringify(currentCart));
+  }else{
+    let productExists = currentCart.some(item => item.namn === product.namn);
+    if(productExists){
+      currentCart = currentCart.map(item => {
+        if (item.namn === product.namn) {
+          item.amount = item.amount + 1;
+        }
+        return item;
+      });
+    }else{
+      product.amount=1;
+      currentCart.push(product)
+    }
+    sessionStorage.setItem("cart", JSON.stringify(currentCart));
+  }
+  relodeCart();
+  updateTotalSum();
+}
+
+// Create product view for thecart and add it to the cart.
+function cartProduct(product, amount, price) {
   let div = document.createElement("div");
   div.innerHTML = `
-  <img src="${product.bild}" width="80px">
-  <div>
-    <p class="bold L">${product.namn.charAt(0).toUpperCase() + product.namn.slice(1)}</p>
-    <p class="bold M">${
-      new Intl.NumberFormat('sv-SE', {
-      style: 'currency',
-      currency: 'SEK',
-      minimumFractionDigits: 2,
-    }).format(product.pris)
-    }</p>
-    <p>Antal:</p>
-    <p>Summa: <span class="bold">x kr</span></p>
-  </div>
-  `
-  document.querySelector("#cartProducts").append(div);
+    <img src="${product.bild}" width="80px">
+    <div>
+      <p class="bold L">${capitalizeFirstLetter(product.namn)}</p>
+      <p class="bold M">${formatCurrency(product.pris)}</p>
+      <p>Antal: ${amount}</p>
+      <p>Summa: <span class="bold">${price} kr</span></p>
+    </div>
+  `;
+  return div;
 }
 
-let storedCart = JSON.parse(sessionStorage.getItem('cart'));
-if(storedCart){
-  storedCart.forEach(product=>{
-    cartProduct(product);
-  })
+// After reloding page relode the cart
+function relodeCart() {
+  let storedCart = JSON.parse(sessionStorage.getItem('cart'));
+  document.querySelector("#cartProducts").innerHTML="";
+  if (storedCart) {
+    storedCart.forEach(product => {
+      let price = countProductSum(product);
+      let newProduct = cartProduct(product, product.amount, price);
+      document.querySelector("#cartProducts").append(newProduct);
+    });
+  }
 }
 
-document.querySelector("main.main-content").addEventListener("mouseenter",()=>{
-  console.log("hrj");
-  
-  cartDiv.style.display = "none";
-})
+//Wen the page loads relodes the cart
+relodeCart();
