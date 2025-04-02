@@ -111,7 +111,7 @@ function createPopupWindow(product) {
       <div class="row">
         <div><p>${product.beskrivning}</p></div>
         <div class="column right">
-          <div><p class="bold">Leverantör</p><p>${product.leverantor}</p></div>
+          <div><p class="bold">Leverantör</p><p>${product.leverantor.namn}</p></div>
         </div>
       </div>
       <div><p class="bold">Innehållsförteckning</p><p>${product.innehallsforteckning}</p></div>
