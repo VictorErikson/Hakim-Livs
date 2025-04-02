@@ -49,7 +49,7 @@ function createProductCardElement(product) {
     <div class="productwrap">
       <img src="${product.bild}" class="productImg">
       <p class="bold L">${capitalizeFirstLetter(product.namn)}</p>
-      <p>${product.mängd}</p>
+      <p>${product.mangd}</p>
       <p>Varumärke: ${product.varumarke.namn}</p>
       <p>Kategorier: ${product.kategorier.map(kategori => kategori.namn).join(", ")}</p>
       <p class="bold M">${formatCurrency(product.pris)}</p>
@@ -111,7 +111,7 @@ function createPopupWindow(product) {
       <div class="row">
         <div><p>${product.beskrivning}</p></div>
         <div class="column right">
-          <div><p class="bold">Leverantör</p><p>${product.leverantör}</p></div>
+          <div><p class="bold">Leverantör</p><p>${product.leverantor}</p></div>
         </div>
       </div>
       <div><p class="bold">Innehållsförteckning</p><p>${product.innehallsforteckning}</p></div>
