@@ -39,7 +39,8 @@ export function showProductsAdmin(products) {
   
       const deleteBtn = row.querySelector('.deleteBtn');
       deleteBtn.addEventListener('click', () => {
-        deleteItem(product.id);
+        console.log(product._id);
+        deleteItem(product._id);
       })
   
       tbody.appendChild(row);
