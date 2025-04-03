@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         innehållsförteckning: document.getElementById("content").value,
         jämförelsepris: `${document.getElementById("compare").value} kr/kg`,
         leverantör: document.getElementById("supplier").value,
-        bild: document.getElementById("image").value
+        // bild: document.getElementById("image").value
       };    
 
     try {
