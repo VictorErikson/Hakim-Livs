@@ -11,7 +11,8 @@ export async function deleteItem (id) {
             }
         });
         if (response.status === 200) {
-            location.reload();
+            products = await fetchProducts();
+            showProductsAdmin(products);
         }
         console.log(response.status);
     }catch(error){
