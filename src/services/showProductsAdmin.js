@@ -59,13 +59,15 @@ export function showProductsAdmin(products) {
         document.getElementById("ammount").value = product.mängd;
         document.getElementById("brand").value = product.varumärke || product.varumarke || "";
         document.getElementById("content").value = product.innehållsförteckning;
-        document.getElementById("compare").value = parseFloat(product.jämförelsepris); // strip " kr/kg"
+        document.getElementById("compare").value = parseFloat(
+            product.jämförelsepris.replace(" kr/kg", "").replace(",", ".")
+          );
         document.getElementById("supplier").value = product.leverantör;
 
         sessionStorage.setItem('editProductId', product._id);
 
         //update button to show edit mode
-        document.querySelector('submitBtnDiv button').textContent = 'Spara ändringar';
+        document.querySelector('.submitBtnDiv button').textContent = 'Spara ändringar';
         console.log(`Redigerar: ${product.namn}`);
       });
   
