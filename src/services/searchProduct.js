@@ -1,6 +1,5 @@
 
-// import { createProductCard } from "./createProductCard.js";
-import { products } from "../scripts/index.js";
+// import { products } from "../scripts/index.js";
 
 export const searchProduct = async(searchWord, printFunction, products) => {
     const productsContainer = document.getElementById("productContainer");
