@@ -77,8 +77,6 @@ function popUp(product) {
     document.body.style.overflow = "auto";
   });
 
-  popupWindow.querySelector(".cartAdd").addEventListener("click", handleAddToCart(product));
-
   document.body.style.overflow = "hidden";
   document.body.append(overlay);
   document.body.append(popupWindow);
