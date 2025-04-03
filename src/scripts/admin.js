@@ -59,8 +59,8 @@ async function loadProducts() {
   container.innerHTML = '<p>Loading products...</p>';
 
   try {
-    // products = await fetchProducts();
-    products = productList;
+    products = await fetchProducts();
+    // products = productList;
 
     container.innerHTML = '';
 
