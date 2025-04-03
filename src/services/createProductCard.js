@@ -49,9 +49,9 @@ function createProductCardElement(product) {
     <div class="productwrap">
       <img src="${product.bild}" class="productImg">
       <p class="bold L">${capitalizeFirstLetter(product.namn)}</p>
-      <p>${product.mängd}</p>
-      <p>Varumärke: ${product.varumärke}</p>
-      <p>Kategorier: ${product.kategorier}</p>
+      <p>${product.mangd}</p>
+      <p>Varumärke: ${product.varumarke.namn}</p>
+      <p>Kategorier: ${product.kategorier.map(kategori => kategori.namn).join(", ")}</p>
       <p class="bold M">${formatCurrency(product.pris)}</p>
     </div>
     <div class="row cartWrap">
@@ -96,14 +96,14 @@ function createPopupWindow(product) {
       <img src="${product.bild}" alt="${product.namn}">
       <div class="column">
         <p class="bold L">${capitalizeFirstLetter(product.namn)}</p>
-        <p><span>${product.varumärke}</span> | ${product.mängd}</p>
+        <p><span>${product.varumarke.namn}</span> | ${product.mangd}</p>
         <p class="bold M">${formatCurrency(product.pris)}</p>
         <div class="cartWrap">
           <button class="cartAdd">
             <img src="assets/logos/basket.svg" alt="Add to Cart">
           </button>
         </div>
-        <p>Jämförelsepris: ${product.jämförelsepris}</p>
+        <p>Jämförelsepris: ${product.jamforpris}</p>
       </div>
     </div>
     <div class="column productInformation">
@@ -111,10 +111,10 @@ function createPopupWindow(product) {
       <div class="row">
         <div><p>${product.beskrivning}</p></div>
         <div class="column right">
-          <div><p class="bold">Leverantör</p><p>${product.leverantör}</p></div>
+          <div><p class="bold">Leverantör</p><p>${product.leverantor.namn}</p></div>
         </div>
       </div>
-      <div><p class="bold">Innehållsförteckning</p><p>${product.innehållsförteckning}</p></div>
+      <div><p class="bold">Innehållsförteckning</p><p>${product.innehallsforteckning}</p></div>
     </div>
   `;
 
