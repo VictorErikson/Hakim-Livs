@@ -617,4 +617,57 @@ div#cartProducts img {
 }
 .admin-page .site-footer .footer-content .footer-links a:hover {
   color: #4346e0;
+}
+
+.adminProductTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+}
+.adminProductTable thead {
+  background-color: #E0E4EA;
+}
+.adminProductTable thead th {
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+  color: #2B303B;
+  border-bottom: 2px solid #CACFD8;
+}
+.adminProductTable tbody tr {
+  border-bottom: 1px solid #F3F5F8;
+}
+.adminProductTable tbody tr:hover {
+  background-color: #F5F7FA;
+}
+.adminProductTable tbody tr td {
+  padding: 12px;
+  vertical-align: middle;
+}
+.adminProductTable tbody tr td .tableImg {
+  width: 50px;
+  height: auto;
+  border-radius: 4px;
+}
+.adminProductTable tbody tr td .editBtn,
+.adminProductTable tbody tr td .deleteBtn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.adminProductTable tbody tr td .editBtn {
+  background-color: #2326cc;
+  color: white;
+}
+.adminProductTable tbody tr td .editBtn:hover {
+  background-color: #011e62;
+}
+.adminProductTable tbody tr td .deleteBtn {
+  background-color: #ef3d64;
+  color: white;
+}
+.adminProductTable tbody tr td .deleteBtn:hover {
+  background-color: #9c2942;
 }/*# sourceMappingURL=style.css.map */
