@@ -23,7 +23,7 @@ async function loadProducts() {
 
     if (products.length > 0) {
       createProductCard(products);
-      showCategories(products); // change to await later when switching to fetch/databas
+      showCategories(products); 
     } else {
       productsContainer.innerHTML = "<p>No products available.</p>";
     }
@@ -35,16 +35,15 @@ async function loadProducts() {
 
 
 
-// addToCart(3, products[1])
-
 
 // Fuction search products with searchbar
+const searchBtn = document.querySelector("#searchBtn");
+
+searchBtn.addEventListener("click", () => searchProduct(searchbar.value, createProductCard))
 
 const searchbar = document.querySelector(".search");
-// searchbar.addEventListener("blur", () => searchProduct(searchbar.value))
 
-// searchbar.addEventListener("input", () => console.log(searchbar.value))
-searchbar.addEventListener("input", () => searchProduct(searchbar.value))
+searchbar.addEventListener("input", () => searchProduct(searchbar.value, createProductCard))
 
 
 //Function to make the searchfield active if clicked outside input-field

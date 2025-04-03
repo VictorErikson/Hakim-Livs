@@ -1,6 +1,7 @@
 import { fetchProducts } from "../utils/api.js";
 import { showProductsAdmin } from "../services/showProductsAdmin.js";
 import { productList } from "../../tempTestData/products.js";
+import { searchProduct } from "../services/searchProduct.js";
 
 
 export let products;
@@ -88,3 +89,21 @@ async function loadProducts() {
     container.innerHTML = '<p>Error loading products.</p>'
   }
 }
+
+//searchfunction searchbar
+const searchBtn = document.querySelector("#searchBtnAdmin");
+
+searchBtn.addEventListener("click", () => searchProduct(searchbar.value, showProductsAdmin))
+
+const searchbar = document.querySelector("#searchAdmin");
+
+searchbar.addEventListener("input", () => searchProduct(searchbar.value, showProductsAdmin))
+
+
+//Function to make the searchfield active if clicked outside input-field
+
+const searchfield = document.querySelector(".searchfield");
+
+searchfield.addEventListener("click", () => {
+  searchbar.focus();
+})
