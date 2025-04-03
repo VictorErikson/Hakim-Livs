@@ -34,27 +34,34 @@ document.addEventListener("DOMContentLoaded", () => {
         // bild: document.getElementById("image").value
       }; 
       
-      console.log(productData);
+      const editId = sessionStorage.getItem('editProductId');
 
-    try {
-    const url = "https://grupp-11-backend.vercel.app/api/products";
-
-    const response = await axios.post(url, productData, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${sessionStorage.getItem("jwt")}`
+      try {
+        if (editId) {
+          // Edit mode
+          await editData(productData, editId);
+          sessionStorage.removeItem("editProductId");
+          
+        } else {
+          // Add mode
+          const url = "https://grupp-11-backend.vercel.app/api/products";
+          const response = await axios.post(url, productData, {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("jwt")}`
+            }
+          });
+          console.log("Produkt tillagd:", response.data);
         }
-      });
-
-      console.log("Produkt tillagd:", response.data);
-      loadProducts();
-      form.reset();
-      form.style.display = "none";
-      toggleFormBtn.textContent = "Lägg till Produkt";
-    } catch (error) {
-      console.error("Misslyckades med att lägga till produkt:", error);
-    }
-  });
+    
+        loadProducts();
+        form.reset();
+        form.style.display = "none";
+        toggleFormBtn.textContent = "Lägg till Produkt";
+      } catch (error) {
+        console.error("Misslyckades med att lägga till/redigera produkt:", error);
+      }
+    });
 });
 
 async function loadProducts() {

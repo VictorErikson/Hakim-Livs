@@ -47,8 +47,26 @@ export function showProductsAdmin(products) {
       });
       //EDIT
       editBtn.addEventListener('click', () => {
-        
-        console.log('Redigera Produkt');
+        const form = document.getElementById('addProductsForm');
+        form.style.display = 'flex';
+
+        document.getElementById("name").value = product.namn;
+        document.getElementById("info").value = product.beskrivning;
+        document.getElementById("price").value = product.pris;
+        document.getElementById("category").value = Array.isArray(product.kategorier) 
+          ? product.kategorier.join(", ") 
+          : product.kategorier;
+        document.getElementById("ammount").value = product.mängd;
+        document.getElementById("brand").value = product.varumärke || product.varumarke || "";
+        document.getElementById("content").value = product.innehållsförteckning;
+        document.getElementById("compare").value = parseFloat(product.jämförelsepris); // strip " kr/kg"
+        document.getElementById("supplier").value = product.leverantör;
+
+        sessionStorage.setItem('editProductId', product._id);
+
+        //update button to show edit mode
+        document.querySelector('submitBtnDiv button').textContent = 'Spara ändringar';
+        console.log(`Redigerar: ${product.namn}`);
       });
   
       tbody.appendChild(row);
