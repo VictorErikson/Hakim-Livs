@@ -116,6 +116,9 @@ function createPopupWindow(product) {
     </div>
   `;
 
+  popupWindow.querySelector(".cartAdd").addEventListener("click", () =>{
+    handleAddToCart(product);
+  });
   return popupWindow;
 }
 
