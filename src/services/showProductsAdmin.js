@@ -60,12 +60,12 @@ export function showProductsAdmin(products) {
         document.getElementById("brand").value = product.varumärke || product.varumarke || "";
         document.getElementById("content").value = product.innehållsförteckning;
         document.getElementById("compare").value = product.jämförelsepris
-  ? parseFloat(product.jämförelsepris.replace(" kr/kg", "").replace(",", "."))
+  ? parseFloat(String(product.jämförelsepris).replace(" kr/kg", "").replace(",", "."))
   : "";
         document.getElementById("supplier").value = product.leverantör;
 
         console.log("Editing product:", product);
-        
+
         sessionStorage.setItem('editProductId', product._id);
 
         //update button to show edit mode
