@@ -1,8 +1,8 @@
 
-import { createProductCard } from "./createProductCard.js";
+// import { createProductCard } from "./createProductCard.js";
 import { products } from "../scripts/index.js";
 
-export const searchProduct = async(searchWord) => {
+export const searchProduct = async(searchWord, printFunction) => {
     const productsContainer = document.getElementById("productContainer");
 
     productsContainer.innerHTML = ""; 
@@ -10,10 +10,7 @@ export const searchProduct = async(searchWord) => {
         const sortedProducts = []
 
         products.forEach((product) => {
-            // console.log(product.namn.toLowerCase().includes(searchWord.toLowerCase()));
-            // console.log(product.kategorier.some(cat => cat.namn.toLowerCase().includes(searchWord.toLowerCase())), product.namn.toLowerCase().includes(searchWord.toLowerCase()), product.beskrivning.toLowerCase().includes(searchWord.toLowerCase()), product.varumarke.namn.toLowerCase().includes(searchWord.toLowerCase()), product.leverantor.namn.toLowerCase().includes(searchWord.toLowerCase()));
-            // (product.kategorier.some(cat => cat.namn.toLowerCase().includes(searchWord.toLowerCase())) || product.namn.toLowerCase().includes(searchWord.toLowerCase()) || product.beskrivning.toLowerCase().includes(searchWord.toLowerCase())|| product.varumarke.namn.toLowerCase().includes(searchWord.toLowerCase()) || product.leverantor.namn.toLowerCase().includes(searchWord.toLowerCase())) && sortedProducts.push(product)
-            // (product.kategorier.some(cat => cat.namn.toLowerCase().includes(searchWord.toLowerCase())) || product.namn.toLowerCase().includes(searchWord.toLowerCase()) || product.beskrivning.toLowerCase().includes(searchWord.toLowerCase()))|| product.varumarke.namn.toLowerCase().includes(searchWord.toLowerCase()) || product.leverantor.namn.toLowerCase().includes(searchWord.toLowerCase()) && sortedProducts.push(product)
+           
             const match =
             (product.kategorier?.some(cat => cat?.namn.toLowerCase().includes(searchWord.toLowerCase())) ||
             product.namn?.toLowerCase().includes(searchWord.toLowerCase()) ||
@@ -24,7 +21,7 @@ export const searchProduct = async(searchWord) => {
         if (match) sortedProducts.push(product);
         });
 
-        createProductCard(sortedProducts);
+        printFunction(sortedProducts);
 
 
     } else {
