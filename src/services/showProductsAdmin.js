@@ -37,7 +37,7 @@ export function showProductsAdmin(products) {
 
       console.log("Kategorier för", product.namn, ":", product.kategorier);
   
-      const deleteBtn = document.querySelector('.deleteBtn');
+      const deleteBtn = row.querySelector('.deleteBtn');
       deleteBtn.addEventListener('click', () => {
         deleteItem(product.id);
       })
