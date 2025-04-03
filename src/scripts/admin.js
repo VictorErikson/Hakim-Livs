@@ -81,8 +81,8 @@ async function loadProducts() {
     } else {
       container.innerHTML = '<p>No products found.</p>'
     }
-  } catch (error) {
-    console.error('Failed to load products:', error);
+  } catch {
+    console.error('Failed to load products:');
     container.innerHTML = '<p>Error loading products.</p>'
   }
 }
