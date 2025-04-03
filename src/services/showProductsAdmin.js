@@ -47,7 +47,7 @@ export function showProductsAdmin(products) {
       });
       //EDIT
       editBtn.addEventListener('click', () => {
-
+        
         console.log('Redigera Produkt');
       });
   
