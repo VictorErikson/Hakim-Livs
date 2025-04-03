@@ -72,10 +72,6 @@ async function loadProducts() {
         editBtn.innerText = 'Redigera';
         editBtn.classList.add('editBtn');
 
-        editBtn.addEventListener('click', () => {
-          console.log('Redigera Produkt');
-        });
-
         card.appendChild(editBtn);
       });
     } else {

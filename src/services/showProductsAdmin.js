@@ -37,11 +37,18 @@ export function showProductsAdmin(products) {
 
       console.log("Kategorier för", product.namn, ":", product.kategorier);
   
-      const deleteBtn = row.querySelector('.deleteBtn');
+    const deleteBtn = row.querySelector('.deleteBtn');
+    const editBtn = row.querySelector('.editBtn');
 
+        //DELETE
       deleteBtn.addEventListener('click', () => {
         console.log(product._id);
         deleteItem(product._id, product.namn);
+      });
+      //EDIT
+      editBtn.addEventListener('click', () => {
+
+        console.log('Redigera Produkt');
       });
   
       tbody.appendChild(row);
