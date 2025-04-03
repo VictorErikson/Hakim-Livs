@@ -53,16 +53,14 @@ export function showProductsAdmin(products) {
         document.getElementById("name").value = product.namn;
         document.getElementById("info").value = product.beskrivning;
         document.getElementById("price").value = product.pris;
-        document.getElementById("category").value = Array.isArray(product.kategorier) 
-          ? product.kategorier.join(", ") 
-          : product.kategorier;
-        document.getElementById("ammount").value = product.mängd;
-        document.getElementById("brand").value = product.varumärke || product.varumarke || "";
-        document.getElementById("content").value = product.innehållsförteckning;
+        document.getElementById("category").value = product.kategorier.map(k => k.namn).join(", ");
+        document.getElementById("ammount").value = product.mangd || "";
+        document.getElementById("brand").value = product.varumarke?.namn || "";
+        document.getElementById("content").value = product.innehallsforteckning || "";
         document.getElementById("compare").value = product.jämförelsepris
   ? parseFloat(String(product.jämförelsepris).replace(" kr/kg", "").replace(",", "."))
   : "";
-        document.getElementById("supplier").value = product.leverantör;
+        document.getElementById("supplier").value = product.leverantor?.namn || "";
 
         console.log("Editing product:", product);
 
