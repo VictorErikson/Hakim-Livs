@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const response = await axios.post(url, productData, {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("jwt")}`
+          Authorization: `Bearer ${sessionStorage.getItem("jwt")}`
         }
       });
 
