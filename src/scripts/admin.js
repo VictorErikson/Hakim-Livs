@@ -62,8 +62,8 @@ async function loadProducts() {
   container.innerHTML = '<p>Loading products...</p>';
 
   try {
-    // products = await fetchProducts();
-    products = productList;
+    products = await fetchProducts();
+    // products = productList;
 
     container.innerHTML = '';
 
@@ -92,12 +92,10 @@ async function loadProducts() {
 
 //searchfunction searchbar
 const searchBtn = document.querySelector("#searchBtnAdmin");
-
-searchBtn.addEventListener("click", () => searchProduct(searchbar.value, showProductsAdmin))
-
 const searchbar = document.querySelector("#searchAdmin");
 
-searchbar.addEventListener("input", () => searchProduct(searchbar.value, showProductsAdmin))
+searchBtn.addEventListener("click", () => searchProduct(searchbar.value, showProductsAdmin, products))
+searchbar.addEventListener("input", () => searchProduct(searchbar.value, showProductsAdmin, products))
 
 
 //Function to make the searchfield active if clicked outside input-field

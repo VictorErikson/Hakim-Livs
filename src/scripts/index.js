@@ -38,12 +38,10 @@ async function loadProducts() {
 
 // Fuction search products with searchbar
 const searchBtn = document.querySelector("#searchBtn");
-
-searchBtn.addEventListener("click", () => searchProduct(searchbar.value, createProductCard))
-
 const searchbar = document.querySelector(".search");
 
-searchbar.addEventListener("input", () => searchProduct(searchbar.value, createProductCard))
+searchBtn.addEventListener("click", () => searchProduct(searchbar.value, createProductCard, products))
+searchbar.addEventListener("input", () => searchProduct(searchbar.value, createProductCard, products))
 
 
 //Function to make the searchfield active if clicked outside input-field
