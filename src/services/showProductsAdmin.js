@@ -38,10 +38,11 @@ export function showProductsAdmin(products) {
       console.log("Kategorier för", product.namn, ":", product.kategorier);
   
       const deleteBtn = row.querySelector('.deleteBtn');
+
       deleteBtn.addEventListener('click', () => {
         console.log(product._id);
-        deleteItem(product._id);
-      })
+        deleteItem(product._id, product.namn);
+      });
   
       tbody.appendChild(row);
     });
