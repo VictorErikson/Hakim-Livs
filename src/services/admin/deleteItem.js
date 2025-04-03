@@ -10,10 +10,11 @@ export async function deleteItem (id) {
                 Authorization: `Bearer ${sessionStorage.getItem("jwt")}`
             }
         });
-        if (response.status === 200) {
-            products = await fetchProducts();
-            showProductsAdmin(products);
-        }
+        // if (response.status === 200) {
+        //     products = await fetchProducts();
+        //     showProductsAdmin(products);
+        // }
+        console.log(response.status);
     }catch(error){
         console.log("Något gick fel: " + error);
     }
