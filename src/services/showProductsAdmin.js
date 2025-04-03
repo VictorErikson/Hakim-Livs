@@ -1,5 +1,5 @@
 // services/showProductsAdmin.js
-import { deleteItem } from "../services/admin/deleteItem.js";
+import { deleteItem } from "./admin/deleteItem";
 
 export function showProductsAdmin(products) {
     const container = document.querySelector("#productContainer");

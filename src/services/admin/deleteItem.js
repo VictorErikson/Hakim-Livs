@@ -1,5 +1,5 @@
-import { showProductsAdmin } from "../services/showProductsAdmin.js";
-import { fetchProducts } from "../utils/api.js";
+import { showProductsAdmin } from "../showProductsAdmin.js";
+import { fetchProducts } from "../../utils/api.js";
 
 export async function deleteItem (id) {
     try{
