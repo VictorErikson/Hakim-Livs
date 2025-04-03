@@ -1,4 +1,5 @@
 // services/showProductsAdmin.js
+import { deleteItem } from "../services/admin/deleteItem.js";
 
 export function showProductsAdmin(products) {
     const container = document.querySelector("#productContainer");
@@ -36,7 +37,10 @@ export function showProductsAdmin(products) {
 
       console.log("Kategorier för", product.namn, ":", product.kategorier);
   
-      // TODO: Add edit/delete button event listeners here
+      const deleteBtn = document.querySelector('.deleteBtn');
+      deleteBtn.addEventListener('click', () => {
+        deleteItem(product.id);
+      })
   
       tbody.appendChild(row);
     });
