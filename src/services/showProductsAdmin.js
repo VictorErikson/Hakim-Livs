@@ -36,7 +36,15 @@ export function showProductsAdmin(products) {
     console.log("first SORTEDpRODUCT name:" + sortedProducts[0].namn);
     sortedProducts.forEach((product) => {
       const row = document.createElement("tr");
-  
+      console.log(`<td>${capitalize(product.namn)}</td>
+      <td>${formatCategories(product.kategorier)}</td>
+      <td>${typeof product.varumarke === "object" ? product.varumarke.namn : product.varumarke || "Saknas"}</td>
+      <td>${product.pris}</td>
+      <td>${product.mangd}</td>
+      <td>${product.jamforpris}</td>
+      <td>${capitalize(product.leverantor)}</td>
+      <td><button class="editBtn">Redigera</button></td>
+      <td><button class="deleteBtn">Radera</button></td>`);
       row.innerHTML = `
         <td>${capitalize(product.namn)}</td>
         <td>${formatCategories(product.kategorier)}</td>
