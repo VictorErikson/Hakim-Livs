@@ -76,10 +76,13 @@
             <textarea name="info" id="info" required></textarea>
 
             <label for="price">Pris:</label>
-            <input type="number" id="price" name="price" required />
+            <input type="number" id="price" name="price" required step="0.1">
 
             <label for="category">Kategori(er):</label>
             <input type="text" id="category" name="category" placeholder="Frukter, Ekologiskt" required />
+            
+            <label for="image">Bild:</label>
+            <input type="text">
 
             <!-- <label for="image">Bild:</label>
             <input type="file" id="image" name="image" accept="image/*" required /> -->
@@ -95,7 +98,7 @@
             <input type="text" id="content" name="content" required />
 
             <label for="compare">Jämförelsepris:</label>
-            <input type="number" id="compare" name="compare" required />
+            <input type="number" id="compare" name="compare" required step="0.1">
 
             <label for="supplier">Leverantör:</label>
             <input type="text" id="supplier" name="supplier" required />
