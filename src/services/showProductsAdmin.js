@@ -15,8 +15,12 @@ export function showProductsAdmin(products) {
           <th>Namn</th>
           <th>Kategori</th>
           <th>Varumärke</th>
-          <th>Redigera</th>
-          <th>Radera</th>
+          <th>Pris</th>
+          <th>Mängd</th>
+          <th>Jämförelsepris</th>
+          <th>Leverantör</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -24,13 +28,19 @@ export function showProductsAdmin(products) {
   
     const tbody = table.querySelector("tbody");
   
-    products.forEach((product) => {
+    const sortedProducts = products.slice().sort((a, b) => a.namn.localeCompare(b.namn));
+
+    sortedProducts.forEach((product) => {
       const row = document.createElement("tr");
   
       row.innerHTML = `
         <td>${capitalize(product.namn)}</td>
         <td>${formatCategories(product.kategorier)}</td>
-       <td>${typeof product.varumarke === "object" ? product.varumarke.namn : product.varumarke || "Saknas"}</td>
+        <td>${typeof product.varumarke === "object" ? product.varumarke.namn : product.varumarke || "Saknas"}</td>
+        <td>${product.pris}</td>
+        <td>${product.mangd}</td>
+        <td>${product.jamforpris}</td>
+        <td>${capitalize(product.leverantor)}</td>
         <td><button class="editBtn">Redigera</button></td>
         <td><button class="deleteBtn">Radera</button></td>
       `;
@@ -57,9 +67,10 @@ export function showProductsAdmin(products) {
         document.getElementById("ammount").value = product.mangd || "";
         document.getElementById("brand").value = product.varumarke?.namn || "";
         document.getElementById("content").value = product.innehallsforteckning || "";
-        document.getElementById("compare").value = product.jämförelsepris
-  ? parseFloat(String(product.jämförelsepris).replace(" kr/kg", "").replace(",", "."))
-  : "";
+        document.getElementById("compare").value = product.jamforpris
+        ? parseFloat(String(product.jamforpris).replace(" kr/kg", "").replace(",", "."))
+        : "";
+        document.getElementById("image").value = product.bild;
         document.getElementById("supplier").value = product.leverantor?.namn || "";
 
         console.log("Editing product:", product);
@@ -68,6 +79,7 @@ export function showProductsAdmin(products) {
 
         //update button to show edit mode
         document.querySelector('.submitBtnDiv button').textContent = 'Spara ändringar';
+        const toggleFormBtn = document.getElementById('showFormBtn').textContent = 'Göm formulär';
         console.log(`Redigerar: ${product.namn}`);
       });
   
