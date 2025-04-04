@@ -2,6 +2,7 @@ import { fetchProducts } from "../utils/api.js";
 import { showProductsAdmin } from "../services/showProductsAdmin.js";
 import { productList } from "../../tempTestData/products.js";
 import { searchProduct } from "../services/searchProduct.js";
+import {editData} from "../services/admin/editData.js"
 
 
 export let products;
@@ -70,7 +71,7 @@ async function loadProducts() {
 
   try {
     products = await fetchProducts();
-    // products = productList;
+    //products = productList;
 
     container.innerHTML = '';
 
