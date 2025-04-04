@@ -72,7 +72,7 @@ async function loadProducts() {
   try {
     products = await fetchProducts();
     //products = productList;
-
+    console.log("Products: " + products);
     container.innerHTML = '';
 
     if (products.length > 0) {
