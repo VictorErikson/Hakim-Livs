@@ -71,7 +71,7 @@ async function loadProducts() {
 
   try {
     products = await fetchProducts();
-    //products = productList;
+    // products = productList;
     console.log("Products: " + products);
     console.log("Product 1: " + products[0]);
     console.log("Product 1 name: " + products[0].namn);
