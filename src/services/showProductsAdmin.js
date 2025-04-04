@@ -30,9 +30,10 @@ export function showProductsAdmin(products) {
     console.log("table .innerHTML works");
     const tbody = table.querySelector("tbody");
   
-    const sortedProducts = products.slice().sort((a, b) => a.namn.localeCompare(b.namn));
-    console.log("SORTEDpRODUCTS:" + sortedProducts);
-    sortedProducts.forEach((product) => {
+    // const sortedProducts = products.slice().sort((a, b) => a.namn.localeCompare(b.namn));
+    // console.log("SORTEDpRODUCTS:" + sortedProducts);
+    // sortedProducts.forEach((product) => {
+      products.forEach((product) => {
       const row = document.createElement("tr");
   
       row.innerHTML = `
