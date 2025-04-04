@@ -2,6 +2,8 @@
 import { deleteItem } from "./admin/deleteItem.js";
 
 export function showProductsAdmin(products) {
+  console.log("showProductsAdmin run");
+
     const container = document.querySelector("#productContainer");
     container.innerHTML = "";
   
@@ -25,7 +27,7 @@ export function showProductsAdmin(products) {
       </thead>
       <tbody></tbody>
     `;
-  
+    console.log("table .innerHTML works");
     const tbody = table.querySelector("tbody");
   
     const sortedProducts = products.slice().sort((a, b) => a.namn.localeCompare(b.namn));
@@ -44,6 +46,7 @@ export function showProductsAdmin(products) {
         <td><button class="editBtn">Redigera</button></td>
         <td><button class="deleteBtn">Radera</button></td>
       `;
+      console.log("row.innerHTML works");
 
       console.log("Kategorier för", product.namn, ":", product.kategorier);
   
