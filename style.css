@@ -256,7 +256,7 @@ body > header > nav > ul > li:nth-child(3) {
   border: 1px solid black;
   padding: 16px;
   top: 110%;
-  width: 200px;
+  width: 300px;
   right: -20%;
   z-index: 2;
   display: none;
@@ -643,6 +643,7 @@ div#cartProducts img {
 .adminProductTable tbody tr td {
   padding: 12px;
   vertical-align: middle;
+  border-bottom: 1px solid rgb(99, 99, 99);
 }
 .adminProductTable tbody tr td .tableImg {
   width: 50px;
@@ -670,4 +671,7 @@ div#cartProducts img {
 }
 .adminProductTable tbody tr td .deleteBtn:hover {
   background-color: #9c2942;
+}
+.adminProductTable tbody tr:nth-child(odd) {
+  background: #f0f1f5;
 }/*# sourceMappingURL=style.css.map */

@@ -19,8 +19,8 @@ export function showProductsAdmin(products) {
           <th>Mängd</th>
           <th>Jämförelsepris</th>
           <th>Leverantör</th>
-          <th>Redigera</th>
-          <th>Radera</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -28,7 +28,9 @@ export function showProductsAdmin(products) {
   
     const tbody = table.querySelector("tbody");
   
-    products.forEach((product) => {
+    const sortedProducts = products.slice().sort((a, b) => a.namn.localeCompare(b.namn));
+
+    sortedProducts.forEach((product) => {
       const row = document.createElement("tr");
   
       row.innerHTML = `
@@ -77,6 +79,7 @@ export function showProductsAdmin(products) {
 
         //update button to show edit mode
         document.querySelector('.submitBtnDiv button').textContent = 'Spara ändringar';
+        const toggleFormBtn = document.getElementById('showFormBtn').textContent = 'Göm formulär';
         console.log(`Redigerar: ${product.namn}`);
       });
   
