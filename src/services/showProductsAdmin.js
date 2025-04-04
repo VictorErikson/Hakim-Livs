@@ -58,33 +58,34 @@ export function showProductsAdmin(products) {
         console.log(product._id);
         deleteItem(product._id, product.namn);
       });
+      console.log("DELETE works");
       //EDIT
-      editBtn.addEventListener('click', () => {
-        const form = document.getElementById('addProductsForm');
-        form.style.display = 'flex';
+      // editBtn.addEventListener('click', () => {
+      //   const form = document.getElementById('addProductsForm');
+      //   form.style.display = 'flex';
 
-        document.getElementById("name").value = product.namn;
-        document.getElementById("info").value = product.beskrivning;
-        document.getElementById("price").value = product.pris;
-        document.getElementById("category").value = product.kategorier.map(k => k.namn).join(", ");
-        document.getElementById("ammount").value = product.mangd || "";
-        document.getElementById("brand").value = product.varumarke?.namn || "";
-        document.getElementById("content").value = product.innehallsforteckning || "";
-        document.getElementById("compare").value = product.jamforpris
-        ? parseFloat(String(product.jamforpris).replace(" kr/kg", "").replace(",", "."))
-        : "";
-        document.getElementById("image").value = product.bild;
-        document.getElementById("supplier").value = product.leverantor?.namn || "";
+      //   document.getElementById("name").value = product.namn;
+      //   document.getElementById("info").value = product.beskrivning;
+      //   document.getElementById("price").value = product.pris;
+      //   document.getElementById("category").value = product.kategorier.map(k => k.namn).join(", ");
+      //   document.getElementById("ammount").value = product.mangd || "";
+      //   document.getElementById("brand").value = product.varumarke?.namn || "";
+      //   document.getElementById("content").value = product.innehallsforteckning || "";
+      //   document.getElementById("compare").value = product.jamforpris
+      //   ? parseFloat(String(product.jamforpris).replace(" kr/kg", "").replace(",", "."))
+      //   : "";
+      //   document.getElementById("image").value = product.bild;
+      //   document.getElementById("supplier").value = product.leverantor?.namn || "";
 
-        console.log("Editing product:", product);
+      //   console.log("Editing product:", product);
 
-        sessionStorage.setItem('editProductId', product._id);
+      //   sessionStorage.setItem('editProductId', product._id);
 
-        //update button to show edit mode
-        document.querySelector('.submitBtnDiv button').textContent = 'Spara ändringar';
-        const toggleFormBtn = document.getElementById('showFormBtn').textContent = 'Göm formulär';
-        console.log(`Redigerar: ${product.namn}`);
-      });
+      //   //update button to show edit mode
+      //   document.querySelector('.submitBtnDiv button').textContent = 'Spara ändringar';
+      //   const toggleFormBtn = document.getElementById('showFormBtn').textContent = 'Göm formulär';
+      //   console.log(`Redigerar: ${product.namn}`);
+      // });
   
       tbody.appendChild(row);
     });
