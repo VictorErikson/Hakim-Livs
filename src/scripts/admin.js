@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         innehållsförteckning: document.getElementById("content").value,
         jämförelsepris: `${document.getElementById("compare").value} kr/kg`,
         leverantör: document.getElementById("supplier").value,
-        // bild: document.getElementById("image").value
+        bild: document.getElementById("image").value
       }; 
       
       const editId = sessionStorage.getItem('editProductId');
@@ -69,8 +69,8 @@ async function loadProducts() {
   container.innerHTML = '<p>Loading products...</p>';
 
   try {
-    products = await fetchProducts();
-    // products = productList;
+    // products = await fetchProducts();
+    products = productList;
 
     container.innerHTML = '';
 
