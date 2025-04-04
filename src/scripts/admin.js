@@ -1,6 +1,7 @@
 import { fetchProducts } from "../utils/api.js";
 import { showProductsAdmin } from "../services/showProductsAdmin.js";
 import { productList } from "../../tempTestData/products.js";
+import { searchProduct } from "../services/searchProduct.js";
 
 
 export let products;
@@ -30,28 +31,37 @@ document.addEventListener("DOMContentLoaded", () => {
         innehållsförteckning: document.getElementById("content").value,
         jämförelsepris: `${document.getElementById("compare").value} kr/kg`,
         leverantör: document.getElementById("supplier").value,
-        bild: document.getElementById("image").value
-      };    
+        // bild: document.getElementById("image").value
+      }; 
+      
+      const editId = sessionStorage.getItem('editProductId');
 
-    try {
-    const url = "https://grupp-11-backend.vercel.app/api/products";
-
-    const response = await axios.post(url, productData, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("jwt")}`
+      try {
+        if (editId) {
+          // Edit mode
+          await editData(productData, editId);
+          sessionStorage.removeItem("editProductId");
+          
+        } else {
+          // Add mode
+          const url = "https://grupp-11-backend.vercel.app/api/products";
+          const response = await axios.post(url, productData, {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("jwt")}`
+            }
+          });
+          console.log("Produkt tillagd:", response.data);
         }
-      });
-
-      console.log("Produkt tillagd:", response.data);
-      loadProducts();
-      form.reset();
-      form.style.display = "none";
-      toggleFormBtn.textContent = "Lägg till Produkt";
-    } catch (error) {
-      console.error("Misslyckades med att lägga till produkt:", error);
-    }
-  });
+    
+        loadProducts();
+        form.reset();
+        form.style.display = "none";
+        toggleFormBtn.textContent = "Lägg till Produkt";
+      } catch (error) {
+        console.error("Misslyckades med att lägga till/redigera produkt:", error);
+      }
+    });
 });
 
 async function loadProducts() {
@@ -59,8 +69,8 @@ async function loadProducts() {
   container.innerHTML = '<p>Loading products...</p>';
 
   try {
-    // products = await fetchProducts();
-    products = productList;
+    products = await fetchProducts();
+    // products = productList;
 
     container.innerHTML = '';
 
@@ -72,17 +82,29 @@ async function loadProducts() {
         editBtn.innerText = 'Redigera';
         editBtn.classList.add('editBtn');
 
-        editBtn.addEventListener('click', () => {
-          console.log('Redigera Produkt');
-        });
-
         card.appendChild(editBtn);
       });
     } else {
       container.innerHTML = '<p>No products found.</p>'
     }
-  } catch (error) {
-    console.error('Failed to load products:', error);
+  } catch {
+    console.error('Failed to load products:');
     container.innerHTML = '<p>Error loading products.</p>'
   }
 }
+
+//searchfunction searchbar
+const searchBtn = document.querySelector("#searchBtnAdmin");
+const searchbar = document.querySelector("#searchAdmin");
+
+searchBtn.addEventListener("click", () => searchProduct(searchbar.value, showProductsAdmin, products))
+searchbar.addEventListener("input", () => searchProduct(searchbar.value, showProductsAdmin, products))
+
+
+//Function to make the searchfield active if clicked outside input-field
+
+const searchfield = document.querySelector(".searchfield");
+
+searchfield.addEventListener("click", () => {
+  searchbar.focus();
+})
