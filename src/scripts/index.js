@@ -4,6 +4,7 @@ import { showCategories } from "../services/showCategories.js";
 import { searchProduct } from "../services/searchProduct.js";
 import { addToCart } from "../services/addToCart.js";
 import { productList } from "../../tempTestData/products.js";
+import { printOrderForm } from "../services/printOrderForm.js";
 
 document.addEventListener("DOMContentLoaded", loadProducts);
 
@@ -33,6 +34,10 @@ async function loadProducts() {
   }
 }
 
+
+//funktionalitet checkout-knapp
+const printFormBtn = document.querySelector("#checkout");
+printFormBtn.addEventListener("click", printOrderForm);
 
 
 
