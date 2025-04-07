@@ -34,85 +34,58 @@
     </header>
 
     <div class="admin-content">
-    <!-- SIDE NAVIGATION -->
-    <!-- <aside class="side-nav">
-      <div class="nav-section">
-        <h3>Rekommenderat</h3>
-        <ul>
-          <li><a href="#">Dina produkter</a></li>
-          <li><a href="#">Aktuellt just nu</a></li>
-          <li><a href="#">Alla produkter</a></li>
-        </ul>
-      </div>
-      <div class="nav-section">
-        <h3>Populärt</h3>
-        <ul>
-          <li><a href="#">Nyinkommet</a></li>
-          <li><a href="#">Populärt just nu</a></li>
-          <li><a href="#">Megafynd</a></li>
-          <li><a href="#">Sista chansen</a></li>
-          <li><a href="#">Storpack</a></li>
-        </ul>
-      </div>
-      <div class="nav-section">
-        <h3>Kategorier</h3>
-        <ul id="categoryContainer">
-        </ul>
-      </div>
-    </aside> -->
+      <!-- MAIN CONTENT -->
+      <main class="admin-container">
+        <h1>Admin Panel</h1>
+          
+        <button id="showFormBtn">Lägg till Produkt</button>
 
-    <!-- MAIN CONTENT -->
-    <main class="admin-container">
-      <h1>Admin Panel</h1>
-        
-      <button id="showFormBtn">Lägg till Produkt</button>
+        <form id="addProductsForm" action="/upload" method="POST" enctype="multipart/form-data" style="display: none;">
+          <div class="formPart1">
+              <label for="name">Produktnamn:</label>
+              <input type="text" name="name" id="name" required />
 
-      <form id="addProductsForm" action="/upload" method="POST" enctype="multipart/form-data" style="display: none;">
-        <div class="formPart1">
-            <label for="name">Produktnamn:</label>
-            <input type="text" name="name" id="name" required />
+              <label for="info">Beskrivning:</label>
+              <textarea name="info" id="info" required></textarea>
 
-            <label for="info">Beskrivning:</label>
-            <textarea name="info" id="info" required></textarea>
+              <label for="price">Pris:</label>
+              <input type="number" step="0.01" min="0.5" max="9999" id="price" name="price" required />
 
-            <label for="price">Pris:</label>
-            <input type="number" step="0.01" min="0.5" max="9999" id="price" name="price" required />
+              <label for="category">Kategori(er):</label>
+              <input type="text" id="category" name="category" placeholder="Frukter, Ekologiskt" required />
+              
+              <label for="image">Bild:</label>
+              <input type="text">
 
-            <label for="category">Kategori(er):</label>
-            <input type="text" id="category" name="category" placeholder="Frukter, Ekologiskt" required />
-            
-            <label for="image">Bild:</label>
-            <input type="text">
+              <label for="image">Bild:</label>
+              <input type="text" id="image" name="image" required />
+              <!-- <label for="image">Bild:</label>
+              <input type="file" id="image" name="image" accept="image/*" required /> -->
+          </div>
+          <div class="formPart2">
+              <label for="ammount">Mängd:</label>
+              <input type="text" id="ammount" name="ammount" required />
 
-            <label for="image">Bild:</label>
-            <input type="text" id="image" name="image" required />
-            <!-- <label for="image">Bild:</label>
-            <input type="file" id="image" name="image" accept="image/*" required /> -->
-        </div>
-        <div class="formPart2">
-            <label for="ammount">Mängd:</label>
-            <input type="text" id="ammount" name="ammount" required />
+              <label for="brand">Varumärke:</label>
+              <input type="text" id="brand" name="brand" required />
 
-            <label for="brand">Varumärke:</label>
-            <input type="text" id="brand" name="brand" required />
+              <label for="content">Innehållsförteckning:</label>
+              <input type="text" id="content" name="content" required />
 
-            <label for="content">Innehållsförteckning:</label>
-            <input type="text" id="content" name="content" required />
+              <label for="compare">Jämförelsepris:</label>
+              <input type="number" step="0.01" min="0.01" max="9999" id="compare" name="compare" required />
 
-            <label for="compare">Jämförelsepris:</label>
-            <input type="number" step="0.01" min="0.01" max="9999" id="compare" name="compare" required />
+              <label for="supplier">Leverantör:</label>
+              <input type="text" id="supplier" name="supplier" required />
+          </div>
+          <div class="submitBtnDiv">
+              <button type="submit">Lägg Till</button>
+          </div>
+        </form>
 
-            <label for="supplier">Leverantör:</label>
-            <input type="text" id="supplier" name="supplier" required />
-        </div>
-        <div class="submitBtnDiv">
-            <button type="submit">Lägg Till</button>
-        </div>
-      </form>
-
-      <div id="productContainer"></div>
-    </main>
-  </div>
+        <div id="productContainer"></div>
+      </main>
+    </div>
 
     <!-- FOOTER -->
     <footer class="site-footer">

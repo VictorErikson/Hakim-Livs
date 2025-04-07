@@ -2,7 +2,10 @@
 @import '../partials/mixins';
 body{
   margin: 0px;
+  height: 100vh;
+  box-sizing: border-box;
 }
+
 
 
 .index-page {
@@ -14,11 +17,18 @@ body{
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
+
+    .indexCont{
+      background: #F5F7FA;
+      box-sizing: border-box;
+    }
   
     .index-content {
       display: flex;
       max-width: 1440px;
       margin: 0 auto;
+      min-height: calc(100vh - 296px);
+      
     }
   
     .site-header {
@@ -83,6 +93,7 @@ body{
 
           input{
             font-size: 1rem;
+            width: 100%;
           }
 
           input, input:focus-visible, input:focus, input:active, input:target{

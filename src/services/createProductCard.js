@@ -133,7 +133,7 @@ function cartView() {
       <p>SUMMA</p>
       <p id="totalSum">0 kr</p>
     </div>
-    <button>Till kassan</button>
+    <button id="checkout">Till kassan</button>
     <button>Öppna varukorg</button>
   `;
 

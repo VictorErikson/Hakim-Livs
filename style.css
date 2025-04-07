@@ -1,5 +1,7 @@
 body {
   margin: 0px;
+  height: 100vh;
+  box-sizing: border-box;
 }
 
 .index-page {
@@ -12,10 +14,15 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+.index-page .indexCont {
+  background: #F5F7FA;
+  box-sizing: border-box;
+}
 .index-page .index-content {
   display: flex;
   max-width: 1440px;
   margin: 0 auto;
+  min-height: calc(100vh - 296px);
 }
 .index-page .site-header {
   background: white;
@@ -69,6 +76,7 @@ body {
 }
 .index-page .site-header nav .searchfield input {
   font-size: 1rem;
+  width: 100%;
 }
 .index-page .site-header nav .searchfield input, .index-page .site-header nav .searchfield input:focus-visible, .index-page .site-header nav .searchfield input:focus, .index-page .site-header nav .searchfield input:active, .index-page .site-header nav .searchfield input:target {
   border: none;
@@ -674,4 +682,47 @@ div#cartProducts img {
 }
 .adminProductTable tbody tr:nth-child(odd) {
   background: #f0f1f5;
+}
+
+#formArea {
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.3);
+}
+#formArea #formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 400px;
+}
+#formArea #formContainer .userForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+}
+#formArea #formContainer .userForm .formGroup {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+}
+#formArea #formContainer .userForm .formGroup input {
+  padding: 8px 12px;
+}
+#formArea #formContainer .userForm :last-child {
+  width: 100%;
+}
+#formArea #formContainer .userForm :last-child .infoField {
+  padding: 8px 12px;
 }/*# sourceMappingURL=style.css.map */
