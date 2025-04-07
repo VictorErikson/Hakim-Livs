@@ -40,7 +40,7 @@ export function showProductsAdmin(products) {
         <td>${product.pris}</td>
         <td>${product.mangd}</td>
         <td>${product.jamforpris}</td>
-        <td>${capitalize(product.leverantor)}</td>
+        <td>${capitalize(product.leverantor?.namn || "Saknas")}</td>
         <td><button class="editBtn">Redigera</button></td>
         <td><button class="deleteBtn">Radera</button></td>
       `;
