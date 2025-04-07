@@ -17,58 +17,34 @@ export function showProductsAdmin(products) {
           <th>Namn</th>
           <th>Kategori</th>
           <th>Varumärke</th>
-          <th>edit</th>
-          <th>erase</th>
+          <th>Pris</th>
+          <th>Mängd</th>
+          <th>Jämförelsepris</th>
+          <th>Leverantör</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody></tbody>
     `;
-    //   <thead>
-    //     <tr>
-    //       <th>Namn</th>
-    //       <th>Kategori</th>
-    //       <th>Varumärke</th>
-    //       <th>Pris</th>
-    //       <th>Mängd</th>
-    //       <th>Jämförelsepris</th>
-    //       <th>Leverantör</th>
-    //       <th></th>
-    //       <th></th>
-    //     </tr>
-    //   </thead>
-    //   <tbody></tbody>
-    // `;
-    console.log("table .innerHTML works");
     const tbody = table.querySelector("tbody");
   
-    // const sortedProducts = products.slice().sort((a, b) => a.namn.localeCompare(b.namn));
-    // console.log("SORTEDpRODUCTS:" + sortedProducts);
-    // console.log("first SORTEDpRODUCT:" + sortedProducts[0]);
-    // console.log("first SORTEDpRODUCT name:" + sortedProducts[0].namn);
-    // console.log(object);
-    products.forEach((product) => {
-    // sortedProducts.forEach((product) => {
+    const sortedProducts = products.slice().sort((a, b) => a.namn.localeCompare(b.namn));
+    sortedProducts.forEach((product) => {
       console.log("started forEach");
       const row = document.createElement("tr");
       row.innerHTML = `
         <td>${capitalize(product.namn)}</td>
         <td>${formatCategories(product.kategorier)}</td>
         <td>${typeof product.varumarke === "object" ? product.varumarke.namn : product.varumarke || "Saknas"}</td>
+        <td>${product.pris}</td>
+        <td>${product.mangd}</td>
+        <td>${product.jamforpris}</td>
+        <td>${capitalize(product.leverantor?.namn || "Saknas")}</td>
         <td><button class="editBtn">Redigera</button></td>
         <td><button class="deleteBtn">Radera</button></td>
       `;
-      // row.innerHTML = `
-      //   <td>${capitalize(product.namn)}</td>
-      //   <td>${formatCategories(product.kategorier)}</td>
-      //   <td>${typeof product.varumarke === "object" ? product.varumarke.namn : product.varumarke || "Saknas"}</td>
-      //   <td>${product.pris}</td>
-      //   <td>${product.mangd}</td>
-      //   <td>${product.jamforpris}</td>
-      //   <td>${capitalize(product.leverantor)}</td>
-      //   <td><button class="editBtn">Redigera</button></td>
-      //   <td><button class="deleteBtn">Radera</button></td>
-      // `;
-
+    
       console.log("row.innerHTML works");
 
       console.log("Kategorier för", product.namn, ":", product.kategorier);
