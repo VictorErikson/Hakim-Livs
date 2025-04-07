@@ -34,9 +34,11 @@ function totalSum(){
 
 function updateTotalSum() {
   let pElement = document.querySelector("#totalSum ");
-  if (pElement) {
-    pElement.innerText = totalSum();
-  }
+  let cartSum = document.querySelector("body > header > nav > ul > li:nth-child(3) > a > div > p.price")
+  
+  pElement.innerText = totalSum();
+  cartSum.innerText = totalSum();
+  
 }
 
 // Create the product card
@@ -220,7 +222,6 @@ function handleAddToCart(product) {
     sessionStorage.setItem("cart", JSON.stringify(currentCart));
   }
   relodeCart();
-  updateTotalSum();
 }
 
 // Create product view for thecart and add it to the cart.
@@ -232,7 +233,7 @@ function cartProduct(product, amount, price) {
       <p class="bold L">${capitalizeFirstLetter(product.namn)}</p>
       <p class="bold M">${formatCurrency(product.pris)}</p>
       <p>Antal: ${amount}</p>
-      <p>Summa: <span class="bold">${price} kr</span></p>
+      <p>Summa: <span class="bold">${price}</span></p>
     </div>
   `;
   return div;
@@ -248,8 +249,9 @@ function relodeCart() {
       let newProduct = cartProduct(product, product.amount, price);
       document.querySelector("#cartProducts").append(newProduct);
     });
+    updateTotalSum();
   }
 }
 
-//Wen the page loads relodes the cart
+//When the page loads relodes the cart
 relodeCart();
