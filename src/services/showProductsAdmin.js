@@ -2,6 +2,8 @@
 import { deleteItem } from "./admin/deleteItem.js";
 
 export function showProductsAdmin(products) {
+  console.log("showProductsAdmin run");
+
     const container = document.querySelector("#productContainer");
     container.innerHTML = "";
   
@@ -25,14 +27,12 @@ export function showProductsAdmin(products) {
       </thead>
       <tbody></tbody>
     `;
-  
     const tbody = table.querySelector("tbody");
   
     const sortedProducts = products.slice().sort((a, b) => a.namn.localeCompare(b.namn));
-
     sortedProducts.forEach((product) => {
+      console.log("started forEach");
       const row = document.createElement("tr");
-  
       row.innerHTML = `
         <td>${capitalize(product.namn)}</td>
         <td>${formatCategories(product.kategorier)}</td>
@@ -44,46 +44,49 @@ export function showProductsAdmin(products) {
         <td><button class="editBtn">Redigera</button></td>
         <td><button class="deleteBtn">Radera</button></td>
       `;
+    
+      console.log("row.innerHTML works");
 
       console.log("Kategorier för", product.namn, ":", product.kategorier);
   
-    const deleteBtn = row.querySelector('.deleteBtn');
-    const editBtn = row.querySelector('.editBtn');
+      const deleteBtn = row.querySelector('.deleteBtn');
+      const editBtn = row.querySelector('.editBtn');
 
-        //DELETE
-      deleteBtn.addEventListener('click', () => {
-        console.log(product._id);
-        deleteItem(product._id, product.namn);
-      });
-      //EDIT
-      editBtn.addEventListener('click', () => {
-        const form = document.getElementById('addProductsForm');
-        form.style.display = 'flex';
+          //DELETE
+        deleteBtn.addEventListener('click', () => {
+          console.log(product._id);
+          deleteItem(product._id, product.namn);
+        });
+        console.log("DELETE works");
+        //EDIT
+        editBtn.addEventListener('click', () => {
+          const form = document.getElementById('addProductsForm');
+          form.style.display = 'flex';
 
-        document.getElementById("name").value = product.namn;
-        document.getElementById("info").value = product.beskrivning;
-        document.getElementById("price").value = product.pris;
-        document.getElementById("category").value = product.kategorier.map(k => k.namn).join(", ");
-        document.getElementById("ammount").value = product.mangd || "";
-        document.getElementById("brand").value = product.varumarke?.namn || "";
-        document.getElementById("content").value = product.innehallsforteckning || "";
-        document.getElementById("compare").value = product.jamforpris
-        ? parseFloat(String(product.jamforpris).replace(" kr/kg", "").replace(",", "."))
-        : "";
-        document.getElementById("image").value = product.bild;
-        document.getElementById("supplier").value = product.leverantor?.namn || "";
+          document.getElementById("name").value = product.namn;
+          document.getElementById("info").value = product.beskrivning;
+          document.getElementById("price").value = product.pris;
+          document.getElementById("category").value = product.kategorier.map(k => k.namn).join(", ");
+          document.getElementById("ammount").value = product.mangd || "";
+          document.getElementById("brand").value = product.varumarke?.namn || "";
+          document.getElementById("content").value = product.innehallsforteckning || "";
+          document.getElementById("compare").value = product.jamforpris
+          ? parseFloat(String(product.jamforpris).replace(" kr/kg", "").replace(",", "."))
+          : "";
+          document.getElementById("image").value = product.bild;
+          document.getElementById("supplier").value = product.leverantor?.namn || "";
 
-        console.log("Editing product:", product);
+          console.log("Editing product:", product);
 
-        sessionStorage.setItem('editProductId', product._id);
+          sessionStorage.setItem('editProductId', product._id);
 
-        //update button to show edit mode
-        document.querySelector('.submitBtnDiv button').textContent = 'Spara ändringar';
-        const toggleFormBtn = document.getElementById('showFormBtn').textContent = 'Göm formulär';
-        console.log(`Redigerar: ${product.namn}`);
-      });
-  
-      tbody.appendChild(row);
+          //update button to show edit mode
+          document.querySelector('.submitBtnDiv button').textContent = 'Spara ändringar';
+          const toggleFormBtn = document.getElementById('showFormBtn').textContent = 'Göm formulär';
+          console.log(`Redigerar: ${product.namn}`);
+        });
+        console.log("EDIT works");
+        tbody.appendChild(row);
     });
   
     container.appendChild(table);
