@@ -134,7 +134,8 @@ function cartView() {
       <p>SUMMA</p>
       <p id="totalSum">0 kr</p>
     </div>
-    <button onclick="window.location.href = 'kassa.html'">Till kassan</button>
+    <button id="checkout">Kassan</button>
+    <button onclick="window.location.href = 'kassa.html'">Varukorg</button>
   `;
 
   if (document.querySelector("body > header > nav > ul > li:nth-child(3)")) {
