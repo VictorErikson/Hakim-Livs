@@ -1,13 +1,21 @@
 import { printOrder } from "./printOrder.js";
+import { sendOrder } from "./sendOrder.js";
 
 export function printOrderForm() {
   document.querySelector("#cartDiv").style.display = "none";
-
+  document.body.style.overflow = "hidden";
   const container = document.querySelector("body");
 
   const formArea = document.createElement("div");
   formArea.id = "formArea";
+  formArea.addEventListener("click", (e) => {
+    const clickedOutsidePopup = e.target === formArea;
 
+    if (clickedOutsidePopup && container.contains(formArea)) {
+      container.removeChild(formArea);
+      document.body.style.overflow = "hidden";
+    }
+  });
   const order = printOrder();
 
   if (!order) {
@@ -17,10 +25,28 @@ export function printOrderForm() {
   formContainer.id = "formContainer";
   const form = document.createElement("form");
   form.classList.add("userForm");
+  form.addEventListener("submit", (e) => {
+    // Trim all input and textarea values
+    form.querySelectorAll("input, textarea").forEach((el) => {
+      el.value = el.value.trim();
+    });
+
+    sendOrder(e, form);
+  });
   const background = document.createElement("div");
   background.classList.add("background");
   const productsOrderCont = document.createElement("div");
   productsOrderCont.classList.add("productsOrderCont");
+
+  const closeBtn = document.createElement("button");
+  closeBtn.classList.add("closeBtn");
+  closeBtn.innerText = "X";
+  closeBtn.addEventListener("click", () => {
+    if (container.contains(formArea)) {
+      document.body.style.overflow = "hidden";
+      container.removeChild(formArea);
+    }
+  });
 
   const obligatoriskt = document.createElement("p");
   obligatoriskt.classList.add("obligatoriskt");
@@ -33,20 +59,23 @@ export function printOrderForm() {
   const sendFormBtn = document.createElement("button");
   sendFormBtn.classList.add("sendFormBtn");
   sendFormBtn.innerText = "Skicka beställning!";
+  sendFormBtn.addEventListener("click", () => {
+    form.requestSubmit();
+  });
 
   productsOrderCont.append(order, formContainer);
-  background.append(productsOrderCont, sendFormBtn);
+  background.append(closeBtn, productsOrderCont, sendFormBtn);
 
   formArea.append(background);
   const fields = [
     {
       label: "Förnamn*",
-      className: "firstName",
+      className: "namn",
       placeholder: "Fyll i förnamn",
     },
     {
       label: "Efternamn*",
-      className: "lastName",
+      className: "efternamn",
       placeholder: "Fyll i efternamn",
     },
     {
@@ -56,14 +85,14 @@ export function printOrderForm() {
     },
     {
       label: "Telefonnummer*",
-      className: "phone",
+      className: "tele",
       placeholder: "Fyll i telefonnummer",
     },
     { label: "Hemadress*", className: "address", placeholder: "Fyll i adress" },
-    { label: "Ort*", className: "city", placeholder: "Fyll i ort" },
+    { label: "Ort*", className: "stad", placeholder: "Fyll i ort" },
     {
       label: "Postnummer*",
-      className: "postalCode",
+      className: "postnummer",
       placeholder: "Fyll i postnummer",
     },
   ];
@@ -78,19 +107,28 @@ export function printOrderForm() {
 
     const input = document.createElement("input");
     input.placeholder = placeholder;
-    input.maxLength = 20;
+    input.maxLength = 40;
 
     if (label === "Postnummer*") {
-      input.type = "number";
+      input.type = "text";
+      input.pattern = "[0-9\\s]+";
+      input.title = "Endast siffror och mellanslag tillåtna";
     } else if (label === "Telefonnummer*") {
       input.type = "tel";
+      input.pattern = "[0-9+\\s\\-]+";
+      input.title =
+        "Endast siffror, plustecken, bindestreck och mellanslag tillåtna";
     } else if (label === "Mailadress*") {
       input.type = "email";
+      input.pattern = "[^@\\s]+@[^@\\s]+\\.[^@\\s]+";
+      input.title = "Ange en giltig e-postadress";
     } else {
       input.type = "text";
       if (label === "Förnamn*" || label === "Efternamn*") {
-        input.pattern = "[A-Za-zÅÄÖåäö]+";
-        input.title = "Endast bokstäver tillåtna";
+        input.pattern = "[A-Za-zÅÄÖåäö\\s]+";
+        input.title = "Endast bokstäver och mellanslag tillåtna";
+      } else {
+        input.title = "Fältet får inte vara tomt";
       }
     }
 

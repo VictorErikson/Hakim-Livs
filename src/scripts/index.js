@@ -34,9 +34,8 @@ async function loadProducts() {
 }
 
 //funktionalitet checkout-knapp
-
-//const printFormBtn = document.querySelector("#checkout");
-//printFormBtn.addEventListener("click", printOrderForm);
+const printFormBtn = document.querySelector("#checkout");
+printFormBtn.addEventListener("click", printOrderForm);
 
 // Fuction search products with searchbar
 const searchBtn = document.querySelector("#searchBtn");

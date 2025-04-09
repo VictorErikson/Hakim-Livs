@@ -1,42 +1,59 @@
 #formArea {
-  width: 100vw;
-  height: 100vh;
-  box-sizing: border-box;
+  position: fixed; /* always cover entire viewport, even on scroll */
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* for Safari */
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 999; /* make sure it sits above everything */
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.3);
+  pointer-events: all; /* absorbs clicks */
 
   h2 {
     margin-top: 0px;
   }
   .background {
+    max-height: 90vh;
+    overflow-y: scroll;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 60px;
-    flex-wrap: wrap;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 40px 120px;
     border-radius: 10px;
 
+    .closeBtn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+
+      &:hover {
+        font-weight: bold;
+      }
+    }
+
     .productsOrderCont {
       display: flex;
       gap: 120px;
+      flex-wrap: wrap;
+      justify-content: center;
       .orderHeading,
       .deliveryTitle {
         font-family: "Compacta", sans-serif;
         font-size: 30px;
         color: rgb(0 30 98);
-        display: inline-block; // needed for transform to work properly
-        // transform: scaleX(1.1);
+        display: inline-block;
         font-weight: 500;
         line-height: 1.5rem;
         letter-spacing: -1.5px;
@@ -62,11 +79,6 @@
             :first-child {
               font-weight: bold;
             }
-          }
-
-          .totalPrice {
-            padding-top: 25px;
-            font-weight: bold;
           }
         }
       }
