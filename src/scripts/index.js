@@ -18,7 +18,7 @@ async function loadProducts() {
 
   try {
     products = await fetchProducts();
-    // products = productList;
+    //products = productList;
 
     productsContainer.innerHTML = ""; // Clear loading text
 
@@ -36,8 +36,9 @@ async function loadProducts() {
 
 
 //funktionalitet checkout-knapp
-const printFormBtn = document.querySelector("#checkout");
-printFormBtn.addEventListener("click", printOrderForm);
+
+//const printFormBtn = document.querySelector("#checkout");
+//printFormBtn.addEventListener("click", printOrderForm);
 
 
 

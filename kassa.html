@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hakim Livs</title>
     <link rel="stylesheet" href="style.css" />
+    <script type="module" src="src/services/kassa.js" defer></script>
   </head>
   <body class="index-page">
 
@@ -26,7 +27,25 @@
 
     <!-- MAIN CONTENT -->
     <main class="main-content">
-      
+        <div class="cart">
+            <div id="cartWrap" class="row">
+                <div id="productsWrap" class="column">
+                    <div class="row">
+                        <p>Shopping Cart</p>
+                        <p id="productAmount"> x varor</p>
+                    </div>
+                    <hr>
+                </div>
+                <div id="summaryWrap" class="column">
+                    <p>sammanfattning</p>
+                    <hr>
+                    <div class="row">
+                        <p>Total pris</p>
+                        <p id="totalPrice"></p></div>
+                    <button id="toBuy">Köp</button>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- FOOTER -->

@@ -1,8 +1,4 @@
-
 export function printOrderForm () {
-
-    document.querySelector("#cartDiv").style.display = "none";
-
 
     const container = document.querySelector("body");
     
