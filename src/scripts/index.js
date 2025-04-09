@@ -14,7 +14,6 @@ export let products;
 async function loadProducts() {
   const productsContainer = document.getElementById("productContainer");
   productsContainer.innerHTML = "<p>Loading products...</p>"; // Temporary message while loading
-  
 
   try {
     products = await fetchProducts();
@@ -24,7 +23,7 @@ async function loadProducts() {
 
     if (products.length > 0) {
       createProductCard(products);
-      showCategories(products); 
+      showCategories(products);
     } else {
       productsContainer.innerHTML = "<p>No products available.</p>";
     }
@@ -34,21 +33,20 @@ async function loadProducts() {
   }
 }
 
-
 //funktionalitet checkout-knapp
-
-//const printFormBtn = document.querySelector("#checkout");
-//printFormBtn.addEventListener("click", printOrderForm);
-
-
+const printFormBtn = document.querySelector("#checkout");
+printFormBtn.addEventListener("click", printOrderForm);
 
 // Fuction search products with searchbar
 const searchBtn = document.querySelector("#searchBtn");
 const searchbar = document.querySelector(".search");
 
-searchBtn.addEventListener("click", () => searchProduct(searchbar.value, createProductCard, products))
-searchbar.addEventListener("input", () => searchProduct(searchbar.value, createProductCard, products))
-
+searchBtn.addEventListener("click", () =>
+  searchProduct(searchbar.value, createProductCard, products)
+);
+searchbar.addEventListener("input", () =>
+  searchProduct(searchbar.value, createProductCard, products)
+);
 
 //Function to make the searchfield active if clicked outside input-field
 
@@ -56,5 +54,4 @@ const searchfield = document.querySelector(".searchfield");
 
 searchfield.addEventListener("click", () => {
   searchbar.focus();
-})
-
+});
