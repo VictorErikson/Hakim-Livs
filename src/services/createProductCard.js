@@ -35,10 +35,9 @@ function totalSum(){
 function updateTotalSum() {
   let pElement = document.querySelector("#totalSum ");
   let cartSum = document.querySelector("body > header > nav > ul > li:nth-child(3) > a > div > p.price")
-  
-  pElement.innerText = totalSum();
-  cartSum.innerText = totalSum();
-  
+   
+   pElement.innerText = totalSum();
+   cartSum.innerText = totalSum();
 }
 
 // Create the product card
@@ -135,19 +134,23 @@ function cartView() {
       <p>SUMMA</p>
       <p id="totalSum">0 kr</p>
     </div>
-    <button id="checkout">Till kassan</button>
-    <button>Öppna varukorg</button>
+    <button onclick="window.location.href = 'kassa.html'">Till kassan</button>
   `;
 
-  document.querySelector("body > header > nav > ul > li:nth-child(3)").append(cartDiv);
+  if (document.querySelector("body > header > nav > ul > li:nth-child(3)")) {
+    document.querySelector("body > header > nav > ul > li:nth-child(3)").append(cartDiv);
+  }
 }
 
 // Function to show cart on hover
 cartView();
 
-document.querySelector("a.cart").addEventListener("mouseenter", () => {
-  document.querySelector("#cartDiv").style.display = "flex";
-});
+if (document.querySelector("a.cart")) {
+  document.querySelector("a.cart").addEventListener("mouseenter", () => {
+    document.querySelector("#cartDiv").style.display = "flex";
+  });
+}
+
 document.querySelector("main.main-content").addEventListener("mouseenter", () => {
   document.querySelector("#cartDiv").style.display = "none";
 });
@@ -221,7 +224,7 @@ function handleAddToCart(product) {
     }
     sessionStorage.setItem("cart", JSON.stringify(currentCart));
   }
-  relodeCart();
+  reloadCart();
 }
 
 // Create product view for thecart and add it to the cart.
@@ -240,7 +243,7 @@ function cartProduct(product, amount, price) {
 }
 
 // After reloding page relode the cart
-function relodeCart() {
+function reloadCart() {
   let storedCart = JSON.parse(sessionStorage.getItem('cart'));
   document.querySelector("#cartProducts").innerHTML="";
   if (storedCart) {
@@ -249,9 +252,9 @@ function relodeCart() {
       let newProduct = cartProduct(product, product.amount, price);
       document.querySelector("#cartProducts").append(newProduct);
     });
-    updateTotalSum();
   }
+  updateTotalSum();
 }
 
-//When the page loads relodes the cart
-relodeCart();
+//Wen the page loads relodes the cart
+reloadCart();
