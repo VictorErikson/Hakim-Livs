@@ -16,8 +16,8 @@ async function loadProducts() {
   productsContainer.innerHTML = "<p>Loading products...</p>"; // Temporary message while loading
 
   try {
-    products = await fetchProducts();
-    // products = productList;
+    // products = await fetchProducts();
+    products = productList;
 
     productsContainer.innerHTML = ""; // Clear loading text
 
