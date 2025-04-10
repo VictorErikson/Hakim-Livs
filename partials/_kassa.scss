@@ -53,19 +53,34 @@
     padding: 24px;
 
     button{
-        align-self: center;
-        width: 50%;
-        padding: 8px;
-        font-size: 18px;
-        background-color: #011e6297;
-        color: white;
-        font-weight: bold;
-        border: none;
-        border-radius: 20px;
+        width: 100%;
+      max-width: 400px;
+      height: 40px;
+      // font-weight: 700;
+      // font-style: italic;
+      color: white;
+      background: rgb(36 38 204);
+      border-style: solid;
+      border-width: 2px;
+      border-radius: 0.25rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      cursor: pointer;
+      box-sizing: border-box;
+      border-color: rgb(0 30 98);
+      touch-action: manipulation;
+      padding: 12px;
+      font-family: "Compacta", sans-serif;
+      font-size: 24px;
+      box-shadow: 4px 4px 0px #001e62;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
     }
 
     button:hover{
-        background-color:#011e62cb ;
+        box-shadow: 2px 2px 0px #001e62;
+        transform: translate(2px, 2px);
     }
 
     p{
