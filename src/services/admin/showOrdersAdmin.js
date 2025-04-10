@@ -257,7 +257,8 @@ export function showOrdersAdmin(orders) {
       <td><select class="statusSelect">
               <option value="ny">Ny</option>
               <option value="betald">Betald</option>
-              <option value="packas">Packas</option>
+              <option value="plockas">Plockas</option>
+              <option value="plockad">Plockad</option>
               <option value="levererad">Levererad</option>
           </select></td>
       <td>${order._id}</td>
