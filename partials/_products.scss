@@ -16,6 +16,18 @@
   width: 200px;
   background-color: white;
 
+  .bold.L {
+    font-size: 20px;
+    font-weight: 600;
+    color: $blue500;
+    margin-bottom: 4px;
+  }
+  
+  .bold.M {
+    font-size: 16px;
+    color: $red400;
+  }
+
   button{
     width: 100%;
     max-width: 400px;
@@ -41,6 +53,7 @@
     box-shadow: 4px 4px 0px #001e62;
     transition: transform 0.1s ease, box-shadow 0.1s ease;
 
+
     img{
       margin-right: 8px;
     }
@@ -53,6 +66,7 @@
 }
 
 .cartWrap{
+  margin-top: 150px;
   width: 100%;
 }
 
@@ -158,6 +172,7 @@
 }
 
 .popup {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -173,6 +188,32 @@
   max-height: 80%;
   overflow: auto;
 
+  p {
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+  }
+
+  .produktBeskrivningP {
+    width: 400px;
+  }
+
+  .row {
+    margin-bottom: 24px;
+    border-bottom: 1px solid $Neutral200;
+    padding-bottom: 16px;
+
+  }
+
+  .bold.L {
+    color: $blue600;
+    font-size: 2rem;
+  }
+
+  .bold.M {
+    font-size: 20px;
+    color: $red400;
+  }
+
   img{
     width: 50%;
   }
@@ -185,6 +226,7 @@
     text-align: end;
     padding: 0;
   }
+  
 
   button{
     width: 100%;
@@ -305,6 +347,7 @@ div#cartProducts{
 
       p.bold{
         font-weight: bold;
+        width: 50%;
       }
 
       p.L{
@@ -323,4 +366,19 @@ div#cartProducts{
 
 div.marginTB{
   margin: 24px 0;
+}
+
+.popup {
+  animation: fadeInScale 0.25s ease-out;
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
