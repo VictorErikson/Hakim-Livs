@@ -1,7 +1,9 @@
 export function printOrder() {
   const products = JSON.parse(sessionStorage.getItem("cart"));
-
-  if (products) {
+  console.log(products);
+  if (!products || products.length === 0) {
+    alert("Din kundvagn är tom. Välj produkter för att gå vidare till kassan.");
+  } else {
     const createDiv = document.createElement("div");
     createDiv.classList.add("productsContainer");
     const ul = document.createElement("ul");
@@ -78,8 +80,6 @@ export function printOrder() {
     priceDiv.append(sumCont, deliverCont, totalCont, momsCont);
     createDiv.append(heading, ul, priceDiv);
     return createDiv;
-  } else {
-    alert("Din kundvagn är tom. Välj produkter för att gå vidare till kassan.");
   }
 }
 // [

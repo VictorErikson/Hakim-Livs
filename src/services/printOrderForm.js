@@ -3,9 +3,8 @@ import { sendOrder } from "./sendOrder.js";
 
 export function printOrderForm() {
   document.querySelector("#cartDiv").style.display = "none";
-  document.body.style.overflow = "hidden";
-  const container = document.querySelector("body");
 
+  const container = document.querySelector("body");
   const formArea = document.createElement("div");
   formArea.id = "formArea";
   formArea.addEventListener("click", (e) => {
@@ -13,7 +12,7 @@ export function printOrderForm() {
 
     if (clickedOutsidePopup && container.contains(formArea)) {
       container.removeChild(formArea);
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = "";
     }
   });
   const order = printOrder();
@@ -21,6 +20,7 @@ export function printOrderForm() {
   if (!order) {
     return;
   }
+  document.body.style.overflow = "hidden";
   const formContainer = document.createElement("div");
   formContainer.id = "formContainer";
   const form = document.createElement("form");
@@ -42,7 +42,7 @@ export function printOrderForm() {
   closeBtn.innerText = "X";
   closeBtn.addEventListener("click", () => {
     if (container.contains(formArea)) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = "";
       container.removeChild(formArea);
     }
   });
