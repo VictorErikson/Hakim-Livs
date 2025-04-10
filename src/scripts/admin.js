@@ -137,7 +137,6 @@ export async function printOrdersAdminpage() {
   main.append(showingProductCont, productContainer);
 
   const orders = await fetchOrders();
-  console.log("orders: ", orders);
   showOrdersAdmin(orders);
 }
 
@@ -173,7 +172,6 @@ document.addEventListener("DOMContentLoaded", () => {
       leverantor: document.getElementById("supplier").value,
       bild: document.getElementById("image").value,
     };
-    console.log(productData);
     const editId = sessionStorage.getItem("editProductId");
 
     try {
