@@ -709,7 +709,6 @@ div#cartProducts img {
   margin-top: 0px;
 }
 #formArea .background {
-  max-height: 90vh;
   position: relative;
   display: flex;
   flex-direction: column;
