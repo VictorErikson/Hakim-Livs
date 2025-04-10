@@ -1,9 +1,9 @@
 import { productList } from "../../tempTestData/products.js";
 
 function formatCurrency(amount) {
-  return new Intl.NumberFormat('sv-SE', {
-    style: 'currency',
-    currency: 'SEK',
+  return new Intl.NumberFormat("sv-SE", {
+    style: "currency",
+    currency: "SEK",
     minimumFractionDigits: 2,
   }).format(amount);
 }
@@ -13,19 +13,19 @@ function capitalizeFirstLetter(string) {
 }
 
 //Counts sum of each product
-function countProductSum(product){
+function countProductSum(product) {
   let sum = product.amount * product.pris;
   return formatCurrency(sum);
 }
 
 //Counts sum of whole cart
-function totalSum(){
+function totalSum() {
   let totalSum = 0;
-  if(sessionStorage.getItem("cart")){
+  if (sessionStorage.getItem("cart")) {
     let cart = JSON.parse(sessionStorage.getItem("cart"));
 
-    cart.forEach(item => {
-      let num = item.amount * item.pris
+    cart.forEach((item) => {
+      let num = item.amount * item.pris;
       totalSum += num;
     });
   }
@@ -34,15 +34,16 @@ function totalSum(){
 
 function updateTotalSum() {
   let pElement = document.querySelector("#totalSum ");
-  let cartSum = document.querySelector("body > header > nav > ul > li:nth-child(3) > a > div > p.price")
-   
-   pElement.innerText = totalSum();
-   cartSum.innerText = totalSum();
+  let cartSum = document.querySelector(
+    "body > header > nav > ul > li:nth-child(3) > a > div > p.price"
+  );
+
+  pElement.innerText = totalSum();
+  cartSum.innerText = totalSum();
 }
 
 // Create the product card
 function createProductCardElement(product) {
-
   let productCard = document.createElement("div");
   productCard.classList.add("productCard");
 
@@ -52,7 +53,9 @@ function createProductCardElement(product) {
       <p class="bold L">${capitalizeFirstLetter(product.namn)}</p>
       <p>${product.mangd}</p>
       <p>Varumärke: ${product.varumarke.namn}</p>
-      <p>Kategorier: ${product.kategorier.map(kategori => kategori.namn).join(", ")}</p>
+      <p>Kategorier: ${product.kategorier
+        .map((kategori) => kategori.namn)
+        .join(", ")}</p>
       <p class="bold M">${formatCurrency(product.pris)}</p>
     </div>
     <div class="row cartWrap">
@@ -86,7 +89,6 @@ function popUp(product) {
 
 // Create the popup window
 function createPopupWindow(product) {
-
   let popupWindow = document.createElement("div");
   popupWindow.classList.add("popup");
 
@@ -112,14 +114,18 @@ function createPopupWindow(product) {
       <div class="row">
         <div><p>${product.beskrivning}</p></div>
         <div class="column right">
-          <div><p class="bold">Leverantör</p><p>${product.leverantor.namn}</p></div>
+          <div><p class="bold">Leverantör</p><p>${
+            product.leverantor.namn
+          }</p></div>
         </div>
       </div>
-      <div><p class="bold">Innehållsförteckning</p><p>${product.innehallsforteckning}</p></div>
+      <div><p class="bold">Innehållsförteckning</p><p>${
+        product.innehallsforteckning
+      }</p></div>
     </div>
   `;
 
-  popupWindow.querySelector(".cartAdd").addEventListener("click", () =>{
+  popupWindow.querySelector(".cartAdd").addEventListener("click", () => {
     handleAddToCart(product);
   });
   return popupWindow;
@@ -143,7 +149,9 @@ function cartView() {
   `;
 
   if (document.querySelector("body > header > nav > ul > li:nth-child(3)")) {
-    document.querySelector("body > header > nav > ul > li:nth-child(3)").append(cartDiv);
+    document
+      .querySelector("body > header > nav > ul > li:nth-child(3)")
+      .append(cartDiv);
   }
 }
 
@@ -156,9 +164,11 @@ if (document.querySelector("a.cart")) {
   });
 }
 
-document.querySelector("main.main-content").addEventListener("mouseenter", () => {
-  document.querySelector("#cartDiv").style.display = "none";
-});
+document
+  .querySelector("main.main-content")
+  .addEventListener("mouseenter", () => {
+    document.querySelector("#cartDiv").style.display = "none";
+  });
 
 // Create the quantity control
 // function createQuantityControl() {
@@ -186,46 +196,47 @@ document.querySelector("main.main-content").addEventListener("mouseenter", () =>
 //   return plusMinusContainer;
 // }
 
-
 // Set up product cards and event listeners
 export function createProductCard(products) {
   let productContainer = document.querySelector("#productContainer");
 
-  products.forEach(product => {
+  products.forEach((product) => {
     let productCard = createProductCardElement(product);
     let cartAddButton = productCard.querySelector(".cartAdd");
 
-    cartAddButton.addEventListener("click", () => handleAddToCart(product, cartAddButton, productCard));
-    productCard.querySelector(".productwrap").addEventListener("click", () => popUp(product));
+    cartAddButton.addEventListener("click", () =>
+      handleAddToCart(product, cartAddButton, productCard)
+    );
+    productCard
+      .querySelector(".productwrap")
+      .addEventListener("click", () => popUp(product));
 
     productContainer.append(productCard);
   });
 }
-
 
 // Handle add to cart button
 function handleAddToCart(product) {
   //cartAddButton.style.display = "none";
 
   let currentCart = JSON.parse(sessionStorage.getItem("cart")) || [];
-  
 
-  if(currentCart.length === 0){
+  if (currentCart.length === 0) {
     product.amount = 1;
-    currentCart.push(product)
+    currentCart.push(product);
     sessionStorage.setItem("cart", JSON.stringify(currentCart));
-  }else{
-    let productExists = currentCart.some(item => item.namn === product.namn);
-    if(productExists){
-      currentCart = currentCart.map(item => {
+  } else {
+    let productExists = currentCart.some((item) => item.namn === product.namn);
+    if (productExists) {
+      currentCart = currentCart.map((item) => {
         if (item.namn === product.namn) {
           item.amount = item.amount + 1;
         }
         return item;
       });
-    }else{
-      product.amount=1;
-      currentCart.push(product)
+    } else {
+      product.amount = 1;
+      currentCart.push(product);
     }
     sessionStorage.setItem("cart", JSON.stringify(currentCart));
   }
@@ -235,7 +246,7 @@ function handleAddToCart(product) {
 // Create product view for thecart and add it to the cart.
 function cartProduct(product, amount, price) {
   let div = document.createElement("div");
-  div.classList.add("marginTB")
+  div.classList.add("marginTB");
   div.innerHTML = `
     <img src="${product.bild}" width="80px">
     <div>
@@ -250,10 +261,10 @@ function cartProduct(product, amount, price) {
 
 // After reloding page relode the cart
 function reloadCart() {
-  let storedCart = JSON.parse(sessionStorage.getItem('cart'));
-  document.querySelector("#cartProducts").innerHTML="";
+  let storedCart = JSON.parse(sessionStorage.getItem("cart"));
+  document.querySelector("#cartProducts").innerHTML = "";
   if (storedCart) {
-    storedCart.forEach(product => {
+    storedCart.forEach((product) => {
       let price = countProductSum(product);
       let newProduct = cartProduct(product, product.amount, price);
       document.querySelector("#cartProducts").append(newProduct);

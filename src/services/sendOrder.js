@@ -1,32 +1,47 @@
 export async function sendOrder(event, form) {
   event.preventDefault();
 
+  const products = JSON.parse(sessionStorage.getItem("cart") || "[]");
+
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
 
-  console.log("data: " + JSON.stringify(data, null, 2));
+  let totalSum = 0;
+  products.forEach((product) => {
+    totalSum += product.pris * product.amount;
+  });
+
+  const produkter = products.map((product) => ({
+    produktId: product.id,
+    antal: product.amount,
+  }));
+
+  const payload = {
+    produkter,
+    totalsumma: totalSum,
+    förnamn: data.namn,
+    efternamn: data.efternamn,
+    gatuadress: data.adress,
+    postnr: data.postnummer,
+    postort: data.stad,
+    mobil: data.tele,
+    mejl: data.email,
+    anmärkning: data.info,
+  };
+
+  console.log(payload);
 
   try {
     const response = await axios.post(
-      "https://grupp-11-backend.vercel.app/",
-      data
+      "https://grupp-11-backend.vercel.app/api/orders",
+      JSON.stringify(payload),
+      {
+        headers: { "Content-Type": "application/json" },
+      }
     );
-    if (response.ok) {
-      const data = await response.json();
-      console.log("data:" + data);
-      return data;
-    } else {
-    }
-  } catch {
+    return response.data;
+  } catch (error) {
     alert("Ett fel inträffade vid beställning.");
+    console.error(error);
   }
-
-  //   .then((res) => res.json())
-  //   .then((response) => {
-  //     alert("Beställningen har skickats!");
-  //     console.log("Order response:", response);
-  //   })
-  //   .catch(() => {
-  //     alert("Ett fel inträffade vid beställning.");
-  //   });
 }
