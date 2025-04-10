@@ -8,16 +8,66 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid #ddd;
+  border: 1px solid #b0b0b0;
   padding: 16px;
   margin: 10px;
   border-radius: 8px;
   box-sizing: border-box;
   width: 200px;
+  background-color: white;
+
+  .bold.L {
+    font-size: 20px;
+    font-weight: 600;
+    color: $blue500;
+    margin-bottom: 4px;
+  }
+  
+  .bold.M {
+    font-size: 16px;
+    color: $red400;
+  }
+
+  button{
+    width: 100%;
+    max-width: 400px;
+    height: 40px;
+    // font-weight: 700;
+    // font-style: italic;
+    color: white;
+    background: rgb(36 38 204);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 0.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    cursor: pointer;
+    box-sizing: border-box;
+    border-color: rgb(0 30 98);
+    touch-action: manipulation;
+    padding: 12px;
+    font-family: "Compacta", sans-serif;
+    font-size: 24px;
+    box-shadow: 4px 4px 0px #001e62;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+
+
+    img{
+      margin-right: 8px;
+    }
+  }
+
+  button:hover{
+    box-shadow: 2px 2px 0px #001e62;
+    transform: translate(2px, 2px);
+  }
 }
 
 .cartWrap{
-  align-self: flex-end;
+  margin-top: 10px;
+  width: 100%;
 }
 
 .productCard, .popup {
@@ -64,7 +114,8 @@
   position: absolute;
   background-color: white;
   border: 1px solid black;
-  padding: 16px;
+  border-radius: 10px;
+  padding: 24px;
   top: 110%;
   width: 300px;
   right: -20%;
@@ -74,7 +125,7 @@
   gap: 8px;
 
   #cartProducts{
-    max-height: 200px;
+    max-height: 230px;
     overflow: auto;
   }
 
@@ -82,9 +133,46 @@
     display: flex;
     justify-content: space-between;
   }
+
+  .buttonWrap{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    button{
+      width: 100%;
+      max-width: 400px;
+      height: 40px;
+      // font-weight: 700;
+      // font-style: italic;
+      color: white;
+      background: rgb(36 38 204);
+      border-style: solid;
+      border-width: 2px;
+      border-radius: 0.25rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      cursor: pointer;
+      box-sizing: border-box;
+      border-color: rgb(0 30 98);
+      touch-action: manipulation;
+      padding: 12px;
+      font-family: "Compacta", sans-serif;
+      font-size: 24px;
+      box-shadow: 4px 4px 0px #001e62;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    button:hover{
+      box-shadow: 2px 2px 0px #001e62;
+      transform: translate(2px, 2px);
+    }
+  }
 }
 
 .popup {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -92,12 +180,39 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 20px;
+  padding: 32px;
   border-radius: 8px;
   z-index: 3;
+  width: 800px;
   max-width: 80%;
   max-height: 80%;
   overflow: auto;
+
+  p {
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+  }
+
+  .produktBeskrivningP {
+    width: 400px;
+  }
+
+  .row {
+    margin-bottom: 24px;
+    border-bottom: 1px solid $Neutral200;
+    padding-bottom: 16px;
+
+  }
+
+  .bold.L {
+    color: $blue600;
+    font-size: 2rem;
+  }
+
+  .bold.M {
+    font-size: 20px;
+    color: $red400;
+  }
 
   img{
     width: 50%;
@@ -111,11 +226,73 @@
     text-align: end;
     padding: 0;
   }
+  
+
+  button{
+    width: 100%;
+      max-width: 400px;
+      height: 40px;
+      // font-weight: 700;
+      // font-style: italic;
+      color: white;
+      background: rgb(36 38 204);
+      border-style: solid;
+      border-width: 2px;
+      border-radius: 0.25rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      cursor: pointer;
+      box-sizing: border-box;
+      border-color: rgb(0 30 98);
+      touch-action: manipulation;
+      padding: 12px;
+      font-family: "Compacta", sans-serif;
+      font-size: 24px;
+      box-shadow: 4px 4px 0px #001e62;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+
+  }
+
+  button:first-of-type{
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  button.cartAdd{
+    display: flex;
+    width: 100%;
+    justify-content:center;
+    align-items: center;
+    gap: 8px;
+
+    img{
+      width: 30px;
+    }
+
+    span{
+      font-weight: 400;
+      font-size: 26px;
+    }
+  }
+
+
+  button:hover{
+    box-shadow: 2px 2px 0px #001e62;
+    transform: translate(2px, 2px);
+  }
+
+  button:hover{
+    box-shadow: 2px 2px 0px #001e62;
+    transform: translate(2px, 2px);
+  }
 }
 
-div:last-of-type{
-  padding-top: 8px;
-}
+// div:last-of-type{
+//   padding-top: 8px;
+// }
 div.productInformation div.column.right > div{
   p:not(.bold){
     margin:0px;
@@ -170,6 +347,7 @@ div#cartProducts{
 
       p.bold{
         font-weight: bold;
+        width: 50%;
       }
 
       p.L{
@@ -183,5 +361,24 @@ div#cartProducts{
   }
   img{
     height: 100px;
+  }
+}
+
+div.marginTB{
+  margin: 24px 0;
+}
+
+.popup {
+  animation: fadeInScale 0.25s ease-out;
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
   }
 }

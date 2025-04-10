@@ -8,10 +8,10 @@ export const productList = [
           "ekologisk"
       ],
       "bild": "https://assets.axfood.se/image/upload/f_auto,t_500/07311042004738_C1C0_s01",
-      "mängd": "Ca 180g",
+      "mangd": "Ca 180g",
       "varumarke": "Granny Smith",
-      "innehållsförteckning": "Äpple",
-      "jämförelsepris": "33,95 kr/kg",
+      "innehallsforteckning": "Äpple",
+      "jamforpris": "33,95 kr/kg",
       "leverantor": "ICA"
   },
   {
@@ -23,10 +23,10 @@ export const productList = [
           "ekologisk"
       ],
       "bild": "https://brondsholm.se/27962-large_default/pron-13cm-grn-konstgjord-frukt.webp",
-      "mängd": "Ca 220g",
+      "mangd": "Ca 220g",
       "varumarke": "Conference",
-      "innehållsförteckning": "Päron",
-      "jämförelsepris": "27,95 kr/kg",
+      "innehallsforteckning": "Päron",
+      "jamforpris": "27,95 kr/kg",
       "leverantor": "ICA"
   },
   {
@@ -38,10 +38,10 @@ export const productList = [
           "ekologisk"
       ],
       "bild": "https://handlaprivatkund.ica.se/images-v3/bf7a00ca-390e-4769-865f-dc369586872e/ba2f23d3-1525-45e7-9163-6a5671156f94/1280x1280.webp",
-      "mängd": "Ca 180g",
+      "mangd": "Ca 180g",
       "varumarke": "Eko",
-      "innehållsförteckning": "Banan",
-      "jämförelsepris": "24,95 kr/kg",
+      "innehallsforteckning": "Banan",
+      "jamforpris": "24,95 kr/kg",
       "leverantor": "ICA"
   },
   {
@@ -53,10 +53,10 @@ export const productList = [
           "ekologisk"
       ],
       "bild": "https://handlaprivatkund.ica.se/images-v3/bf7a00ca-390e-4769-865f-dc369586872e/8af94707-5620-444e-9682-5379fa521da4/1280x1280.webp",
-      "mängd": "Ca 250g",
+      "mangd": "Ca 250g",
       "varumarke": "ICA",
-      "innehållsförteckning": "Tomat",
-      "jämförelsepris": "48,95 kr/kg",
+      "innehallsforteckning": "Tomat",
+      "jamforpris": "48,95 kr/kg",
       "leverantor": "ICA"
   },
   {
@@ -68,10 +68,10 @@ export const productList = [
           "ekologisk"
       ],
       "bild": "https://handlaprivatkund.ica.se/images-v3/bf7a00ca-390e-4769-865f-dc369586872e/1f9e3ec1-11c5-4b89-8487-ce47bf9cb285/1280x1280.webp",
-      "mängd": "Ca 300g",
+      "mangd": "Ca 300g",
       "varumarke": "Eko",
-      "innehållsförteckning": "Gurka",
-      "jämförelsepris": "59.33 kr/kg",
+      "innehallsforteckning": "Gurka",
+      "jamforpris": "59.33 kr/kg",
       "leverantor": "ICA"
   }
 ]

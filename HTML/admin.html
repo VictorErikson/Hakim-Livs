@@ -18,109 +18,83 @@
           <a id="searchBtnAdmin" href=""><img src="../assets/logos/search.svg" alt=""></a>
           <input class="search" id="searchAdmin" placeholder="Sök..."></input>
         </div>
-        <!-- <ul class="nav-links">
-          <li><a href="products.html"><img src="assets/logos/savings.svg">Förmåner</a></li>
-          <li><a href="login.html"><img src="assets/logos/user.svg">Logga in</a></li>
-          <li><a href="cart.html" class="cart">
-            <img src="assets/logos/basket.svg" alt="">
-            <div class="text">
-              <p class="toCart">Till kassan</p>
-              <p class="price">0 kr</p>
-            </div>
-            </a>
-          </li>
-        </ul>
-      </nav> -->
+        <nav class="nav-links">
+          <button id="productsBtn">Produkter</button>
+          <button id="ordersBtn"  class="notActive">Beställningar</button>
+        </nav>
+      </nav>
     </header>
 
     <div class="admin-content">
-    <!-- SIDE NAVIGATION -->
-    <!-- <aside class="side-nav">
-      <div class="nav-section">
-        <h3>Rekommenderat</h3>
-        <ul>
-          <li><a href="#">Dina produkter</a></li>
-          <li><a href="#">Aktuellt just nu</a></li>
-          <li><a href="#">Alla produkter</a></li>
-        </ul>
-      </div>
-      <div class="nav-section">
-        <h3>Populärt</h3>
-        <ul>
-          <li><a href="#">Nyinkommet</a></li>
-          <li><a href="#">Populärt just nu</a></li>
-          <li><a href="#">Megafynd</a></li>
-          <li><a href="#">Sista chansen</a></li>
-          <li><a href="#">Storpack</a></li>
-        </ul>
-      </div>
-      <div class="nav-section">
-        <h3>Kategorier</h3>
-        <ul id="categoryContainer">
-        </ul>
-      </div>
-    </aside> -->
+      <!-- MAIN CONTENT -->
+      <!-- <main class="admin-container">
+          
+        <button id="showFormBtn">Lägg till Produkt</button>
 
-    <!-- MAIN CONTENT -->
-    <main class="admin-container">
-      <h1>Admin Panel</h1>
-        
-      <button id="showFormBtn">Lägg till Produkt</button>
+        <form id="addProductsForm" action="/upload" method="POST" enctype="multipart/form-data" style="display: none;">
+          <div class="formPart1">
+              <label for="name">Produktnamn:</label>
+              <input type="text" name="name" id="name" required />
 
-      <form id="addProductsForm" action="/upload" method="POST" enctype="multipart/form-data" style="display: none;">
-        <div class="formPart1">
-            <label for="name">Produktnamn:</label>
-            <input type="text" name="name" id="name" required />
+              <label for="info">Beskrivning:</label>
+              <textarea name="info" id="info" required></textarea>
 
-            <label for="info">Beskrivning:</label>
-            <textarea name="info" id="info" required></textarea>
+              <label for="price">Pris:</label>
+              <input type="number" step="0.01" min="0.5" max="9999" id="price" name="price" required />
 
-            <label for="price">Pris:</label>
-            <input type="number" id="price" name="price" required step="0.1">
+              <label for="category">Kategori(er):</label>
+              <input type="text" id="category" name="category" placeholder="Frukter, Ekologiskt" required />
 
-            <label for="category">Kategori(er):</label>
-            <input type="text" id="category" name="category" placeholder="Frukter, Ekologiskt" required />
-            
-            <label for="image">Bild:</label>
-            <input type="text">
+              <label for="image">Bild:</label>
+              <input type="text" id="image" name="image" required />
 
-            <!-- <label for="image">Bild:</label>
-            <input type="file" id="image" name="image" accept="image/*" required /> -->
-        </div>
-        <div class="formPart2">
-            <label for="ammount">Mängd:</label>
-            <input type="text" id="ammount" name="ammount" required />
+          </div>
+          <div class="formPart2">
+              <label for="ammount">Mängd:</label>
+              <input type="text" id="ammount" name="ammount" required />
 
-            <label for="brand">Varumärke:</label>
-            <input type="text" id="brand" name="brand" required />
+              <label for="brand">Varumärke:</label>
+              <input type="text" id="brand" name="brand" required />
 
-            <label for="content">Innehållsförteckning:</label>
-            <input type="text" id="content" name="content" required />
+              <label for="content">Innehållsförteckning:</label>
+              <input type="text" id="content" name="content" required />
 
-            <label for="compare">Jämförelsepris:</label>
-            <input type="number" id="compare" name="compare" required step="0.1">
+              <label for="compare">Jämförelsepris:</label>
+              <input type="number" step="0.01" min="0.01" max="9999" id="compare" name="compare" required />
 
-            <label for="supplier">Leverantör:</label>
-            <input type="text" id="supplier" name="supplier" required />
-        </div>
-        <div class="submitBtnDiv">
-            <button type="submit">Lägg Till</button>
-        </div>
-      </form>
+              <label for="supplier">Leverantör:</label>
+              <input type="text" id="supplier" name="supplier" required />
+          </div>
+          <div class="submitBtnDiv">
+              <button type="submit">Lägg Till</button>
+          </div>
+        </form>
 
-      <div id="productContainer"></div>
-    </main>
-  </div>
+        <div id="productContainer"></div>
+      </main> -->
+    </div>
 
     <!-- FOOTER -->
-    <footer class="site-footer">
-      <div class="footer-content">
-        <p>&copy; 2024 Hakim Livs. All rights reserved.</p>
-        <div class="footer-links">
-          <a href="/about">About</a>
-          <a href="/contact">Contact</a>
-          <a href="/terms">Terms</a>
+    <footer class="site-footer admin">
+      <div class="footer-content column">
+        <div class="row">
+          <div class="öppetid">
+            <p class="big">Öppettider</p>
+            <p><span>Måndag:</span> 8:00-21:00</p>
+            <p><span>Tisdag:</span> 8:00-21:00</p>
+            <p><span>Onsdag:</span> 8:00-21:00</p>
+            <p><span>Torsdag:</span> 8:00-21:00</p>
+            <p><span>Fredag:</span> 8:00-21:00</p>
+            <p><span>Lördag:</span> 8:00-19:00</p>
+            <p><span>Söndag:</span> 8:00-19:00</p>
+          </div>
+          <div class="flex-end">
+            <p class="bigger"><span>Adress:</span> Östgötagatan 12, 116 25, Stockholm</p>
+            <p class="bigger"><span>Telefonumer:</span> +46 76 112 11 11</p>
+            <p class="bigger"><span>Mail:</span> Hakim@hakimLivs.se </p>
+          </div>
         </div>
+        <p id="copy">&copy; 2024 Hakim Livs. All rights reserved.</p>
       </div>
     </footer>
 
