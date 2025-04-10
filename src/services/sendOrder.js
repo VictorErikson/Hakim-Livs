@@ -19,14 +19,14 @@ export async function sendOrder(event, form) {
   const payload = {
     produkter,
     totalsumma: totalSum,
-    förnamn: data.namn,
+    fornamn: data.namn,
     efternamn: data.efternamn,
     gatuadress: data.address,
     postnr: data.postnummer,
     postort: data.stad,
     mobil: data.tele,
     mejl: data.email,
-    anmärkning: data.info,
+    anmarkning: data.info,
   };
 
   console.log(payload);
