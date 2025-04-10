@@ -6,13 +6,13 @@ export async function sendOrder(event, form) {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
 
-  let totalSum = 0;
+  let totalSum = 59;
   products.forEach((product) => {
-    totalSum += product.pris * product.amount;
+    totalSum += product.pris * product.amount * 0.12;
   });
 
   const produkter = products.map((product) => ({
-    produktId: product.id,
+    produktId: product._id,
     antal: product.amount,
   }));
 
@@ -21,7 +21,7 @@ export async function sendOrder(event, form) {
     totalsumma: totalSum,
     förnamn: data.namn,
     efternamn: data.efternamn,
-    gatuadress: data.adress,
+    gatuadress: data.address,
     postnr: data.postnummer,
     postort: data.stad,
     mobil: data.tele,
