@@ -38,8 +38,10 @@ function updateTotalSum() {
     "body > header > nav > ul > li:nth-child(3) > a > div > p.price"
   );
 
-  pElement.innerText = totalSum();
-  cartSum.innerText = totalSum();
+  if(pElement){
+    pElement.innerText = totalSum();
+    cartSum.innerText = totalSum();
+  }
 }
 
 // Create the product card
@@ -58,7 +60,7 @@ function createProductCardElement(product) {
         .join(", ")}</p>
       <p class="bold M">${formatCurrency(product.pris)}</p>
     </div>
-    <div class="row cartWrap">
+    <div class="row cartWrap no-margin">
       <button class="cartAdd">
         <img src="assets/logos/basket.svg" alt="Add to Cart">
         Köp
@@ -262,12 +264,16 @@ function cartProduct(product, amount, price) {
 // After reloding page relode the cart
 export function reloadCart() {
   let storedCart = JSON.parse(sessionStorage.getItem("cart"));
-  document.querySelector("#cartProducts").innerHTML = "";
+  if(document.querySelector("#cartProducts")){
+    document.querySelector("#cartProducts").innerHTML = "";
+  }
   if (storedCart) {
     storedCart.forEach((product) => {
       let price = countProductSum(product);
       let newProduct = cartProduct(product, product.amount, price);
-      document.querySelector("#cartProducts").append(newProduct);
+      if (document.querySelector("#cartProducts")) {
+        document.querySelector("#cartProducts").append(newProduct);
+      }
     });
   }
   updateTotalSum();

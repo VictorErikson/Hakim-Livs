@@ -249,6 +249,7 @@
     flex: 1;
     padding: 2rem;
     width: 100%;
+    min-height: 50vh;
     background-color: $Neutral50;
 
     #addProductsForm {
@@ -280,32 +281,61 @@
     }
   }
 
-  .site-footer {
-    background: $Neutral50;
-    padding: 2rem;
+  .site-footer.admin {
+    background: #011e62;
+    color: white;
+    font-family: sans-serif;
     margin-top: auto;
 
     .footer-content {
       max-width: 1200px;
       margin: 0 auto;
+      padding: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-sizing: border-box;
 
-      .footer-links {
-        display: flex;
-        gap: 2rem;
+      div {
+        width: 100%;
+        align-self: flex-end;
 
-        a {
-          text-decoration: none;
-          color: $Neutral500;
-
-          &:hover {
-            color: $blue300;
-          }
+        div {
+          width: fit-content;
+          min-width: 200px;
         }
       }
+
+      div.flex-end {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        height: 100%;
+      }
     }
+
+    p {
+      font-size: 14px;
+      margin: 4px;
+    }
+
+    p.bigger {
+      font-size: 18px;
+    }
+
+    span {
+      font-weight: 600;
+    }
+
+    p.big {
+      font-size: 24px;
+      font-weight: 600;
+    }
+  }
+
+  #copy {
+    margin-top: 24px;
   }
 }
 

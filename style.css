@@ -323,7 +323,7 @@ body > header > nav > ul > li:nth-child(3) {
 }
 
 .cartWrap {
-  margin-top: 150px;
+  margin-top: 10px;
   width: 100%;
 }
 
@@ -858,6 +858,7 @@ div.marginTB {
   flex: 1;
   padding: 2rem;
   width: 100%;
+  min-height: 50vh;
   background-color: #F5F7FA;
 }
 .admin-page .admin-container #addProductsForm {
@@ -885,28 +886,53 @@ div.marginTB {
   color: #191B25;
   margin-bottom: 1rem;
 }
-.admin-page .site-footer {
-  background: #F5F7FA;
-  padding: 2rem;
+.admin-page .site-footer.admin {
+  background: #011e62;
+  color: white;
+  font-family: sans-serif;
   margin-top: auto;
 }
-.admin-page .site-footer .footer-content {
+.admin-page .site-footer.admin .footer-content {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
 }
-.admin-page .site-footer .footer-content .footer-links {
+.admin-page .site-footer.admin .footer-content div {
+  width: 100%;
+  align-self: flex-end;
+}
+.admin-page .site-footer.admin .footer-content div div {
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 200px;
+}
+.admin-page .site-footer.admin .footer-content div.flex-end {
+  width: 100%;
   display: flex;
-  gap: 2rem;
+  justify-content: space-between;
+  align-items: end;
+  height: 100%;
 }
-.admin-page .site-footer .footer-content .footer-links a {
-  text-decoration: none;
-  color: #717784;
+.admin-page .site-footer.admin p {
+  font-size: 14px;
+  margin: 4px;
 }
-.admin-page .site-footer .footer-content .footer-links a:hover {
-  color: #4346e0;
+.admin-page .site-footer.admin p.bigger {
+  font-size: 18px;
+}
+.admin-page .site-footer.admin span {
+  font-weight: 600;
+}
+.admin-page .site-footer.admin p.big {
+  font-size: 24px;
+  font-weight: 600;
+}
+.admin-page #copy {
+  margin-top: 24px;
 }
 
 .adminProductTable {
@@ -1239,10 +1265,15 @@ div.marginTB {
 }
 
 main.main-content.kassa {
-  width: 100vw;
+  display: flex;
+  justify-content: center;
+  width: 100%;
   min-height: 500px;
   box-sizing: border-box;
   display: flex;
+}
+main.main-content.kassa div.cart {
+  width: 90%;
 }
 
 .row {
@@ -1257,7 +1288,7 @@ main.main-content.kassa {
 }
 
 #cartWrap {
-  width: 70%;
+  width: 100%;
   height: auto;
   background-color: white;
   border: 1px solid rgb(142, 142, 142);
