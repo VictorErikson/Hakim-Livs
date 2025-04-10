@@ -1,7 +1,13 @@
 export async function fetchOrders() {
   try {
     const response = await axios.get(
-      "https://grupp-11-backend.vercel.app/api/orders"
+      "https://grupp-11-backend.vercel.app/api/orders",
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${sessionStorage.getItem("jwt")}`,
+        },
+      }
     );
     return response.data;
   } catch (error) {
