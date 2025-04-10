@@ -226,6 +226,7 @@
 
 // services/showProductsAdmin.js
 import { deleteOrder } from "./deleteOrder.js";
+import { fetchProducts } from "../../utils/api.js";
 
 export function showOrdersAdmin(orders) {
   const container = document.querySelector("#productContainer");
@@ -253,7 +254,7 @@ export function showOrdersAdmin(orders) {
   orders.forEach((order) => {
     const row = document.createElement("tr");
     row.innerHTML = `
-      <td><select id="statusSelect">
+      <td><select class="statusSelect">
               <option value="ny">Ny</option>
               <option value="betald">Betald</option>
               <option value="packas">Packas</option>
@@ -271,6 +272,33 @@ export function showOrdersAdmin(orders) {
 
     deleteBtn.addEventListener("click", () => {
       deleteOrder(order._id, order.fornamn);
+    });
+
+    const statusSelect = row.querySelector(".statusSelect");
+
+    if (order.status) {
+      statusSelect.value = order.status;
+    }
+
+    statusSelect.addEventListener("change", async () => {
+      const newStatus = statusSelect.value;
+      try {
+        await axios.patch(
+          `https://grupp-11-backend.vercel.app/api/orders/${order._id}`,
+          { status: newStatus },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${sessionStorage.getItem("jwt")}`,
+            },
+          }
+        );
+        showOrdersAdmin();
+        console.log(`Order ${order._id} updated to ${newStatus}`);
+      } catch (err) {
+        console.error("Failed to update status:", err);
+        alert("Kunde inte uppdatera orderstatus.");
+      }
     });
 
     showBtn.addEventListener("click", () => {
