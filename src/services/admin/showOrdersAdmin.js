@@ -227,6 +227,7 @@
 // services/showProductsAdmin.js
 import { deleteOrder } from "./deleteOrder.js";
 import { fetchProducts } from "../../utils/api.js";
+import { fetchOrders } from "../fetchOrders.js";
 
 export function showOrdersAdmin(orders) {
   const container = document.querySelector("#productContainer");
@@ -263,7 +264,7 @@ export function showOrdersAdmin(orders) {
           </select></td>
       <td>${order._id}</td>
       <td>${capitalize(order.fornamn)} ${capitalize(order.efternamn)}</td>
-      <td>${order.totalsumma}</td>
+      <td>${order.totalsumma.toFixed(2)}</td>
       <td><button class="show">Visa</button></td>
       <td><button class="deleteBtn">Radera</button></td>
     `;
@@ -294,10 +295,12 @@ export function showOrdersAdmin(orders) {
             },
           }
         );
-        showOrdersAdmin();
+        const newOrders = await fetchOrders();
+        showOrdersAdmin(newOrders);
         console.log(`Order ${order._id} updated to ${newStatus}`);
       } catch (err) {
         console.error("Failed to update status:", err);
+        statusSelect.value = order.status;
         alert("Kunde inte uppdatera orderstatus.");
       }
     });
@@ -359,6 +362,8 @@ export function showOrdersAdmin(orders) {
       (async () => {
         for (const product of products) {
           try {
+            console.log("product in for of func: ", product);
+            console.log("productId in for of func: ", product.produktId);
             const fetchedProduct = await fetchProducts(
               `api/products/${product.produktId}/`
             );
