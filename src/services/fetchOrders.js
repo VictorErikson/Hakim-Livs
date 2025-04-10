@@ -5,7 +5,7 @@ export async function fetchOrders() {
     );
     return response.data;
   } catch (error) {
-    alert("Ett fel inträffade vid beställning.");
+    alert("Ett fel inträffade vid hämtningen av orders.");
     console.error(error);
   }
 }

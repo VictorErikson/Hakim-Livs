@@ -731,20 +731,23 @@ div.marginTB {
   margin: 0 auto;
   padding: 1rem 2rem;
 }
-.admin-page .site-header nav .notActive {
+.admin-page .site-header nav #productsBtn.notActive,
+.admin-page .site-header nav #ordersBtn.notActive {
   border: 2px solid #cacfd8;
   background-color: #f5f7fa;
   border-radius: 4px;
   color: #cacfd8;
   box-shadow: 4px 4px 0px #979aa1;
 }
-.admin-page .site-header nav .notActive:hover {
+.admin-page .site-header nav #productsBtn.notActive:hover,
+.admin-page .site-header nav #ordersBtn.notActive:hover {
   border-color: rgb(0, 30, 98);
   color: white;
   background: rgb(23, 26, 153);
   box-shadow: 2px 2px 0px #001e62;
 }
-.admin-page .site-header nav .notActive:active {
+.admin-page .site-header nav #productsBtn.notActive:active,
+.admin-page .site-header nav #ordersBtn.notActive:active {
   border-color: rgb(0, 30, 98);
   color: white;
   background: rgb(23, 26, 153);

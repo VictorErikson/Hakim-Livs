@@ -103,7 +103,8 @@
       margin: 0 auto;
       padding: 1rem 2rem;
 
-      .notActive {
+      #productsBtn.notActive,
+      #ordersBtn.notActive {
         border: 2px solid #cacfd8;
         background-color: #f5f7fa;
         border-radius: 4px;

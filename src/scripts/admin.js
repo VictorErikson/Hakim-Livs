@@ -3,6 +3,7 @@ import { showProductsAdmin } from "../services/showProductsAdmin.js";
 import { productList } from "../../tempTestData/products.js";
 import { searchProduct } from "../services/searchProduct.js";
 import { editData } from "../services/admin/editData.js";
+import { fetchOrders } from "../services/fetchOrders.js";
 
 export let products;
 
@@ -117,21 +118,22 @@ export function printProductsAdminpage() {
   main.append(showFormBtn, form, productContainer);
 
   document.querySelector(".admin-content").append(main);
+  loadProducts();
 }
 
 export async function printOrdersAdminpage() {
-  const adminContent = (document.querySelector(".admin-content").innerHTML =
-    "");
+  const adminContent = document.querySelector(".admin-content");
+  adminContent.innerHTML = "";
   const main = document.createElement("main");
   main.classList.add("admin-container");
   adminContent.append(main);
 
   const orders = await fetchOrders();
+  console.log("orders: ", orders);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   printProductsAdminpage();
-  loadProducts();
 
   const toggleFormBtn = document.getElementById("showFormBtn");
   const form = document.getElementById("addProductsForm");
