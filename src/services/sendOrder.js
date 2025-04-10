@@ -29,7 +29,11 @@ export async function sendOrder(event, form) {
     anmarkning: data.info,
   };
 
-  console.log(payload);
+  // console.log(payload);
+  // return {
+  //   address: data.address,
+  //   totalSum: totalSum,
+  // };
 
   try {
     const response = await axios.post(
@@ -39,7 +43,11 @@ export async function sendOrder(event, form) {
         headers: { "Content-Type": "application/json" },
       }
     );
-    return response.data;
+    return {
+      result: response.data,
+      adress: data.address,
+      totalSum: totalSum,
+    };
   } catch (error) {
     alert("Ett fel inträffade vid beställning.");
     console.error(error);

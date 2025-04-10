@@ -888,6 +888,28 @@ div.marginTB {
 #formArea .background .closeBtn:hover {
   font-weight: bold;
 }
+#formArea .background .orderSuccessDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+#formArea .background .orderSuccessDiv h2 {
+  font-size: 28px;
+}
+#formArea .background .orderSuccessDiv p {
+  margin: 0px;
+}
+#formArea .background .orderSuccessDiv .payment {
+  font-size: 20px;
+}
+#formArea .background .orderSuccessDiv .italic {
+  font-style: italic;
+}
+#formArea .background .orderSuccessDiv .bold {
+  font-weight: bold;
+}
 #formArea .background .productsOrderCont {
   display: flex;
   gap: 120px;

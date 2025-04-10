@@ -47,6 +47,32 @@
       }
     }
 
+    .orderSuccessDiv {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+
+      h2 {
+        font-size: 28px;
+      }
+
+      p {
+        margin: 0px;
+      }
+
+      .payment {
+        font-size: 20px;
+      }
+      .italic {
+        font-style: italic;
+      }
+      .bold {
+        font-weight: bold;
+      }
+    }
+
     .productsOrderCont {
       display: flex;
       gap: 120px;

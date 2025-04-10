@@ -1,5 +1,6 @@
 import { printOrder } from "./printOrder.js";
 import { sendOrder } from "./sendOrder.js";
+import { reloadCart } from "./createProductCard.js";
 
 export function printOrderForm() {
   document.querySelector("#cartDiv").style.display = "none";
@@ -13,6 +14,7 @@ export function printOrderForm() {
     if (clickedOutsidePopup && container.contains(formArea)) {
       container.removeChild(formArea);
       document.body.style.overflow = "";
+      reloadCart();
     }
   });
   const order = printOrder();
@@ -25,12 +27,34 @@ export function printOrderForm() {
   formContainer.id = "formContainer";
   const form = document.createElement("form");
   form.classList.add("userForm");
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     form.querySelectorAll("input, textarea").forEach((el) => {
       el.value = el.value.trim();
     });
 
-    sendOrder(e, form);
+    const res = await sendOrder(e, form);
+    if (res) {
+      document.querySelector(".productsOrderCont").remove();
+      document.querySelector(".sendFormBtn").remove();
+      const orderSuccessDiv = document.createElement("div");
+      orderSuccessDiv.classList.add("orderSuccessDiv");
+      sessionStorage.removeItem("cart");
+
+      const thanksTitle = document.createElement("h2");
+      thanksTitle.innerText = "Tack för din beställning!";
+
+      const payment = document.createElement("p");
+      payment.innerHTML = `Vänligen swisha <span class="bold">${res.totalSum.toFixed(
+        2
+      )} kr</span> till <span class="italic">+46 70 123 45 67</span>`;
+      payment.classList.add("payment");
+      const deliver = document.createElement("p");
+      deliver.innerHTML = `Din beställning levereras till <span class="italic">${res.address}</span> inom 7 arbetsdagar efter att betalning bekräftats.`;
+      deliver.classList.add("deliver");
+
+      orderSuccessDiv.append(thanksTitle, payment, deliver);
+      document.querySelector(".background").append(orderSuccessDiv);
+    }
   });
   const background = document.createElement("div");
   background.classList.add("background");
@@ -43,6 +67,7 @@ export function printOrderForm() {
   closeBtn.addEventListener("click", () => {
     if (container.contains(formArea)) {
       document.body.style.overflow = "";
+      reloadCart();
       container.removeChild(formArea);
     }
   });

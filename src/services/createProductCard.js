@@ -260,7 +260,7 @@ function cartProduct(product, amount, price) {
 }
 
 // After reloding page relode the cart
-function reloadCart() {
+export function reloadCart() {
   let storedCart = JSON.parse(sessionStorage.getItem("cart"));
   document.querySelector("#cartProducts").innerHTML = "";
   if (storedCart) {
