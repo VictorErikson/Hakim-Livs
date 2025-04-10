@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hakim Livs</title>
     <link rel="stylesheet" href="style.css" />
+    <script type="module" src="src/services/kassa.js" defer></script>
   </head>
   <body class="index-page">
 
@@ -20,34 +21,32 @@
         <ul class="nav-links">
           <li><a href="products.html"><img src="assets/logos/savings.svg">Förmåner</a></li>
           <li><a href="HTML/login.html"><img src="assets/logos/user.svg">Logga in</a></li>
-          <li id="tillKassa"><a href="kassa.html" class="cart">
-            <img src="assets/logos/basket.svg" alt="">
-            <div class="text">
-              <p class="toCart">Till varukorg</p>
-              <p class="price">0 kr</p>
-            </div>
-            </a>
-          </li>
         </ul>
       </nav>
     </header>
 
-    <div class="index-content">
-    <!-- SIDE NAVIGATION -->
-    <aside class="side-nav">
-      <div class="nav-section">
-        <h3>Kategorier</h3>
-        <ul id="categoryContainer">
-        </ul>
-      </div>
-    </aside>
-
     <!-- MAIN CONTENT -->
     <main class="main-content">
-      <h1>Welcome to Hakim Livs</h1>
-        <div id="productContainer"></div>
+        <div class="cart">
+            <div id="cartWrap" class="row">
+                <div id="productsWrap" class="column">
+                    <div class="row">
+                        <p class="bold big">Shopping Cart</p>
+                        <p id="productAmount" class="semi-bold"> x varor</p>
+                    </div>
+                    <hr>
+                </div>
+                <div id="summaryWrap" class="column">
+                    <p class="bold big">Sammanfattning</p>
+                    <hr>
+                    <div class="row">
+                        <p class="big">Total pris</p>
+                        <p id="totalPrice" class="semi-bold"></p></div>
+                    <button id="toBuy">Köp</button>
+                </div>
+            </div>
+        </div>
     </main>
-  </div>
 
     <!-- FOOTER -->
     <footer class="site-footer">
@@ -61,7 +60,6 @@
       </div>
     </footer>
 
-    <!-- PAGE-SPECIFIC JAVASCRIPT -->
-    <script type="module" src="src/scripts/index.js" defer></script>
+    <div id="cartDiv"></div>
   </body>
 </html>

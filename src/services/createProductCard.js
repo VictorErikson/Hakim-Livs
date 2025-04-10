@@ -34,9 +34,10 @@ function totalSum(){
 
 function updateTotalSum() {
   let pElement = document.querySelector("#totalSum ");
-  if (pElement) {
-    pElement.innerText = totalSum();
-  }
+  let cartSum = document.querySelector("body > header > nav > ul > li:nth-child(3) > a > div > p.price")
+   
+   pElement.innerText = totalSum();
+   cartSum.innerText = totalSum();
 }
 
 // Create the product card
@@ -57,6 +58,7 @@ function createProductCardElement(product) {
     <div class="row cartWrap">
       <button class="cartAdd">
         <img src="assets/logos/basket.svg" alt="Add to Cart">
+        Köp
       </button>
     </div>
   `;
@@ -98,6 +100,7 @@ function createPopupWindow(product) {
         <p class="bold M">${formatCurrency(product.pris)}</p>
         <div class="cartWrap">
           <button class="cartAdd">
+            <span>Köp</span>
             <img src="assets/logos/basket.svg" alt="Add to Cart">
           </button>
         </div>
@@ -133,19 +136,26 @@ function cartView() {
       <p>SUMMA</p>
       <p id="totalSum">0 kr</p>
     </div>
-    <button id="checkout">Till kassan</button>
-    <button>Öppna varukorg</button>
+    <div class="buttonWrap">
+      <button id="checkout">Kassan</button>
+      <button onclick="window.location.href = 'kassa.html'">Varukorg</button>
+    </div>
   `;
 
-  document.querySelector("body > header > nav > ul > li:nth-child(3)").append(cartDiv);
+  if (document.querySelector("body > header > nav > ul > li:nth-child(3)")) {
+    document.querySelector("body > header > nav > ul > li:nth-child(3)").append(cartDiv);
+  }
 }
 
 // Function to show cart on hover
 cartView();
 
-document.querySelector("a.cart").addEventListener("mouseenter", () => {
-  document.querySelector("#cartDiv").style.display = "flex";
-});
+if (document.querySelector("a.cart")) {
+  document.querySelector("a.cart").addEventListener("mouseenter", () => {
+    document.querySelector("#cartDiv").style.display = "flex";
+  });
+}
+
 document.querySelector("main.main-content").addEventListener("mouseenter", () => {
   document.querySelector("#cartDiv").style.display = "none";
 });
@@ -219,27 +229,27 @@ function handleAddToCart(product) {
     }
     sessionStorage.setItem("cart", JSON.stringify(currentCart));
   }
-  relodeCart();
-  updateTotalSum();
+  reloadCart();
 }
 
 // Create product view for thecart and add it to the cart.
 function cartProduct(product, amount, price) {
   let div = document.createElement("div");
+  div.classList.add("marginTB")
   div.innerHTML = `
     <img src="${product.bild}" width="80px">
     <div>
       <p class="bold L">${capitalizeFirstLetter(product.namn)}</p>
       <p class="bold M">${formatCurrency(product.pris)}</p>
       <p>Antal: ${amount}</p>
-      <p>Summa: <span class="bold">${price} kr</span></p>
+      <p>Summa: <span class="bold">${price}</span></p>
     </div>
   `;
   return div;
 }
 
 // After reloding page relode the cart
-function relodeCart() {
+function reloadCart() {
   let storedCart = JSON.parse(sessionStorage.getItem('cart'));
   document.querySelector("#cartProducts").innerHTML="";
   if (storedCart) {
@@ -249,7 +259,8 @@ function relodeCart() {
       document.querySelector("#cartProducts").append(newProduct);
     });
   }
+  updateTotalSum();
 }
 
 //Wen the page loads relodes the cart
-relodeCart();
+reloadCart();
