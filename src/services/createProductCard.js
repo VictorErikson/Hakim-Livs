@@ -102,8 +102,8 @@ function createPopupWindow(product) {
         <p class="bold M">${formatCurrency(product.pris)}</p>
         <div class="cartWrap">
           <button class="cartAdd">
-            <span>Köp</span>
             <img src="assets/logos/basket.svg" alt="Add to Cart">
+            <span>Köp</span>
           </button>
         </div>
         <p>Jämförelsepris: ${product.jamforpris}</p>
