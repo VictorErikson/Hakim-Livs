@@ -6,9 +6,9 @@ export async function sendOrder(event, form) {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
 
-  let totalSum = 59;
+  let totalSum = 59 * 1.12;
   products.forEach((product) => {
-    totalSum += product.pris * product.amount * 0.12;
+    totalSum += product.pris * product.amount * 1.12;
   });
 
   const produkter = products.map((product) => ({
