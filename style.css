@@ -35,6 +35,17 @@ body {
   margin: 0 auto;
   min-height: calc(100vh - 264px);
 }
+.index-page .index-content h1 {
+  font-family: "Compacta", sans-serif;
+  font-size: 56px;
+  color: rgb(0, 30, 98);
+  display: inline-block;
+  font-weight: 500;
+  line-height: 1.5rem;
+  letter-spacing: -1.5px;
+  letter-spacing: 0.01em;
+  margin-bottom: 40px;
+}
 .index-page .site-header {
   background: white;
 }
@@ -168,12 +179,6 @@ body {
   padding: 2rem;
   width: 100%;
   background-color: #F5F7FA;
-}
-.index-page .main-content h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #191B25;
-  margin-bottom: 1rem;
 }
 .index-page .site-footer {
   background: #F5F7FA;

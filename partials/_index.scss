@@ -39,6 +39,18 @@ body {
     max-width: 1440px;
     margin: 0 auto;
     min-height: calc(100vh - 264px);
+
+    h1 {
+      font-family: "Compacta", sans-serif;
+      font-size: 56px;
+      color: rgb(0 30 98);
+      display: inline-block;
+      font-weight: 500;
+      line-height: 1.5rem;
+      letter-spacing: -1.5px;
+      letter-spacing: 0.01em;
+      margin-bottom: 40px;
+    }
   }
 
   .site-header {
@@ -197,12 +209,12 @@ body {
     width: 100%;
     background-color: $Neutral50;
 
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: $Neutral900;
-      margin-bottom: 1rem;
-    }
+    // h1 {
+    //   font-size: 2.5rem;
+    //   font-weight: 700;
+    //   color: $Neutral900;
+    //   margin-bottom: 1rem;
+    // }
   }
 
   // #products {
