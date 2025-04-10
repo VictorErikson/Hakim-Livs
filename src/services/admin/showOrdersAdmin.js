@@ -366,9 +366,7 @@ export function showOrdersAdmin(orders) {
           try {
             console.log("product in for of func: ", product);
             console.log("productId in for of func: ", product.produktId);
-            const fetchedProduct = await fetchProducts(
-              `api/products/${product.produktId}/`
-            );
+            const produkt = product.produktId;
 
             const li = document.createElement("li");
             const div = document.createElement("div");
@@ -376,14 +374,14 @@ export function showOrdersAdmin(orders) {
 
             const title = document.createElement("p");
             title.classList.add("title");
-            title.innerText = `${product.antal}st ${fetchedProduct.namn}`;
+            title.innerText = `${product.antal}st ${produkt.namn}`;
 
             const price = document.createElement("p");
             price.classList.add("price");
-            price.innerText = `${fetchedProduct.pris} kr`;
+            price.innerText = `${produkt.pris} kr`;
 
             div.append(title, price);
-            sumProducts += fetchedProduct.pris * product.antal;
+            sumProducts += produkt.pris * product.antal;
             li.classList.add("product");
             ul.append(li);
           } catch (err) {
