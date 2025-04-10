@@ -129,6 +129,7 @@ export async function printOrdersAdminpage() {
   adminContent.append(main);
 
   const orders = await fetchOrders();
+  console.log("orders: ", orders);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -199,8 +200,8 @@ async function loadProducts() {
   container.innerHTML = "<p>Loading products...</p>";
 
   try {
-    // products = await fetchProducts();
-    products = productList;
+    products = await fetchProducts();
+    // products = productList;
     container.innerHTML = "";
 
     if (products.length > 0) {
