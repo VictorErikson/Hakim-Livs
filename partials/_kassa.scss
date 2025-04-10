@@ -1,8 +1,14 @@
 main.main-content.kassa {
-  width: 100vw;
-  min-height: 500px;
-  box-sizing: border-box;
-  display: flex;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 500px;
+    box-sizing: border-box;
+    display: flex;
+
+    div.cart{
+        width: 90%;
+    }
 }
 
 .cart {
@@ -37,7 +43,7 @@ main.main-content.kassa {
 }
 
 #cartWrap {
-  width: 70%;
+  width: 100%;
   height: auto;
   background-color: white;
   border: 1px solid rgb(142, 142, 142);
