@@ -128,8 +128,16 @@ export async function printOrdersAdminpage() {
   main.classList.add("admin-container");
   adminContent.append(main);
 
+  const showingProductCont = document.createElement(" div");
+  showingProductCont.id = "showingProductCont";
+
+  const productContainer = document.createElement(" div");
+  productContainer.id = "productContainer";
+  main.append(showingProductCont, productContainer);
+
   const orders = await fetchOrders();
   console.log("orders: ", orders);
+  showOrdersAdmin(orders);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
