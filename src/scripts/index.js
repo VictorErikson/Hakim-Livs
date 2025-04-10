@@ -38,8 +38,8 @@ const printFormBtn = document.querySelector("#checkout");
 printFormBtn.addEventListener("click", printOrderForm);
 
 //document.querySelector("#tillKassan").addEventListener("click", (e)=>{
-  //e.preventDefault();
-  //printOrderForm();
+//e.preventDefault();
+//printOrderForm();
 //})
 
 // Fuction search products with searchbar
