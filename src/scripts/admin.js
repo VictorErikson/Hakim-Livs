@@ -155,19 +155,20 @@ document.addEventListener("DOMContentLoaded", () => {
         .getElementById("category")
         .value.split(",")
         .map((k) => k.trim()),
-      mängd: document.getElementById("ammount").value,
-      varumärke: document.getElementById("brand").value,
-      innehållsförteckning: document.getElementById("content").value,
-      jämförelsepris: `${document.getElementById("compare").value} kr/kg`,
-      leverantör: document.getElementById("supplier").value,
+      mangd: document.getElementById("ammount").value,
+      varumarke: document.getElementById("brand").value,
+      innehallsforteckning: document.getElementById("content").value,
+      jamforpris: `${document.getElementById("compare").value} kr/kg`,
+      leverantor: document.getElementById("supplier").value,
       bild: document.getElementById("image").value,
     };
-
+    console.log(productData);
     const editId = sessionStorage.getItem("editProductId");
 
     try {
       if (editId) {
         // Edit mode
+
         await editData(productData, editId);
         sessionStorage.removeItem("editProductId");
       } else {
