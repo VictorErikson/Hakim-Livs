@@ -10,11 +10,12 @@ export async function sendOrder(event, form) {
   products.forEach((product) => {
     totalSum += product.pris * product.amount * 1.12;
   });
-
+  console.log("Cart products before map:", products);
   const produkter = products.map((product) => ({
     produktId: product._id,
     antal: product.amount,
   }));
+  console.log("Produkter to send:", produkter);
 
   const payload = {
     produkter,
@@ -45,7 +46,7 @@ export async function sendOrder(event, form) {
     );
     return {
       result: response.data,
-      adress: data.address,
+      address: data.address,
       totalSum: totalSum,
     };
   } catch (error) {
