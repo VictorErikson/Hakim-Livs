@@ -4,6 +4,7 @@ import { productList } from "../../tempTestData/products.js";
 import { searchProduct } from "../services/searchProduct.js";
 import { editData } from "../services/admin/editData.js";
 import { fetchOrders } from "../services/fetchOrders.js";
+import { showOrdersAdmin } from "../services/admin/showOrdersAdmin.js";
 
 export let products;
 
@@ -136,7 +137,6 @@ export async function printOrdersAdminpage() {
   main.append(showingProductCont, productContainer);
 
   const orders = await fetchOrders();
-  console.log("orders: ", orders);
   showOrdersAdmin(orders);
 }
 
