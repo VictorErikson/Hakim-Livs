@@ -15,7 +15,17 @@ export function printOrder() {
 
     products.forEach((product) => {
       const li = document.createElement("li");
-      li.innerText = `${product.amount}st ${product.namn}, ${product.pris}kr.`;
+      const div = document.createElement("div");
+      li.append(div);
+      const title = document.createElement("p");
+      title.classList.add("title");
+      title.innerText = `${product.amount}st ${product.namn}`;
+      // title.style.fontWeight = "bold";
+      const price = document.createElement("p");
+      price.classList.add("price");
+      price.innerText = `${product.pris} kr`;
+      div.append(title, price);
+
       sumProducts += product.pris * product.amount;
       li.classList.add(`product`);
       ul.append(li);
@@ -49,7 +59,7 @@ export function printOrder() {
     totalCont.classList.add("totalCont");
     let totalTitle = document.createElement("p");
     totalTitle.classList.add("totalPrice");
-    totalTitle.innerText = `Totalpris: `;
+    totalTitle.innerText = `Totalsumma: `;
     let total = document.createElement("p");
     total.classList.add("total");
     total.innerText = `${totalPriceSum.toFixed(2)} kr`;
@@ -59,7 +69,7 @@ export function printOrder() {
     momsCont.classList.add("momsCont");
     let momsTitle = document.createElement("p");
     momsTitle.classList.add("momsTitle");
-    momsTitle.innerText = "Moms(12%)";
+    momsTitle.innerText = "Moms (12%)";
     let moms = document.createElement("p");
     moms.classList.add("moms");
     moms.innerText = `${((sumProducts + 59) * 0.12).toFixed(2)} kr`;
