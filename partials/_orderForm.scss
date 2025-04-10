@@ -28,6 +28,10 @@
     background-color: rgba(255, 255, 255, 0.8);
     padding: 40px 120px;
     border-radius: 10px;
+    @media (max-width: 1020px) {
+      max-width: 540px;
+      box-sizing: border-box;
+    }
 
     .closeBtn {
       position: absolute;
@@ -160,6 +164,23 @@
           border-radius: 8px;
           background: rgba($color: #ecedee, $alpha: 0.3);
           box-sizing: border-box;
+          // flex-wrap: wrap;
+
+          @media (max-height: 1025px) and (min-width: 1020px) {
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+          }
+
+          .formGroupsCont1,
+          .formGroupsCont2 {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 16px;
+          }
 
           .formGroup {
             display: flex;

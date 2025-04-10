@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hakim Livs</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="src/services/kassa.js" defer></script>
   </head>
   <body class="index-page">
@@ -14,10 +15,6 @@
       <div class="welcomeBonus"><a href="">Hämta din välkomstgåva</a></div>
       <nav>
         <a href="index.html" class="logo"><img src="assets/logos/HakimLivsLogga.png" alt="logo"></a>
-        <div class="searchfield">
-          <a id="searchBtn" href=""><img src="assets/logos/search.svg" alt=""></a>
-          <input class="search" type="text" placeholder="Sök..."></input>
-        </div>
         <ul class="nav-links">
           <li><a href="products.html"><img src="assets/logos/savings.svg">Förmåner</a></li>
           <li><a href="HTML/login.html"><img src="assets/logos/user.svg">Logga in</a></li>
@@ -31,7 +28,7 @@
             <div id="cartWrap" class="row">
                 <div id="productsWrap" class="column">
                     <div class="row">
-                        <p class="bold big">Shopping Cart</p>
+                        <p class="bold big">Varukorg</p>
                         <p id="productAmount" class="semi-bold"> x varor</p>
                     </div>
                     <hr>
