@@ -58,6 +58,7 @@ function createProductCardElement(product) {
     <div class="row cartWrap">
       <button class="cartAdd">
         <img src="assets/logos/basket.svg" alt="Add to Cart">
+        Köp
       </button>
     </div>
   `;
@@ -99,6 +100,7 @@ function createPopupWindow(product) {
         <p class="bold M">${formatCurrency(product.pris)}</p>
         <div class="cartWrap">
           <button class="cartAdd">
+            <span>Köp</span>
             <img src="assets/logos/basket.svg" alt="Add to Cart">
           </button>
         </div>
@@ -134,8 +136,10 @@ function cartView() {
       <p>SUMMA</p>
       <p id="totalSum">0 kr</p>
     </div>
-    <button id="checkout">Kassan</button>
-    <button onclick="window.location.href = 'kassa.html'">Varukorg</button>
+    <div class="buttonWrap">
+      <button id="checkout">Kassan</button>
+      <button onclick="window.location.href = 'kassa.html'">Varukorg</button>
+    </div>
   `;
 
   if (document.querySelector("body > header > nav > ul > li:nth-child(3)")) {
@@ -231,6 +235,7 @@ function handleAddToCart(product) {
 // Create product view for thecart and add it to the cart.
 function cartProduct(product, amount, price) {
   let div = document.createElement("div");
+  div.classList.add("marginTB")
   div.innerHTML = `
     <img src="${product.bild}" width="80px">
     <div>
