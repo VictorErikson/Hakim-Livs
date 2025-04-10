@@ -245,6 +245,10 @@ body > header > nav > ul > li:nth-child(3) {
   position: relative;
 }
 
+#tillKassa {
+  width: 10px !important;
+}
+
 .loginMain {
   width: 100vw;
   height: 100vh;
@@ -1169,9 +1173,18 @@ div.marginTB {
   transform: translate(4px, 4px);
 }
 
+main.main-content.kassa {
+  width: 100vw;
+  min-height: 500px;
+  box-sizing: border-box;
+  display: flex;
+}
+
 .cart {
   display: flex;
   justify-content: center;
+  width: 100%;
+  min-width: 1100px;
 }
 .cart button {
   width: -moz-fit-content;
@@ -1197,7 +1210,7 @@ div.marginTB {
 }
 
 #cartWrap {
-  width: 80%;
+  width: 70%;
   height: auto;
   background-color: white;
   border: 1px solid rgb(142, 142, 142);
