@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Hakim Livs</title>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -10,20 +11,20 @@
 
     <!-- HEADER -->
     <header class="site-header">
-      <div class="welcomeBonus"><a href="">Hämta din välkomstgåva</a></div>
+      <div class="welcomeBonus"></div>
       <nav>
         <a href="index.html" class="logo"><img src="assets/logos/HakimLivsLogga.png" alt="logo"></a>
         <div class="searchfield">
           <a id="searchBtn" href=""><img src="assets/logos/search.svg" alt=""></a>
-          <input class="search" type="text" placeholder="Sök..."></input>
+          <input class="search"  maxlength="30" type="text" placeholder="Sök..."></input>
         </div>
         <ul class="nav-links">
           <li><a href="products.html"><img src="assets/logos/savings.svg">Förmåner</a></li>
           <li><a href="HTML/login.html"><img src="assets/logos/user.svg">Logga in</a></li>
-          <li><a href="kassa.html" class="cart">
+          <li id="tillKassa"><a href="kassa.html" class="cart">
             <img src="assets/logos/basket.svg" alt="">
             <div class="text">
-              <p class="toCart">Till kassan</p>
+              <p class="toCart">Till varukorg</p>
               <p class="price">0 kr</p>
             </div>
             </a>
@@ -31,33 +32,46 @@
         </ul>
       </nav>
     </header>
+    <div class="greyBackground">
+      <div class="index-content">
+      <!-- SIDE NAVIGATION -->
+        <aside class="side-nav">
+          <div class="nav-section">
+            <h3>Kategorier</h3>
+            <ul id="categoryContainer">
+            </ul>
+          </div>
+        </aside>
 
-    <div class="index-content">
-    <!-- SIDE NAVIGATION -->
-    <aside class="side-nav">
-      <div class="nav-section">
-        <h3>Kategorier</h3>
-        <ul id="categoryContainer">
-        </ul>
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+        <h1>Välkommen till Hakim Livs</h1>
+          <div id="productContainer"></div>
+      </main>
       </div>
-    </aside>
-
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
-      <h1>Welcome to Hakim Livs</h1>
-        <div id="productContainer"></div>
-    </main>
-  </div>
+    </div>
 
     <!-- FOOTER -->
     <footer class="site-footer">
-      <div class="footer-content">
-        <p>&copy; 2024 Hakim Livs. All rights reserved.</p>
-        <div class="footer-links">
-          <a href="/about">About</a>
-          <a href="/contact">Contact</a>
-          <a href="/terms">Terms</a>
+      <div class="footer-content column">
+        <div class="row">
+          <div class="öppetid">
+            <p class="big">Öppettider</p>
+            <p><span>Måndag:</span> 8:00-21:00</p>
+            <p><span>Tisdag:</span> 8:00-21:00</p>
+            <p><span>Onsdag:</span> 8:00-21:00</p>
+            <p><span>Torsdag:</span> 8:00-21:00</p>
+            <p><span>Fredag:</span> 8:00-21:00</p>
+            <p><span>Lördag:</span> 8:00-19:00</p>
+            <p><span>Söndag:</span> 8:00-19:00</p>
+          </div>
+          <div class="flex-end">
+            <p class="bigger"><span>Adress:</span> Östgötagatan 12, 116 25, Stockholm</p>
+            <p class="bigger"><span>Telefonumer:</span> +46 76 112 11 11</p>
+            <p class="bigger"><span>Mail:</span> Hakim@hakimLivs.se </p>
+          </div>
         </div>
+        <p id="copy">&copy; 2024 Hakim Livs. All rights reserved.</p>
       </div>
     </footer>
 

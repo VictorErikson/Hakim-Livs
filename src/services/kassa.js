@@ -14,7 +14,7 @@ function printProducts(namn, bild, amount){
     product.id = `${namn.replace(/\s+/g, '')}`;
 
     product.innerHTML = `
-    <img src="${bild}" alt="" style="width: 200px;">
+    <img src="${bild}" alt="" style="width: 100px;">
     <p>${namn}</p>
     <div class="row">
         <button class="minus">-</button>
@@ -22,7 +22,7 @@ function printProducts(namn, bild, amount){
         <button class="plus">+</button>
     </div>
     <p class="productsPrice"></p>
-    <button class="removeItem">x</button>
+    <button class="removeItem red">x</button>
     `
     product.querySelector(".plus").addEventListener("click", ()=>{plus(product,namn)})
     product.querySelector(".minus").addEventListener("click", ()=>{minus(product,namn)})
