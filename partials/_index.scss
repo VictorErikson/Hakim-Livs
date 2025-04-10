@@ -15,7 +15,7 @@ body {
 }
 
 .greyBackground {
-  width: 100vw;
+  // width: 100vw;
   background: #f5f7fa;
 }
 
@@ -160,8 +160,8 @@ body {
           }
         }
         .cart {
-          width: 100%;
-          max-width: 400px;
+          // width: 100%;
+          width: 200px;
           height: 80px;
           // font-weight: 700;
           // font-style: italic;
@@ -184,7 +184,7 @@ body {
           box-shadow: 4px 4px 0px #001e62;
           transition: transform 0.1s ease, box-shadow 0.1s ease;
 
-          img{
+          img {
             margin-right: 8px;
           }
 
@@ -226,6 +226,7 @@ body {
     padding: 2rem;
     width: 100%;
     background-color: $Neutral50;
+    box-sizing: border-box;
 
     // h1 {
     //   font-size: 2.5rem;
@@ -276,19 +277,19 @@ body {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-sizing: border-box;
 
-      div{
+      div {
         width: 100%;
         align-self: flex-end;
 
-        div{
+        div {
           width: fit-content;
           min-width: 200px;
         }
       }
 
-      
-      div.flex-end{
+      div.flex-end {
         width: 100%;
         display: flex;
         justify-content: space-between;
@@ -297,27 +298,26 @@ body {
       }
     }
 
-
-    p{
+    p {
       font-size: 14px;
       margin: 4px;
     }
 
-    p.bigger{
+    p.bigger {
       font-size: 18px;
     }
 
-    span{
+    span {
       font-weight: 600;
     }
 
-    p.big{
+    p.big {
       font-size: 24px;
       font-weight: 600;
     }
   }
 
-  #copy{
+  #copy {
     margin-top: 24px;
   }
 }
@@ -326,6 +326,6 @@ body > header > nav > ul > li:nth-child(3) {
   position: relative;
 }
 
-#tillKassa{
- width: 10px !important;
-}
+// #tillKassa {
+//   width: 10px !important;
+// }

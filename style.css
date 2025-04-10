@@ -11,7 +11,6 @@ body {
 }
 
 .greyBackground {
-  width: 100vw;
   background: #f5f7fa;
 }
 
@@ -136,8 +135,7 @@ body {
   height: 32px;
 }
 .index-page .site-header nav .nav-links .cart {
-  width: 100%;
-  max-width: 400px;
+  width: 200px;
   height: 80px;
   color: white;
   background: rgb(36, 38, 204);
@@ -192,6 +190,7 @@ body {
   padding: 2rem;
   width: 100%;
   background-color: #F5F7FA;
+  box-sizing: border-box;
 }
 .index-page .site-footer {
   background: #011e62;
@@ -206,6 +205,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
 }
 .index-page .site-footer .footer-content div {
   width: 100%;
@@ -243,10 +243,6 @@ body {
 
 body > header > nav > ul > li:nth-child(3) {
   position: relative;
-}
-
-#tillKassa {
-  width: 10px !important;
 }
 
 .loginMain {
@@ -970,6 +966,28 @@ div.marginTB {
 #formArea .background .closeBtn:hover {
   font-weight: bold;
 }
+#formArea .background .orderSuccessDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+#formArea .background .orderSuccessDiv h2 {
+  font-size: 28px;
+}
+#formArea .background .orderSuccessDiv p {
+  margin: 0px;
+}
+#formArea .background .orderSuccessDiv .payment {
+  font-size: 20px;
+}
+#formArea .background .orderSuccessDiv .italic {
+  font-style: italic;
+}
+#formArea .background .orderSuccessDiv .bold {
+  font-weight: bold;
+}
 #formArea .background .productsOrderCont {
   display: flex;
   gap: 120px;
@@ -1178,24 +1196,6 @@ main.main-content.kassa {
   min-height: 500px;
   box-sizing: border-box;
   display: flex;
-}
-
-.cart {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  min-width: 1100px;
-}
-.cart button {
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-.cart input {
-  max-width: 80px;
-  height: -moz-fit-content;
-  height: fit-content;
 }
 
 .row {
