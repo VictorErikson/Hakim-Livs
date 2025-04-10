@@ -137,6 +137,7 @@ export async function printOrdersAdminpage() {
   main.append(showingProductCont, productContainer);
 
   const orders = await fetchOrders();
+  console.log("orders: ", orders);
   showOrdersAdmin(orders);
 }
 

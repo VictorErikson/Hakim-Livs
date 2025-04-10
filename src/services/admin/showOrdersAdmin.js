@@ -253,6 +253,7 @@ export function showOrdersAdmin(orders) {
   const tbody = table.querySelector("tbody");
 
   orders.forEach((order) => {
+    console.log("order: ", order);
     const row = document.createElement("tr");
     row.innerHTML = `
       <td><select class="statusSelect">
@@ -318,6 +319,7 @@ export function showOrdersAdmin(orders) {
 
       let sumProducts = 0;
       const products = order.produkter;
+      console.log("products: ", products);
 
       const priceDiv = document.createElement("div");
       priceDiv.classList.add("priceDiv");
