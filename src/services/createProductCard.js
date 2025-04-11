@@ -275,33 +275,53 @@ import { productList } from "../../tempTestData/products.js";
  
  // After reloding page relode the cart
  export async function reloadCart() {
-   let productsDB = await fetchProductsFromDB();
-   let storedCart = JSON.parse(sessionStorage.getItem("cart"));
- 
- 
-   let existingProductIds = new Set(productsDB.map(p => p._id));
-   let validCart = storedCart.filter(product => existingProductIds.has(product._id));
-   let validIds = new Set(validCart.map(item => item.id));
-   let updatedCart = productsDB.filter(product => validIds.has(product._id));
+  try {
+    const productsDB = await fetchProductsFromDB();
+    const storedCart = JSON.parse(sessionStorage.getItem("cart"));
 
-   sessionStorage.setItem('cart', JSON.stringify(updatedCart));
- 
- 
-   if(document.querySelector("#cartProducts")){
-     document.querySelector("#cartProducts").innerHTML = "";
-   }
- 
-   if (updatedCart.length>0) {
-     updatedCart.forEach((product) => {
-       let price = countProductSum(product);
-       let newProduct = cartProduct(product, product.amount, price);
-       if (document.querySelector("#cartProducts")) {
-         document.querySelector("#cartProducts").append(newProduct);
-       }
-     });
-   }
-   updateTotalSum();
- }
+    if (!Array.isArray(storedCart)) return;
+
+    const existingProductIds = new Set(productsDB.map(p => p._id));
+    const validCart = storedCart.filter(product => existingProductIds.has(product._id));
+
+
+    const validIds = new Set(validCart.map(item => item._id));
+    const updatedCart = productsDB
+      .filter(product => validIds.has(product._id))
+      .map(product => {
+        const cartItem = validCart.find(item => item._id === product._id);
+        return { ...product, amount: cartItem.amount || 1 }; // Preserve amount from cart
+      });
+
+
+    sessionStorage.setItem('cart', JSON.stringify(updatedCart));
+
+
+    const cartProductsContainer = document.querySelector("#cartProducts");
+
+    if (cartProductsContainer) {
+      cartProductsContainer.innerHTML = "";
+
+      if (updatedCart.length > 0) {
+        const fragment = document.createDocumentFragment();
+
+        updatedCart.forEach((product) => {
+          const price = countProductSum(product);
+          const newProduct = cartProduct(product, product.amount, price);
+          fragment.appendChild(newProduct);
+        });
+
+        cartProductsContainer.appendChild(fragment);
+      }
+    }
+
+    updateTotalSum();
+
+  } catch (error) {
+    console.error("Error reloading cart:", error);
+  }
+}
+
  
  
  //Wen the page loads relodes the cart
