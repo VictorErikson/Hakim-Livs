@@ -292,7 +292,7 @@ import { productList } from "../../tempTestData/products.js";
    }
  
    if (updatedCart.length>0) {
-     validCart.forEach((product) => {
+     updatedCart.forEach((product) => {
        let price = countProductSum(product);
        let newProduct = cartProduct(product, product.amount, price);
        if (document.querySelector("#cartProducts")) {
