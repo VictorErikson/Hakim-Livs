@@ -956,7 +956,7 @@ div.marginTB {
   font-weight: bold;
   padding-bottom: 2px;
 }
-.admin-page .admin-container #showingProductCont .customerInfo {
+.admin-page .admin-container #showingProductCont .customerInfo .customerInfoCont {
   max-width: 825px;
   box-sizing: border-box;
   padding: 8px 12px;
@@ -966,11 +966,11 @@ div.marginTB {
   flex-direction: column;
   gap: 2px;
 }
-.admin-page .admin-container #showingProductCont .customerInfo div {
+.admin-page .admin-container #showingProductCont .customerInfo .customerInfoCont div {
   display: flex;
   justify-content: space-between;
 }
-.admin-page .admin-container #showingProductCont .customerInfo div p {
+.admin-page .admin-container #showingProductCont .customerInfo .customerInfoCont div p {
   padding: 0px;
   margin: 0px;
 }
