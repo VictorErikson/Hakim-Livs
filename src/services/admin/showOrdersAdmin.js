@@ -147,7 +147,7 @@ export function showOrdersAdmin(orders) {
 
             const price = document.createElement("p");
             price.classList.add("price");
-            price.innerText = `${produkt.pris} kr`;
+            price.innerText = `${product.antal}st x ${produkt.pris} kr`;
 
             div.append(title, price);
             sumProducts += produkt.pris * product.antal;
