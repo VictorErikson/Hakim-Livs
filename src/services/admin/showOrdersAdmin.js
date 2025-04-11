@@ -180,27 +180,27 @@ export function showOrdersAdmin(orders) {
 
         const name = document.createElement("p");
         name.classList.add("name");
-        name.innerText = `${capitalize(order.fornamn)} ${capitalize(
-          order.efternamn
-        )}`;
+        name.innerHTML = `<span>Namn: </span>${capitalize(
+          order.fornamn
+        )} ${capitalize(order.efternamn)}`;
 
         const adress = document.createElement("p");
         adress.classList.add("adress");
-        adress.innerText = `${capitalize(order.gatuadress)}, ${capitalize(
-          order.postnr
-        )}, ${capitalize(order.postort)}`;
+        adress.innerHTML = `<span>Adress: </span>${capitalize(
+          order.gatuadress
+        )}, ${capitalize(order.postnr)}, ${capitalize(order.postort)}`;
 
         const phone = document.createElement("p");
         phone.classList.add("phone");
-        phone.innerText = `Telefonnummer: ${order.mobil}`;
+        phone.innerHTML = `<span>Telefonnummer: </span>${order.mobil}`;
 
         const email = document.createElement("p");
         email.classList.add("email");
-        email.innerText = `E-post: ${order.mejl}`;
+        email.innerHTML = `<span>E-post: </span>${order.mejl}`;
 
         const note = document.createElement("p");
         note.classList.add("note");
-        note.innerText = `Anmärkning: ${order.anmarkning}`;
+        note.innerHTML = `<span>Anmärkning: </span>${order.anmarkning}`;
 
         customerInfo.append(headingCustomer, customerInfoCont);
         customerInfoCont.append(name, adress, phone, email, note);
