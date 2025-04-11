@@ -275,17 +275,12 @@ async function fetchProductsFromDB() {
 
 // After reloding page relode the cart
 export async function reloadCart() {
-  let productsDB = await fetchProductsFromDB();
-  let storedCart = JSON.parse(sessionStorage.getItem("cart"));
-
-
-  let existingProductIds = new Set(productsDB.map(p => p._id));
-  let validCart = storedCart.filter(product => existingProductIds.has(product._id));
-
-
   if(document.querySelector("#cartProducts")){
     document.querySelector("#cartProducts").innerHTML = "";
   }
+  
+  let validCart = uppdateSessionStorage();
+
   if (validCart.length>0) {
     validCart.forEach((product) => {
       let price = countProductSum(product);
@@ -297,6 +292,18 @@ export async function reloadCart() {
   }
   updateTotalSum();
 }
+
+function uppdateSessionStorage() {
+  let productsDB = await fetchProductsFromDB();
+  let storedCart = JSON.parse(sessionStorage.getItem("cart"));
+
+  let updatedCart = storedCart.map(cartItem => {
+      return productsDB.find(product => product.id === cartItem.id);
+  }).filter(item => item !== undefined);
+
+  return updatedCart;
+}
+
 
 //Wen the page loads relodes the cart
 reloadCart();
