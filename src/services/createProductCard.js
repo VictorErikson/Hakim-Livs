@@ -269,6 +269,7 @@ async function fetchProductsFromDB() {
 
   } catch (error) {
     console.error("Error fetching products:");
+    return [];
   }
 }
 
@@ -278,8 +279,8 @@ export async function reloadCart() {
   if(document.querySelector("#cartProducts")){
     document.querySelector("#cartProducts").innerHTML = "";
   }
-  
-  let validCart = uppdateSessionStorage();
+
+  let validCart = await uppdateSessionStorage();
 
   if (validCart.length>0) {
     validCart.forEach((product) => {
@@ -293,15 +294,20 @@ export async function reloadCart() {
   updateTotalSum();
 }
 
-function uppdateSessionStorage() {
+async function uppdateSessionStorage() {
   let productsDB = await fetchProductsFromDB();
   let storedCart = JSON.parse(sessionStorage.getItem("cart"));
+  let updatedCart;
 
-  let updatedCart = storedCart.map(cartItem => {
+  if(storedCart){
+    updatedCart = storedCart.map(cartItem => {
       return productsDB.find(product => product.id === cartItem.id);
-  }).filter(item => item !== undefined);
+    }).filter(item => item !== undefined);
+  }else{
+    updatedCart = [];
+  }
 
-  return updatedCart;
+  sessionStorage.setItem("cart", JSON.stringify(updatedCart));
 }
 
 
