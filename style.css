@@ -966,13 +966,12 @@ div.marginTB {
   flex-direction: column;
   gap: 2px;
 }
-.admin-page .admin-container #showingProductCont .customerInfo .customerInfoCont div {
-  display: flex;
-  justify-content: space-between;
-}
-.admin-page .admin-container #showingProductCont .customerInfo .customerInfoCont div p {
+.admin-page .admin-container #showingProductCont .customerInfo .customerInfoCont p {
   padding: 0px;
   margin: 0px;
+}
+.admin-page .admin-container #showingProductCont .customerInfo .customerInfoCont p span {
+  font-weight: bold;
 }
 .admin-page .admin-container #showingProductCont h2 {
   font-family: "Compacta", sans-serif;
@@ -1064,19 +1063,18 @@ div.marginTB {
   height: auto;
   border-radius: 4px;
 }
-.adminProductTable tbody tr td .editBtn,
-.adminProductTable tbody tr td .deleteBtn {
+.adminProductTable tbody tr td button {
   padding: 6px 10px;
   border: none;
   border-radius: 4px;
   font-size: 0.9rem;
   cursor: pointer;
 }
-.adminProductTable tbody tr td .editBtn {
+.adminProductTable tbody tr td .show {
   background-color: #2326cc;
   color: white;
 }
-.adminProductTable tbody tr td .editBtn:hover {
+.adminProductTable tbody tr td .show:hover {
   background-color: #011e62;
 }
 .adminProductTable tbody tr td .deleteBtn {
