@@ -25,7 +25,7 @@ export function printOrder() {
       // title.style.fontWeight = "bold";
       const price = document.createElement("p");
       price.classList.add("price");
-      price.innerText = `${product.pris} kr`;
+      price.innerText = `${product.amount}st x ${product.pris} kr`;
       div.append(title, price);
 
       sumProducts += product.pris * product.amount;
