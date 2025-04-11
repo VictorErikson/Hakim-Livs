@@ -261,14 +261,33 @@ function cartProduct(product, amount, price) {
   return div;
 }
 
+async function fetchProductsFromDB() {
+  try {
+    let response = await fetch("https://grupp-11-backend.vercel.app/api/products");
+    let allProducts = await response.json();
+    return allProducts;
+
+  } catch (error) {
+    console.error("Error fetching products:");
+  }
+}
+
+
 // After reloding page relode the cart
-export function reloadCart() {
+export async function reloadCart() {
+  let productsDB = await fetchProductsFromDB();
   let storedCart = JSON.parse(sessionStorage.getItem("cart"));
+
+
+  let existingProductIds = new Set(productsDB.map(p => p._id));
+  let validCart = storedCart.filter(product => existingProductIds.has(product._id));
+
+
   if(document.querySelector("#cartProducts")){
     document.querySelector("#cartProducts").innerHTML = "";
   }
-  if (storedCart) {
-    storedCart.forEach((product) => {
+  if (validCart.length>0) {
+    validCart.forEach((product) => {
       let price = countProductSum(product);
       let newProduct = cartProduct(product, product.amount, price);
       if (document.querySelector("#cartProducts")) {
