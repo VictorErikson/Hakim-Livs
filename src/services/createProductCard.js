@@ -297,7 +297,7 @@ export async function reloadCart() {
 async function uppdateSessionStorage() {
   let productsDB = await fetchProductsFromDB();
   let storedCart = JSON.parse(sessionStorage.getItem("cart"));
-  let updatedCart;
+  let updatedCart = [];
 
   if(storedCart){
     updatedCart = storedCart.map(cartItem => {
