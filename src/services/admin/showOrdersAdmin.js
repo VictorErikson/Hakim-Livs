@@ -37,7 +37,7 @@ export function showOrdersAdmin(orders) {
           </select></td>
       <td>${order._id}</td>
       <td>${capitalize(order.fornamn)} ${capitalize(order.efternamn)}</td>
-      <td>${order.totalsumma.toFixed(2)}</td>
+      <td>${order.totalsumma.toFixed(2)} kr</td>
       <td><button class="show">Visa</button></td>
       <td><button class="deleteBtn">Radera</button></td>
     `;
@@ -171,6 +171,9 @@ export function showOrdersAdmin(orders) {
         const customerInfo = document.createElement("div");
         customerInfo.classList.add("customerInfo");
 
+        const customerInfoCont = document.createElement("div");
+        customerInfoCont.classList.add("customerInfoCont");
+
         const headingCustomer = document.createElement("h2");
         headingCustomer.innerText = `KUNDINFO`;
         headingCustomer.classList.add("headingCustomer");
@@ -199,7 +202,8 @@ export function showOrdersAdmin(orders) {
         note.classList.add("note");
         note.innerText = `Anmärkning: ${order.anmarkning}`;
 
-        customerInfo.append(headingCustomer, name, adress, phone, email, note);
+        customerInfo.append(headingCustomer, customerInfoCont);
+        customerInfoCont.append(name, adress, phone, email, note);
         showingProductCont.append(productsContainer, customerInfo);
       })();
     });
