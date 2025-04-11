@@ -3,6 +3,8 @@ import { showProductsAdmin } from "../services/showProductsAdmin.js";
 import { productList } from "../../tempTestData/products.js";
 import { searchProduct } from "../services/searchProduct.js";
 import { editData } from "../services/admin/editData.js";
+import { fetchOrders } from "../services/fetchOrders.js";
+import { showOrdersAdmin } from "../services/admin/showOrdersAdmin.js";
 
 export let products;
 
@@ -117,21 +119,29 @@ export function printProductsAdminpage() {
   main.append(showFormBtn, form, productContainer);
 
   document.querySelector(".admin-content").append(main);
+  loadProducts();
 }
 
 export async function printOrdersAdminpage() {
-  const adminContent = (document.querySelector(".admin-content").innerHTML =
-    "");
+  const adminContent = document.querySelector(".admin-content");
+  adminContent.innerHTML = "";
   const main = document.createElement("main");
   main.classList.add("admin-container");
   adminContent.append(main);
 
+  const showingProductCont = document.createElement("div");
+  showingProductCont.id = "showingProductCont";
+
+  const productContainer = document.createElement("div");
+  productContainer.id = "productContainer";
+  main.append(showingProductCont, productContainer);
+
   const orders = await fetchOrders();
+  showOrdersAdmin(orders);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   printProductsAdminpage();
-  loadProducts();
 
   const toggleFormBtn = document.getElementById("showFormBtn");
   const form = document.getElementById("addProductsForm");
@@ -162,7 +172,6 @@ document.addEventListener("DOMContentLoaded", () => {
       leverantor: document.getElementById("supplier").value,
       bild: document.getElementById("image").value,
     };
-    console.log(productData);
     const editId = sessionStorage.getItem("editProductId");
 
     try {
@@ -246,11 +255,13 @@ const productsBtn = document.querySelector("#productsBtn");
 const ordersBtn = document.querySelector("#ordersBtn");
 productsBtn.addEventListener("click", () => {
   printProductsAdminpage();
+  searchfield.style.visibility = "visible";
   ordersBtn.className = "notActive";
   productsBtn.className = "";
 });
 ordersBtn.addEventListener("click", () => {
   printOrdersAdminpage();
+  searchfield.style.visibility = "hidden";
   ordersBtn.className = "";
   productsBtn.className = "notActive";
 });
