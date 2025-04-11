@@ -308,6 +308,7 @@ async function uppdateSessionStorage() {
   }
 
   sessionStorage.setItem("cart", JSON.stringify(updatedCart));
+  return updatedCart;
 }
 
 
