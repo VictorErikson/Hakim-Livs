@@ -287,7 +287,7 @@
       gap: 20px;
       .productsContainer {
         height: 100%;
-        max-width: 825px;
+        max-width: 600px;
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -359,7 +359,7 @@
       }
       .customerInfo {
         .customerInfoCont {
-          max-width: 825px;
+          max-width: 600px;
           box-sizing: border-box;
           padding: 8px 12px;
           border-radius: 8px;
@@ -371,9 +371,12 @@
           p {
             padding: 0px;
             margin: 0px;
+            // display: flex;
+            // justify-content: space-between;
 
             span {
               font-weight: bold;
+              padding-right: 5px;
             }
           }
         }
@@ -486,6 +489,7 @@
         }
 
         button {
+          width: 80px;
           padding: 6px 10px;
           border: none;
           border-radius: 4px;
@@ -493,6 +497,7 @@
           cursor: pointer;
         }
 
+        .editBtn,
         .show {
           background-color: $blue400;
           color: white;

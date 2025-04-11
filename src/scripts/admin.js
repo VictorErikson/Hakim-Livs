@@ -140,7 +140,7 @@ export async function printOrdersAdminpage() {
   showOrdersAdmin(orders);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+const printproductsAddEventlisteners = () => {
   printProductsAdminpage();
 
   const toggleFormBtn = document.getElementById("showFormBtn");
@@ -200,6 +200,10 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Misslyckades med att lägga till/redigera produkt:", error);
     }
   });
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  printproductsAddEventlisteners();
 });
 
 async function loadProducts() {
@@ -254,7 +258,7 @@ searchfield.addEventListener("click", () => {
 const productsBtn = document.querySelector("#productsBtn");
 const ordersBtn = document.querySelector("#ordersBtn");
 productsBtn.addEventListener("click", () => {
-  printProductsAdminpage();
+  printproductsAddEventlisteners();
   searchfield.style.visibility = "visible";
   ordersBtn.className = "notActive";
   productsBtn.className = "";
