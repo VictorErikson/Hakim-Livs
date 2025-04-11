@@ -146,7 +146,7 @@ import { productList } from "../../tempTestData/products.js";
      </div>
      <div class="buttonWrap">
        <button id="checkout">Kassan</button>
-       <button onclick="window.location.href = 'kassa.html'">Varukorg</button>
+       <button onclick="window.location.href = 'varukorg.html'">Varukorg</button>
      </div>
    `;
  

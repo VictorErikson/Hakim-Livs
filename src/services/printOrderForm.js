@@ -55,6 +55,8 @@ export function printOrderForm() {
 
       orderSuccessDiv.append(thanksTitle, payment, deliver);
       document.querySelector(".background").append(orderSuccessDiv);
+      reloadCart();
+      location.reload();
     }
   });
   const background = document.createElement("div");
