@@ -290,8 +290,6 @@ import { productList } from "../../tempTestData/products.js";
    if(document.querySelector("#cartProducts")){
      document.querySelector("#cartProducts").innerHTML = "";
    }
-   
-   let validCart = uppdateSessionStorage();
  
    if (updatedCart.length>0) {
      validCart.forEach((product) => {
