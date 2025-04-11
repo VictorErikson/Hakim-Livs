@@ -43,10 +43,11 @@ export function printOrderForm() {
       const thanksTitle = document.createElement("h2");
       thanksTitle.innerText = "Tack för din beställning!";
 
+      document.querySelector(".background").classList.add("red");
       const payment = document.createElement("p");
-      payment.innerHTML = `Vänligen swisha <span class="bold">${res.totalSum.toFixed(
+      payment.innerHTML = `Glöm inte att Swisha <span class="bold">${res.totalSum.toFixed(
         2
-      )} kr</span> till <span class="italic">+46 70 123 45 67</span>`;
+      )} kr</span> till <span class="italic">+46 70 123 45 67</span> för att slutföra din beställning.`;
       payment.classList.add("payment");
       const deliver = document.createElement("p");
       deliver.innerHTML = `Din beställning levereras till <span class="italic">${res.address}</span> inom 7 arbetsdagar efter att betalning bekräftats.`;

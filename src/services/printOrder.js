@@ -77,8 +77,16 @@ export function printOrder() {
     moms.innerText = `${((sumProducts + 59) * 0.12).toFixed(2)} kr`;
     momsCont.append(momsTitle, moms);
 
+    const payment = document.createElement("div");
+    payment.classList.add("payment");
+    const paymentTitle = document.createElement("p");
+    paymentTitle.innerHTML = `Vänligen Swisha <span class="bold">${totalPriceSum.toFixed(
+      2
+    )} kr</span> till <span class="italic">+46 70 123 45 67</span>!`;
+    payment.append(paymentTitle);
+
     priceDiv.append(sumCont, deliverCont, totalCont, momsCont);
-    createDiv.append(heading, ul, priceDiv);
+    createDiv.append(heading, ul, priceDiv, payment);
     return createDiv;
   }
 }
