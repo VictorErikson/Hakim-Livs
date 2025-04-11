@@ -1127,6 +1127,9 @@ div.marginTB {
     box-sizing: border-box;
   }
 }
+#formArea .background.red {
+  background: rgba(248, 64, 32, 0.3);
+}
 #formArea .background .closeBtn {
   position: absolute;
   top: 20px;
@@ -1240,6 +1243,20 @@ div.marginTB {
 #formArea .background .productsOrderCont .productsContainer .priceDiv .totalCont .total {
   font-weight: bold;
   padding-bottom: 2px;
+}
+#formArea .background .productsOrderCont .productsContainer .payment {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(248, 64, 32, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+#formArea .background .productsOrderCont .productsContainer .payment p {
+  font-weight: bold;
+}
+#formArea .background .productsOrderCont .productsContainer .payment p .italic {
+  font-style: italic;
 }
 #formArea .background .productsOrderCont #formContainer {
   display: flex;
